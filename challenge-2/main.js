@@ -1,6 +1,12 @@
 const Container = require("./Container");
 
-const prod = new Container("./prueba.json");
+const prods = new Container("./products.txt");
 
-// prod.save({ title: "Remera Ejemplo", price: 2200, quantity: 5 });
-prod.getAll();
+prods
+  .save({ title: "Producto de Ejemplo", price: 5300, stock: 2 })
+  .then((id) => console.log(id));
+
+// prods.getById(3).then((data) => console.log(data));
+// prods.getAll().then((data) => console.log(data));
+// prods.deleteById(1);
+// prods.deleteAll().then(() => console.log("Productos eliminados"));
