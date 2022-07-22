@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "title": "Remera Phenomenally",
+    "price": 3200,
+    "stock": 2,
+    "id": 1
+  },
+  {
+    "title": "Jacket Bomber",
+    "price": 5300,
+    "stock": 5,
+    "id": 2
+  }
+  {
+    "title": "Buzo Rose",
+    "price": 4600,
+    "stock": 6,
+    "id": 3
+  }
+]
