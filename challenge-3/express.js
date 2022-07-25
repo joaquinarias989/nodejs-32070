@@ -1,5 +1,5 @@
 const express = require("express");
-const Container = require("../challenge-2/Container");
+const Container = require("./Container");
 
 const app = express();
 const port = 8080;
@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 // GET ALL PRODUCTS
 app.get("/api/products", async (req, res) => {
-  const container = new Container("../challenge-2/products.txt");
+  const container = new Container("./products.txt");
   const products = await container.getAll();
   products
     ? res.status(200).json(products)
@@ -28,7 +28,7 @@ app.get("/api/products", async (req, res) => {
 
 // GET RANDOM PRODUCT
 app.get("/api/randomProduct", async (req, res) => {
-  const container = new Container("../challenge-2/products.txt");
+  const container = new Container("./products.txt");
   const products = await container.getAll();
   const randomProduct = products[Math.floor(Math.random() * products.length)];
   randomProduct
