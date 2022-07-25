@@ -10,7 +10,7 @@
     "price": 5300,
     "stock": 5,
     "id": 2
-  }
+  },
   {
     "title": "Buzo Rose",
     "price": 4600,

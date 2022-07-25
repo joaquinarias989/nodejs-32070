@@ -1,8 +1,7 @@
-const { json } = require("express");
 const express = require("express");
-const app = express();
 const Container = require("../challenge-2/Container");
 
+const app = express();
 const port = 8080;
 app
   .listen(port, () => {
@@ -18,17 +17,21 @@ app.get("/", (req, res) => {
   );
 });
 
-// GET PRODUCTS
-app.get("/products", async (req, res) => {
+// GET ALL PRODUCTS
+app.get("/api/products", async (req, res) => {
   const container = new Container("../challenge-2/products.txt");
-  const products = await prods.getAll();
-  res.json(products || { error: "No products found" });
+  const products = await container.getAll();
+  products
+    ? res.status(200).json(products)
+    : res.status(404).json({ error: "No products found" });
 });
 
 // GET RANDOM PRODUCT
-app.get("/randomProduct", async (req, res) => {
+app.get("/api/randomProduct", async (req, res) => {
   const container = new Container("../challenge-2/products.txt");
   const products = await container.getAll();
   const randomProduct = products[Math.floor(Math.random() * products.length)];
-  res.json(randomProduct || { error: "Oh! Not lucky this time" });
+  randomProduct
+    ? res.status(200).json(randomProduct)
+    : res.status(404).json({ error: "Oh! Not lucky this time" });
 });
