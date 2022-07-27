@@ -3,3 +3,23 @@ GET http://localhost:8080/api/products/
 
 ### RandomProd
 GET http://localhost:8080/api/randomProduct/
+
+### Add Prod
+POST http://localhost:8080/api/products/ 
+Content-Type: application/json
+
+{
+    "title": "Buzo",
+    "price": 4200,
+    "stock": 6
+}
+
+### Update Prod
+PUT http://localhost:8080/api/products/2
+Content-Type: application/json
+
+{
+    "title": "Jacket Bomber Updated",
+    "price": 5200,
+    "stock": 4
+}

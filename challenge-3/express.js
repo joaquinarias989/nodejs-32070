@@ -2,6 +2,9 @@ const express = require("express");
 const Container = require("./Container");
 
 const app = express();
+
+app.use(express.json());
+
 const port = 8080;
 app
   .listen(port, () => {
@@ -34,4 +37,24 @@ app.get("/api/randomProduct", async (req, res) => {
   randomProduct
     ? res.status(200).json(randomProduct)
     : res.status(404).json({ error: "Oh! Not lucky this time" });
+});
+
+// POST PRODUCT
+app.post("/api/products", async (req, res) => {
+  const container = new Container("./products.txt");
+  const product = await container.save(req.body);
+  product
+    ? res.status(201).json({ message: "Product created successfully" })
+    : res.status(404).json({ error: "Product not added" });
+});
+
+// PUT PRODUCT
+app.put("/api/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const container = new Container("./products.txt");
+  const deleteProd = await container.deleteById(Number(id));
+  const product = await container.save(req.body);
+  product
+    ? res.status(200).json({ message: "Product updated successfully" })
+    : res.status(404).json({ error: "Product not updated, verify error" });
 });
