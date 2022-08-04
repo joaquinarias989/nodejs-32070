@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Remera Phenomenally",
+    "price": 3200,
+    "stock": 2,
+    "id": 1
+  },
+  {
+    "title": "Buzo Rose",
+    "price": 12300,
+    "stock": 2,
+    "id": 3
+  },
+  {
+    "title": "Jacket Bomber Updated",
+    "price": 5200,
+    "stock": 4,
+    "id": 4
+  },
+  {
+    "id": 5
+  },
+  {
+    "id": 6
+  },
+  {
+    "id": 7
+  },
+  {
+    "title": "Asd ads",
+    "price": "123",
+    "stock": "2",
+    "id": 8
+  }
+]
