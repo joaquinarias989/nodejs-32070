@@ -74,10 +74,10 @@ class Container {
       const data = await fs.readFile(this.path, "utf8");
       const json = JSON.parse(data);
       const prod = await this.getById(id);
-      if (prod) {
-        const newJson = json.filter((item) => item.id !== id);
-        await fs.writeFile(this.path, JSON.stringify(newJson, null, 2));
-      }
+      if (!prod) return false;
+      const newJson = json.filter((item) => item.id !== id);
+      await fs.writeFile(this.path, JSON.stringify(newJson, null, 2));
+      return true;
     } catch (error) {
       console.log(error);
     }

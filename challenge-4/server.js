@@ -57,8 +57,8 @@ routerProds.put("/:id", async (req, res) => {
 routerProds.delete("/:id", async (req, res) => {
   let { id } = req.params;
   const container = new Container("./products.txt");
-  const product = await container.deleteById(Number(id));
-  product
+  const isDeleted = await container.deleteById(Number(id));
+  isDeleted
     ? res.status(200).json({ message: "Product deleted successfully!" })
     : res.status(404).json({
         error:
