@@ -11,7 +11,7 @@ Content-Type: application/json
 {
     "title": "Buzo de ejemplo",
     "price": 12300,
-    "stock": 2
+    "img": ""
 }
 
 ### 
@@ -21,8 +21,8 @@ Content-Type: application/json
 {
     "title": "Buzo Roses",
     "price": 12300,
-    "stock": 2
+    "img": ""
 }
 
 ###
-DELETE http://localhost:8080/api/products/8
+DELETE http://localhost:8080/api/products/3
