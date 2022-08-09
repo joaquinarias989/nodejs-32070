@@ -1,14 +1,37 @@
 const express = require("express");
-
+const hbs = require("express-handlebars");
 const Container = require("../Container");
 const products = new Container("../products.txt");
 
 const app = express();
 const routerProds = express.Router();
-app.use(express.static(__dirname + "public"));
+
+app.engine(
+  "hbs",
+  hbs.engine({
+    defaultLayout: "main",
+    layoutsDir: `${__dirname}/views/layouts/`,
+    partialsDir: `${__dirname}/views/partials/`,
+    extname: "hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", `${__dirname}/views`);
+
+app.use(express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", routerProds);
+
+app.get("/Inicio", (req, res) => {
+  res.render("index");
+});
+app.get("/Productos", async (req, res) => {
+  res.render("products", { prods: await products.getAll() });
+});
+app.get("/AgregarProducto", (req, res) => {
+  res.render("addProduct");
+});
 
 routerProds.get("/", async (req, res) => {
   const prods = await products.getAll();
@@ -25,12 +48,12 @@ routerProds.get("/:id", async (req, res) => {
 });
 routerProds.post("/", async (req, res) => {
   const { title, price, img } = req.body;
-  console.log(title, price, img);
   const idProd = await products.save({ title, price, img });
   idProd
     ? res
         .status(201)
-        .json({ message: "Product added successfully!", idProduct: idProd })
+        // .json({ message: "Product added successfully!", idProduct: idProd })
+        .redirect("/Productos")
     : res.status(400).json({
         error: "Something went wrong, the product was not added. Verify error.",
       });
