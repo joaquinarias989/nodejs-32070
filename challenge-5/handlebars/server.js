@@ -12,6 +12,7 @@ app.engine(
     defaultLayout: "main",
     layoutsDir: `${__dirname}/views/layouts/`,
     partialsDir: `${__dirname}/views/partials/`,
+    pagesDir: `${__dirname}/views/pages/`,
     extname: "hbs",
   })
 );
@@ -23,14 +24,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", routerProds);
 
-app.get("/Inicio", (req, res) => {
-  res.render("index");
+app.get("/", (req, res) => {
+  res.render("pages/index");
 });
 app.get("/Productos", async (req, res) => {
-  res.render("products", { prods: await products.getAll() });
+  res.render("pages/products", { prods: await products.getAll() });
 });
 app.get("/AgregarProducto", (req, res) => {
-  res.render("addProduct");
+  res.render("pages/addProduct");
 });
 
 routerProds.get("/", async (req, res) => {
@@ -53,7 +54,7 @@ routerProds.post("/", async (req, res) => {
     ? res
         .status(201)
         // .json({ message: "Product added successfully!", idProduct: idProd })
-        .redirect("/Productos")
+        .redirect("/AgregarProducto")
     : res.status(400).json({
         error: "Something went wrong, the product was not added. Verify error.",
       });
