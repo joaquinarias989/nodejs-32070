@@ -1,0 +1,139 @@
+<html lang="en" data-theme="corporate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STREET WEAR</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <main class="bg-base-200 min-h-full">
+      <div class="flex items-center justify-center">
+        <div class="mt-5 md:mt-0 md:col-span-2">
+          <h1 class="text-3xl text-center font-bold mb-5">Agregar Producto</h1>
+          <form method="POST" action="/api/products/">
+            <div class="shadow sm:rounded-md sm:overflow-hidden">
+              <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                <div>
+                  <label for="title" class="block font-medium text-gray-700">
+                    Nombre del producto
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      id="title"
+                      name="title"
+                      type="text"
+                      class="input input-bordered w-full"
+                      required
+                    />
+                  </div>
+                  <p class="mt-2 text-sm text-gray-500">
+                    Puedes incluir marca o color si lo deseas
+                  </p>
+                </div>
+
+                <div>
+                  <label for="img" class="block font-medium text-gray-700">
+                    Precio
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      id="price"
+                      name="price"
+                      type="number"
+                      class="input input-bordered w-full"
+                      placeholder="5700"
+                      required
+                    />
+                  </div>
+                  <p class="mt-2 text-sm text-gray-500">
+                    Usa el decimal como separador para los centavos (si
+                    necesitas)
+                  </p>
+                </div>
+
+                <div>
+                  <label class="block font-medium text-gray-700">
+                    Imagen del producto
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      id="img"
+                      name="img"
+                      type="text"
+                      class="input input-bordered w-full"
+                      placeholder="http://"
+                      required
+                    />
+                  </div>
+                  <p class="mt-2 mb-3 text-sm text-gray-500">
+                    Ingresa la url completa de la imagen o bien arrástra la
+                    misma debajo
+                  </p>
+                  <div
+                    class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                  >
+                    <div class="space-y-1 text-center">
+                      <svg
+                        class="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                      <div class="flex text-sm text-gray-600">
+                        <label
+                          for="file-upload"
+                          class="relative cursor-pointer bg-white rounded-md font-bold"
+                        >
+                          <span>Sube una imágen</span>
+                          <input
+                            id="file-upload"
+                            name="file-upload"
+                            type="file"
+                            class="sr-only"
+                          />
+                        </label>
+                        <p class="pl-1">o arrástrala y suéltala aquí</p>
+                      </div>
+                      <p class="text-xs text-gray-500">
+                        PNG, JPG, GIF up to 10MB
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="px-4 py-3 bg-white text-right sm:px-6">
+                <button class="btn btn-primary text-white">
+                  Agregar Producto
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

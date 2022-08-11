@@ -1,0 +1,89 @@
+<html lang="en" data-theme="corporate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STREET WEAR</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <main class="bg-base-200 min-h-full">
+        <div
+  class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2"
+>
+  <div class="overflow-x-auto col-start-1 col-end-3">
+    <h1 class="text-3xl text-center font-bold mb-5">Stock de Productos</h1>
+
+    <% if(prods) { %>
+      <table class="table w-full">
+        <thead>
+          <tr class="bg-base-100">
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <th>Imágen del producto</th>
+            <th>Nombre del producto</th>
+            <th>Precio</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% prods.forEach((prod)=> { %>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <td>
+                <div class="avatar">
+                  <div class="mask mask-squircle w-12 h-12">
+                    <img src= <%= prod.img %> alt="Avatar Tailwind CSS Component" />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <%= prod.title %>
+              </td>
+              <td>
+                <%= prod.price %>
+            </td>
+              <th>
+                <button class="btn btn-ghost btn-sm"><i
+                    class="fa fa-brush"
+                  ></i></button>
+                <button class="btn btn-ghost btn-sm"><i
+                    class="fa fa-trash"
+                  ></i></button>
+              </th>
+            </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
+        <a class="link font-bold" href="AgregarProducto">aquí</a></h3>
+    <% } %>
+  </div>
+
+</div>
+    </main>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

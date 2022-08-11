@@ -1,1 +1,38 @@
-<h1>Hello World</h1>
+<html lang="en" data-theme="corporate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STREET WEAR</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <main class="bg-base-200 min-h-full">
+      <div class="hero min-h-screen bg-base-100">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Bienvenido</h1>
+            <a href="AgregarProducto" class="btn btn-primary">Agregar Producto</a>
+            <a href="Productos" class="btn btn-secondary">Stock de Productos</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
