@@ -1,0 +1,37 @@
+extends ../layouts/main.pug
+
+block content
+    div.max-w-4xl.mx-auto.grid.grid-cols-1(class='lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2')
+      div.overflow-x-auto.col-start-1.col-end-3
+        h1.text-3xl.text-center.font-bold.mb-5 Stock de Productos
+        if prods
+            table.table.w-full
+                thead
+                    tr.bg-base-100
+                        th
+                            label
+                            input.checkbox(type='checkbox')
+                        th Imagen del producto
+                        th Nombre del producto
+                        th Precio
+                        th Accion
+                tbody
+                    each prod in prods
+                        tr
+                            th
+                                label
+                                input.checkbox(type='checkbox')
+                            td
+                                div.avatar
+                                div.mask.mask-squircle.w-12.h-12
+                                    img(src=prod.img, alt=prod.title)
+                            td=prod.title
+                            td=prod.price
+                            th
+                                button.btn.btn-ghost.btn-sm
+                                    i.fa.fa-brush
+                                button.btn.btn-ghost.btn-sm
+                                    i.fa.fa-trash
+        else          
+            h3.text-center.text-xl No tienes productos en stock! Agrega desde 
+                a.link.font-bold(href='AgregarProducto') aqui;

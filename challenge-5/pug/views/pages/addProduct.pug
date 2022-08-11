@@ -1,0 +1,44 @@
+extends ../layouts/main.pug
+
+block content
+    div.flex.items-center.justify-center
+        div.mt-5(class='md:mt-0 md:col-span-2')
+            h1.text-3xl.text-center.font-bold.mb-5 Agregar Producto
+            form(method='POST', action='/api/products/', class='shadow sm:rounded-md sm:overflow-hidden')
+                div.px-4.py-5.bg-white.space-y-6(class='sm:p-6')
+                    div
+                        label.block.font-medium.text-gray-700(for='title')
+                        | Nombre del producto
+                        div.mt-1
+                        input#title.input.input-bordered.w-full(name='title', type='text', required="true")
+                        p.mt-2.text-sm.text-gray-500
+                        | Puedes incluir marca o color
+                        | si lo deseas
+                    div
+                        label.block.font-medium.text-gray-700(for='img')
+                        | Precio
+                        div.mt-1
+                        input#price.input.input-bordered.w-full(name='price', type='number', placeholder='5700', required="true")
+                        p.mt-2.text-sm.text-gray-500
+                        | Usa el decimal como separador
+                        | para los centavos (si necesitas)
+                    div
+                        label.block.font-medium.text-gray-700
+                        | Imagen del producto
+                        div.mt-1
+                        input#img.input.input-bordered.w-full(name='img', type='text', placeholder='http://', required="true")
+                        p.mt-2.mb-3.text-sm.text-gray-500
+                        | Ingresa la url completa
+                        | de la imagen o bien arrastra la misma debajo
+                        div.mt-1.flex.justify-center.px-6.pt-5.pb-6.border-2.border-gray-300.border-dashed.rounded-md
+                            div.space-y-1.text-center
+                                svg.mx-auto.h-12.w-12.text-gray-400(stroke='currentColor', fill='none', viewBox='0 0 48 48', aria-hidden='true')
+                                path(d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                div.flex.text-sm.text-gray-600
+                                label.relative.cursor-pointer.bg-white.rounded-md.font-bold(for='file-upload')
+                                    span Sube una imagen
+                                    input#file-upload.sr-only(name='file-upload', type='file')
+                                p.pl-1 o arrastrala y sueltala aqui;
+                                p.text-xs.text-gray-500 PNG, JPG, GIF up to 10MB
+                    div.px-4.py-3.bg-white.text-right(class='sm:px-6')
+                button.btn.btn-primary.text-black(type='submit') Agregar Producto
