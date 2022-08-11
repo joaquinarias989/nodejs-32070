@@ -1,9 +1,9 @@
-## 🐶 PUG
+## 🐶 PUG | 🧔🏻 HANDLEBARS | <span style="color: #ffca28; font-weight: bold;"><%</span> EJS
 
 Go to the project folder whit:
 
 ```
-cd pug
+cd pug/handlebars/ejs
 ```
 
 Run the server whit:
@@ -12,38 +12,15 @@ Run the server whit:
 npx nodemon server.js
 ```
 
----
-
-## 🧔🏻 HANDLEBARS
-
-Go to the project folder whit:
+Go to the browser and open the following URLs:
 
 ```
-cd handlebars
+localhost:8080/
+localhost:8080/Productos
+localhost:8080/AgregarProducto/
 ```
 
-Run the server whit:
 
-```
-npx nodemon server.js
-```
----
-
-## <span style="color: #ffca28;"><%</span> EJS
-
-Go to the project folder whit:
-
-```
-cd ejs
-```
-
-Run the server whit:
-
-```
-npx nodemon server.js
-```
-
----
 ---
 
 # 📝 Conclusion
