@@ -27,6 +27,7 @@ Run the server whit:
 ```
 npx nodemon server.js
 ```
+---
 
 ## <% EJS
 
