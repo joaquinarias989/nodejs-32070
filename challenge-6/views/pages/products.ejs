@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin. | Productos</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/feather.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+
+    <!-- HEADER NAV -->
+    <header class="header">
+      <div class="header__left">
+        <h1>Productos</h1>
+        <p>Manejá el stock de tus productos, todo en el mismo lugar.</p>
+      </div>
+      <div class="header__right">
+        <div class="header__action header__action--search">
+          <i class="feather icon-search"></i>
+          <input type="search" placeholder="Buscar en el panel" />
+          <button class="filter__button">
+            <i class="feather icon-sliders"></i>
+          </button>
+        </div>
+        <div class="header__profile">
+          <button class="header__action">
+            <i class="feather icon-message-square"></i>
+          </button>
+          <button class="header__action">
+            <i class="feather icon-bell"></i>
+          </button>
+          <a href="" class="header__action header__action--profile">
+            <img
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+              alt="Imagen de perfil"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <div class="products__list">
+    <% if(prods) { %>
+
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <label class="flex-row jc-center align-center gap-1">
+                  Seleccionar
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <th>Imágen del producto</th>
+              <th>Nombre del producto</th>
+              <th>Precio</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% prods.forEach((prod)=> { %>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <td>
+                <div class="img-rounded">
+                  <img
+                    src= <%= prod.img %>
+                    alt="Imagen del producto <%= prod.title %>"
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                  />
+                </div>
+              </td>
+              <td><%= prod.title %></td>
+              <td>$ <%= prod.price %></td>
+              <th>
+                <button>
+                  <i class="feather icon-edit"></i>
+                </button>
+                <button type="submit">
+                  <i class="feather icon-trash"></i>
+                </button>
+              </th>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+            <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
+              <a class="link font-bold" href="AgregarProducto">aquí</a></h3>
+          <% } %>
+
+      </div>
+      <div class="products__form flex-column gap-2">
+        <h2>Agregar Producto</h2>
+        <form method="POST" action="/api/products/" class="form flex-column gap-2">
+          <div class="form__group">
+            <label for="title">Nombre del producto</label>
+            <input type="text" name="title" id="title" class="form__input" />
+          </div>
+          <div class="form__group">
+            <label for="price">Precio</label>
+            <input type="number" name="price" id="price" class="form__input" />
+          </div>
+          <div class="form__group">
+            <label for="img">Imágen del producto</label>
+            <!-- <input type="file" class="form__input" />
+             -->
+            <input type="url" name="img" id="img" class="form__input" />
+          </div>
+          <!-- submit -->
+          <button class="btn btn-primary">
+            <i class="feather icon-plus"></i> Agregar
+          </button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
