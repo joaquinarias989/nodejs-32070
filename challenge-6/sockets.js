@@ -13,7 +13,8 @@ const Sockets = (io) => {
 
     socket.on("client:newprod", async (data) => {
       const idProd = await products.save(data);
-      io.emit("server:newprod", idProd);
+      const prod = await products.getById(idProd);
+      io.emit("server:newprod", prod);
     });
 
     socket.on("disconnect", () => {

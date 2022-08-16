@@ -7,12 +7,4 @@ let navLink = document.querySelector(".nav__link");
 btnMenu.onclick = () => {
   body.classList.toggle("show-sidebar");
 };
-header.onclick = () => {
-  body.classList.remove("show-sidebar");
-};
-main.onclick = () => {
-  body.classList.remove("show-sidebar");
-};
-navLink.onclick = () => {
-  body.classList.remove("show-sidebar");
-};
+

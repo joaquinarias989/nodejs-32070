@@ -46,12 +46,11 @@
           </a>
         </div>
       </div>
-    </header>
+    </header> 
 
     <!-- MAIN CONTENT -->
     <main class="main">
       <div class="products__list">
-    <% if(prods) { %>
 
         <table>
           <thead>
@@ -68,48 +67,17 @@
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
-          <% prods.forEach((prod)=> { %>
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" class="checkbox" />
-                </label>
-              </th>
-              <td>
-                <div class="img-rounded">
-                  <img
-                    src= <%= prod.img %>
-                    alt="Imagen del producto <%= prod.title %>"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </div>
-              </td>
-              <td><%= prod.title %></td>
-              <td>$ <%= prod.price %></td>
-              <th>
-                <button>
-                  <i class="feather icon-edit"></i>
-                </button>
-                <button type="submit">
-                  <i class="feather icon-trash"></i>
-                </button>
-              </th>
-            </tr>
-            <% }); %>
+          <tbody id="productsList">
+            
           </tbody>
         </table>
-        <% } else { %>
-            <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
-              <a class="link font-bold" href="AgregarProducto">aquí</a></h3>
-          <% } %>
+            <!-- <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
+              <a class="link font-bold" href="AgregarProducto">aquí</a></h3> -->
 
       </div>
       <div class="products__form flex-column gap-2">
         <h2>Agregar Producto</h2>
-        <form method="POST" action="/api/products/" class="form flex-column gap-2">
+        <form class="form flex-column gap-2" id="formAddProduct">
           <div class="form__group">
             <label for="title">Nombre del producto</label>
             <input type="text" name="title" id="title" class="form__input" />
@@ -131,5 +99,8 @@
         </form>
       </div>
     </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js" type="module"></script>
   </body>
 </html>
