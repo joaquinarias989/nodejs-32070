@@ -33,10 +33,10 @@
         </div>
         <div class="header__profile">
           <button class="header__action">
-            <i class="feather icon-message-square"></i>
-          </button>
-          <button class="header__action">
             <i class="feather icon-bell"></i>
+          </button>
+          <button class="header__action" id="toggleChat">
+            <i class="feather icon-message-square"></i>
           </button>
           <a href="" class="header__action header__action--profile">
             <img
@@ -46,10 +46,120 @@
           </a>
         </div>
       </div>
-    </header> 
+      <!-- CHAT -->
+      <div class="chat">
+        <div class="chat__header">
+          <h5>Chat del equipo</h5>
+        </div>
+        <div class="chat__main">
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p>8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+          <div class="chat__message">
+            <span>Juan</span>
+            <div class="chat__message__text">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Cumque, cum?
+              </p>
+              <p class="chat__message__time">8:20 a.m.</p>
+            </div>
+          </div>
+        </div>
+        <div class="chat__reply">
+          <form id="sendMessage" class="flex-column gap-1">
+            <input
+              type="email"
+              name="email"
+              class="form__input"
+              placeholder="ejemplo@gmail.com"
+              required
+            />
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Mensaje"
+              required
+            />
+            <button class="btn__action" type="submit">
+              <div class="hover">
+                <i class="feather icon-mail"></i> <span>Enviar mensaje</span>
+              </div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main">
+    <main class="main" id="main">
       <div class="products__list">
 
         <table>
@@ -88,19 +198,20 @@
           </div>
           <div class="form__group">
             <label for="img">Imágen del producto</label>
-            <!-- <input type="file" class="form__input" />
-             -->
             <input type="url" name="img" id="img" class="form__input" />
           </div>
-          <!-- submit -->
-          <button class="btn btn-primary">
-            <i class="feather icon-plus"></i> Agregar
+          <button class="btn__action">
+            <div class="hover">
+              <i class="feather icon-plus"></i> <span>Agregar</span>
+            </div>
           </button>
         </form>
       </div>
     </main>
 
+    <script src="js/ui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js" type="module"></script>
+
   </body>
 </html>

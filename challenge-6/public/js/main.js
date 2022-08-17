@@ -10,6 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Render Prods
 function renderProds (prods) {
+    productsList.innerHTML = "";
     prods.forEach(prod => {
         const prodRow = document.createElement("tr");
         prodRow.innerHTML = `

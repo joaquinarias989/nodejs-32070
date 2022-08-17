@@ -22,11 +22,12 @@
 
 /*   GLOBALS  */
 html {
-  background-color: #badb9d;
+  background-color: #e7f3de;
   font-size: 62.5%;
   line-height: 1.15;
   scroll-padding-top: 4rem;
   scroll-behavior: smooth;
+  overflow-y: hidden;
 }
 body {
   background-color: #fafafa;
@@ -42,6 +43,7 @@ body {
   font-size: clamp(1.7rem, 1.75rem, 2vw);
   border-radius: 2rem;
   box-shadow: 0 0 5rem 2rem #4a583f10;
+  position: relative;
 }
 h1,
 h2,
@@ -241,6 +243,65 @@ table .img-rounded {
   object-fit: cover;
 }
 
+/* CHAT */
+.chat {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(35%, -60%) scale(0);
+  background-color: #fff;
+  position: absolute;
+  top: 10%;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50vh;
+  max-height: 100%;
+  max-width: 40rem;
+  padding: 2rem 0;
+  border-radius: 2rem;
+  box-shadow: 0 3.5rem 4rem 1rem rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+.chat .chat__header {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 0.5rem 3rem 2rem 3rem;
+  color: #50792c;
+  border-bottom: 0.3rem solid #e8e8e8;
+}
+.chat .chat__main {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  gap: 2rem;
+  border-bottom: 0.2rem solid #e8e8e8;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.chat .chat__main .chat__message {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+}
+.chat .chat__main .chat__message span {
+  text-decoration: underline;
+}
+.chat .chat__main .chat__message .chat__message__text p:last-child {
+  margin-top: 1rem;
+  color: #797979;
+}
+.chat__reply {
+  padding: 2rem 3rem;
+}
+.chat__reply .btn__action {
+  margin-top: 1rem;
+}
+.chat.chat--open {
+  transform: translate(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
 /* SIDEBAR */
 .sidebar {
   grid-area: sidebar;
@@ -378,11 +439,11 @@ table .img-rounded {
   font-size: 0.85em;
   color: #28282882;
 }
-.sidebar .sidebar__card .btn-primary {
+.sidebar .sidebar__card .btn__primary {
   color: #000;
 }
 
-.btn-primary {
+.btn__primary {
   background-color: #fff;
   color: #6fa73e;
   padding: 1.3rem 3rem;
@@ -394,11 +455,32 @@ table .img-rounded {
   border-radius: 1.5rem;
   transition: all 0.3s ease-in-out;
 }
-.btn-primary:hover {
+.btn__primary:hover {
   background: transparent;
   backdrop-filter: blur(0.2rem);
   border: 0.2rem solid #fff;
   box-shadow: 0 3rem 2.5rem #2132121d;
+}
+.btn__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 3rem;
+  background-color: #6fa73e;
+  border: 0.2rem solid #6fa73e;
+  color: #fff;
+  transition: background 0.2s ease-in-out;
+}
+.btn__action .hover {
+  transition: all 0.3s ease-in-out;
+}
+.btn__action:hover {
+  background-color: #fff;
+  color: #6fa73e;
+}
+.btn__action:hover .hover {
+  transform: scale(1.2);
 }
 
 /* MAIN */

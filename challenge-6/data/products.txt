@@ -16,17 +16,5 @@
     "price": 2300,
     "img": "https://i.ibb.co/Jq4bPGY/shirt-yellow.webp",
     "id": 3
-  },
-  {
-    "title": "Producto de ejemplo",
-    "price": "3000",
-    "img": "hhtp:/",
-    "id": 4
-  },
-  {
-    "title": "Producto de Prueba",
-    "price": "100000",
-    "img": "http://asd",
-    "id": 5
   }
 ]
