@@ -7,6 +7,7 @@ import {
   onNewMessage,
   getSocketId,
 } from "./sockets.js";
+
 const productsList = document.getElementById("productsList");
 const formAddProduct = document.getElementById("formAddProduct");
 
@@ -14,6 +15,7 @@ const messagesList = document.getElementById("chatList");
 const formSendMessage = document.getElementById("sendMessage");
 
 let socketId = "";
+
 // Load initial Prods & Chat
 window.addEventListener("DOMContentLoaded", () => {
   loadProds(renderProds);

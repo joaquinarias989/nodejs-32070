@@ -1,6 +1,6 @@
 const Container = require("./data/Container");
 const products = new Container("./data/products.txt");
-const messages = require("./data/messages.js");
+const messages = new Container("./data/messages.txt");
 
 const Sockets = (io) => {
   io.on("connection", (socket) => {
@@ -17,7 +17,9 @@ const Sockets = (io) => {
     emitProducts();
 
     const emitMessages = async () => {
-      socket.emit("server:loadmessages", messages);
+      const msgs = await messages.getAllMsg();
+      console.log(msgs);
+      socket.emit("server:loadmessages", msgs);
     };
     emitMessages();
 
@@ -28,7 +30,7 @@ const Sockets = (io) => {
     });
 
     socket.on("client:newmessage", async (data) => {
-      await messages.push(data);
+      await messages.saveMsg(data);
       io.emit("server:newmessage", {
         id: socket.id,
         data: { author: "Yo", ...data },

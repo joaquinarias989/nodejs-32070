@@ -1,0 +1,22 @@
+[
+  {
+    "author": "juan@gmail.com",
+    "text": "Hola! Yo estuve actualizando el stock esta mañana, aviso por las dudas!",
+    "date": "17/08/2022 10:00"
+  },
+  {
+    "author": "Yo",
+    "text": "Genial Juan, me ahorraste trabajo jaja!",
+    "date": "17/08/2022 10:03"
+  },
+  {
+    "author": "laura@gmail.com",
+    "text": "Hola a todos! Me pongo a ver los pedidos que entraron",
+    "date": "17/08/2022 10:04"
+  },
+  {
+    "author": "asdasddas@gmail.comn",
+    "text": "asdsd",
+    "date": "18/8/2022"
+  }
+]

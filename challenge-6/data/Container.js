@@ -16,8 +16,7 @@ class Container {
         obj.id = 1;
         await fs.writeFile(this.path, JSON.stringify([obj], null, 2));
       }
-      console.log(obj);
-      return obj.id;
+      return obj;
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +67,6 @@ class Container {
       console.log(error);
     }
   }
-
   async deleteById(id) {
     try {
       const data = await fs.readFile(this.path, "utf8");
@@ -89,6 +87,30 @@ class Container {
       const json = JSON.parse(data);
       if (!json.length) return console.log("No hay productos a eliminar");
       return await fs.writeFile(this.path, JSON.stringify([]));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async saveMsg(msg) {
+    try {
+      const data = await fs.readFile(this.path, "utf8");
+      const json = JSON.parse(data);
+      json.length
+        ? await fs.writeFile(this.path, JSON.stringify([...json, msg], null, 2))
+        : await fs.writeFile(this.path, JSON.stringify([msg], null, 2));
+      return msg;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getAllMsg() {
+    try {
+      const data = await fs.readFile(this.path, "utf8");
+      const json = JSON.parse(data);
+      if (!json.length) return console.log("No hay mensajes");
+      return json;
     } catch (error) {
       console.log(error);
     }
