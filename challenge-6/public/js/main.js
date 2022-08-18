@@ -139,10 +139,6 @@ function appendMessage(message) {
 formSendMessage.addEventListener("submit", (e) => {
   e.preventDefault();
   const { email, message } = e.target.elements;
-  let idSocket = getSocketId((id) => {
-    return id;
-  });
-  console.log(idSocket);
   saveMessage(email.value, message.value, new Date().toLocaleDateString());
   e.target.reset();
 });
