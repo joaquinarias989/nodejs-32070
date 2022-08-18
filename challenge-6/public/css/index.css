@@ -19,6 +19,17 @@
 *:disabled {
   color: inherit;
 }
+::-webkit-scrollbar {
+  width: 0.7rem;
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  background: #6fa73e;
+  border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6fa73e70;
+}
 
 /*   GLOBALS  */
 html {
