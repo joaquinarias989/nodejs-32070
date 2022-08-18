@@ -33,10 +33,12 @@
         </div>
         <div class="header__profile">
           <button class="header__action">
-            <i class="feather icon-message-square"></i>
-          </button>
-          <button class="header__action">
             <i class="feather icon-bell"></i>
+          </button>
+          <button class="header__action" id="toggleChat">
+            <i class="feather icon-message-square"
+              ><span class="header__action--badge">2</span></i
+            >
           </button>
           <a href="" class="header__action header__action--profile">
             <img
@@ -44,6 +46,35 @@
               alt="Imagen de perfil"
             />
           </a>
+        </div>
+      </div>
+      <!-- CHAT -->
+      <div class="chat">
+        <div class="chat__header">
+          <h5>Chat del equipo</h5>
+        </div>
+        <ul class="chat__main" id="chatList"></ul>
+        <div class="chat__reply">
+          <form id="sendMessage" class="flex-column gap-1">
+            <input
+              type="email"
+              name="email"
+              class="form__input"
+              placeholder="ejemplo@gmail.com"
+              required
+            />
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Mensaje"
+              required
+            />
+            <button class="btn__action" type="submit">
+              <div class="hover">
+                <i class="feather icon-mail"></i> <span>Enviar mensaje</span>
+              </div>
+            </button>
+          </form>
         </div>
       </div>
     </header>

@@ -36,7 +36,9 @@
             <i class="feather icon-bell"></i>
           </button>
           <button class="header__action" id="toggleChat">
-            <i class="feather icon-message-square"></i>
+            <i class="feather icon-message-square"
+              ><span class="header__action--badge">2</span></i
+            >
           </button>
           <a href="" class="header__action header__action--profile">
             <img
@@ -51,88 +53,7 @@
         <div class="chat__header">
           <h5>Chat del equipo</h5>
         </div>
-        <div class="chat__main">
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p>8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-          <div class="chat__message">
-            <span>Juan</span>
-            <div class="chat__message__text">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Cumque, cum?
-              </p>
-              <p class="chat__message__time">8:20 a.m.</p>
-            </div>
-          </div>
-        </div>
+        <ul class="chat__main" id="chatList"></ul>
         <div class="chat__reply">
           <form id="sendMessage" class="flex-column gap-1">
             <input
@@ -144,6 +65,8 @@
             />
             <input
               type="text"
+              name="message"
+              id="message"
               class="form__input"
               placeholder="Mensaje"
               required
@@ -161,7 +84,6 @@
     <!-- MAIN CONTENT -->
     <main class="main" id="main">
       <div class="products__list">
-
         <table>
           <thead>
             <tr>
@@ -177,13 +99,10 @@
               <th>Acción</th>
             </tr>
           </thead>
-          <tbody id="productsList">
-            
-          </tbody>
+          <tbody id="productsList"></tbody>
         </table>
-            <!-- <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
+        <!-- <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
               <a class="link font-bold" href="AgregarProducto">aquí</a></h3> -->
-
       </div>
       <div class="products__form flex-column gap-2">
         <h2>Agregar Producto</h2>
@@ -212,6 +131,5 @@
     <script src="js/ui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js" type="module"></script>
-
   </body>
 </html>
