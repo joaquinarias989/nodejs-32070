@@ -1,3 +1,47 @@
+######################## PRODUCTS ########################
+
+### 
+GET http://localhost:8080/api/products
+
+### 
+POST http://localhost:8080/api/products/3
+
+### 
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+    "code": "JBL",
+    "title": "Jacket Bomber",
+    "price": 5500,
+    "description": "Ejemplo",
+    "urlImg": "https://i.ibb.co/1G0F6rw/campera.webp",
+    "stock": 4
+}
+
+### 
+PUT  http://localhost:8080/api/products/3
+Content-Type: application/json
+
+{
+    "title": "Jacket Bomberr",
+    "price": 5500,
+    "description": "Ejemplo",
+    "urlImg": "https://i.ibb.co/1G0F6rw/campera.webp",
+    "stock": 4
+}
+
+###
+DELETE http://localhost:8080/api/products/1/
+
+######################## CART ########################
+
+###
+DELETE http://localhost:8080/api/cart/1/
+
+###
+DELETE http://localhost:8080/api/cart/1/products/1
+
 ### 
 GET http://localhost:8080/api/cart/1/products
 
@@ -17,3 +61,4 @@ DELETE http://localhost:8080/api/cart/1/
 
 ###
 DELETE http://localhost:8080/api/cart/1/products/1
+

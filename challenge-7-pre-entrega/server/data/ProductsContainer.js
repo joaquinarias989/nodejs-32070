@@ -10,41 +10,45 @@ class Container {
     try {
       const data = await fs.readFile(this.path, "utf8");
       const json = JSON.parse(data);
+      const prod = new Product(
+        undefined,
+        obj.code,
+        obj.title,
+        obj.price,
+        obj.description,
+        obj.urlImg,
+        obj.stock
+      );
       if (json.length) {
-        obj.id = json[json.length - 1].id + 1;
-        await fs.writeFile(this.path, JSON.stringify([...json, obj], null, 2));
+        prod.id = json[json.length - 1].id + 1;
+        await fs.writeFile(this.path, JSON.stringify([...json, prod], null, 2));
       } else {
-        obj.id = 1;
-        await fs.writeFile(this.path, JSON.stringify([obj], null, 2));
+        prod.id = 1;
+        await fs.writeFile(this.path, JSON.stringify([prod], null, 2));
       }
-      return obj;
+      return prod;
     } catch (error) {
       console.log(error);
     }
   }
-
   async update(obj) {
     try {
       const data = await fs.readFile(this.path, "utf8");
       const json = JSON.parse(data);
-      const prod = await this.getById(obj.id);
-      if (prod) {
-        const newJson = json.map((item) => {
-          if (item.id === obj.id) {
-            item.title = obj.title;
-            item.price = obj.price;
-            item.stock = obj.stock;
-          }
-          return item;
-        });
-        await fs.writeFile(this.path, JSON.stringify(newJson, null, 2));
-        return prod;
-      }
+      const prod = json.find((item) => item.id === obj.id);
+      if (!prod) return false;
+      prod.title = obj.title;
+      prod.price = obj.price;
+      prod.description = obj.description;
+      prod.urlImg = obj.urlImg;
+      prod.stock = obj.stock;
+      prod.timestamp = new Date();
+      await fs.writeFile(this.path, JSON.stringify(json, null, 2));
+      return true;
     } catch (error) {
       console.log(error);
     }
   }
-
   async getById(id) {
     try {
       const data = await fs.readFile(this.path, "utf8");
@@ -56,7 +60,6 @@ class Container {
       console.log(error);
     }
   }
-
   async getAll() {
     try {
       const data = await fs.readFile(this.path, "utf8");
@@ -81,37 +84,12 @@ class Container {
       console.log(error);
     }
   }
-
   async deleteAll() {
     try {
       const data = await fs.readFile(this.path, "utf8");
       const json = JSON.parse(data);
       if (!json.length) return console.log("No hay productos a eliminar");
       return await fs.writeFile(this.path, JSON.stringify([]));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async saveMsg(msg) {
-    try {
-      const data = await fs.readFile(this.path, "utf8");
-      const json = JSON.parse(data);
-      json.length
-        ? await fs.writeFile(this.path, JSON.stringify([...json, msg], null, 2))
-        : await fs.writeFile(this.path, JSON.stringify([msg], null, 2));
-      return msg;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getAllMsg() {
-    try {
-      const data = await fs.readFile(this.path, "utf8");
-      const json = JSON.parse(data);
-      if (!json.length) return console.log("No hay mensajes");
-      return json;
     } catch (error) {
       console.log(error);
     }

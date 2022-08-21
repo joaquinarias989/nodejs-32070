@@ -24,16 +24,21 @@ const GetProductById = async (req, res, next) => {
 };
 const AddProduct = async (req, res, next) => {
   try {
-    const { title, price, img } = req.body;
-    const idProd = await products.save({ title, price, img });
-    idProd
+    const { code, title, price, description, urlImg, stock } = req.body;
+    const prod = await products.save({
+      code,
+      title,
+      price,
+      description,
+      urlImg,
+      stock,
+    });
+    prod
       ? res
           .status(201)
-          // .json({ message: "Product added successfully!", idProduct: idProd })
-          .redirect("/AgregarProducto")
+          .json({ message: "Product added successfully!", data: prod })
       : res.status(400).json({
-          error:
-            "Something went wrong, the product was not added. Verify error.",
+          error: "Something went wrong, the product was not added. Verify.",
         });
   } catch (error) {
     next(error);
@@ -43,11 +48,21 @@ const UpdateProduct = async (req, res, next) => {
   try {
     let { id } = req.params;
     id = Number(id);
-    const { title, price, img } = req.body;
-    const product = await products.update({ id, title, price, img });
-    product
+    const { title, price, description, urlImg, stock } = req.body;
+    const prodToEdit = await products.getById(id);
+    if (!prodToEdit)
+      return res.status(404).json({ error: "Product not found" });
+    const isUpdated = await products.update({
+      id,
+      title,
+      price,
+      description,
+      urlImg,
+      stock,
+    });
+    isUpdated
       ? res.status(200).json({ message: "Product updated successfully!" })
-      : res.status(404).json({
+      : res.status(400).json({
           error:
             "Something went wrong, the product was not updated. Verify error.",
         });
@@ -62,8 +77,7 @@ const DeleteProduct = async (req, res, next) => {
     isDeleted
       ? res.status(200).json({ message: "Product deleted successfully!" })
       : res.status(404).json({
-          error:
-            "Something went wrong, the product was not deleted. Verify error.",
+          error: "Product not found",
         });
   } catch (error) {
     next(error);
