@@ -1,5 +1,5 @@
-const Container = require("../data/Container.js");
-const products = new Container("./data/products.txt");
+const Container = require("../data/ProductsContainer");
+const products = new Container("./data/products.json");
 
 const GetProducts = async (req, res, next) => {
   try {

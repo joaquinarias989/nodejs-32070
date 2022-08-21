@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const Product = require("../models/Product");
 
 class Container {
   constructor(path) {
