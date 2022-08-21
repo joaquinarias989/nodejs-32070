@@ -1,14 +1,13 @@
-const routerProds = require("express").Router();
 const Container = require("../data/Container.js");
 const products = new Container("./data/products.txt");
 
-routerProds.get("/", async (req, res, next) => {
+GetProducts = async (req, res) => {
   const prods = await products.getAll();
   prods
     ? res.status(200).json(prods)
     : res.status(404).json({ error: "No products found" });
-});
-routerProds.get("/:id", async (req, res) => {
+};
+GetProductById = async (req, res, next) => {
   try {
     window.o();
     const { id } = req.params;
@@ -19,8 +18,8 @@ routerProds.get("/:id", async (req, res) => {
   } catch (error) {
     next(error);
   }
-});
-routerProds.post("/", async (req, res) => {
+};
+AddProduct = async (req, res) => {
   const { title, price, img } = req.body;
   const idProd = await products.save({ title, price, img });
   idProd
@@ -31,8 +30,8 @@ routerProds.post("/", async (req, res) => {
     : res.status(400).json({
         error: "Something went wrong, the product was not added. Verify error.",
       });
-});
-routerProds.put("/:id", async (req, res) => {
+};
+UpdateProduct = async (req, res) => {
   let { id } = req.params;
   id = Number(id);
   const { title, price, img } = req.body;
@@ -43,8 +42,8 @@ routerProds.put("/:id", async (req, res) => {
         error:
           "Something went wrong, the product was not updated. Verify error.",
       });
-});
-routerProds.delete("/:id", async (req, res) => {
+};
+DeleteProduct = async (req, res) => {
   let { id } = req.params;
   const isDeleted = await products.deleteById(Number(id));
   isDeleted
@@ -53,6 +52,12 @@ routerProds.delete("/:id", async (req, res) => {
         error:
           "Something went wrong, the product was not deleted. Verify error.",
       });
-});
+};
 
-module.exports = routerProds;
+module.exports = {
+  GetProducts,
+  GetProductById,
+  AddProduct,
+  UpdateProduct,
+  DeleteProduct,
+};

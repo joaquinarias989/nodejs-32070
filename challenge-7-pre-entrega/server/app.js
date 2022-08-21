@@ -1,6 +1,6 @@
 const express = require("express");
 const config = require("./config");
-const routerProds = require("./controllers/products");
+const routerProds = require("./routes/products.routes");
 const routerCart = require("./controllers/cart");
 const notFound = require("./middlewares/notFound");
 const handleErrors = require("./middlewares/handleErrors");
