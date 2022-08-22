@@ -24,6 +24,12 @@ const GetProductById = async (req, res, next) => {
 };
 const AddProduct = async (req, res, next) => {
   try {
+    const { token } = req.headers;
+    if (token !== "admin-token")
+      return res
+        .status(401)
+        .json({ error: "You not have access to this resource" });
+
     const { code, title, price, description, urlImg, stock } = req.body;
     const prod = await products.save({
       code,
@@ -46,6 +52,12 @@ const AddProduct = async (req, res, next) => {
 };
 const UpdateProduct = async (req, res, next) => {
   try {
+    const { token } = req.headers;
+    if (token !== "admin-token")
+      return res
+        .status(401)
+        .json({ error: "You not have access to this resource" });
+
     let { id } = req.params;
     id = Number(id);
     const { title, price, description, urlImg, stock } = req.body;
@@ -72,6 +84,12 @@ const UpdateProduct = async (req, res, next) => {
 };
 const DeleteProduct = async (req, res, next) => {
   try {
+    const { token } = req.headers;
+    if (token !== "admin-token")
+      return res
+        .status(401)
+        .json({ error: "You not have access to this resource" });
+
     let { id } = req.params;
     const isDeleted = await products.deleteById(Number(id));
     isDeleted

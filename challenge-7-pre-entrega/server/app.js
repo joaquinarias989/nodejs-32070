@@ -1,5 +1,6 @@
 const express = require("express");
 const config = require("./config");
+const routerAuth = require("./routes/auth.routes");
 const routerProds = require("./routes/products.routes");
 const routerCart = require("./routes/cart.routes");
 const notFound = require("./middlewares/notFound");
@@ -15,6 +16,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/auth", routerAuth);
 app.use("/api/products", routerProds);
 app.use("/api/cart", routerCart);
 

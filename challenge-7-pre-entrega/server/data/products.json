@@ -1,6 +1,6 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "code": "RBMXS",
     "title": "Remera Bruno Mars",
     "price": 3500,
@@ -10,13 +10,13 @@
     "timestamp": 1661125758749
   },
   {
-    "id": 3,
+    "id": 2,
     "code": "JBL",
-    "title": "Jacket Bomberr",
+    "title": "Jacket Bomber",
     "price": 5500,
     "description": "Ejemplo",
     "urlImg": "https://i.ibb.co/1G0F6rw/campera.webp",
     "stock": 4,
-    "timestamp": "2022-08-21T23:52:50.424Z"
+    "timestamp": "2022-08-22T11:52:14.696Z"
   }
 ]
