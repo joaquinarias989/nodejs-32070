@@ -462,11 +462,18 @@ table .img-rounded {
   margin-top: 1rem;
   gap: 0;
 }
-.nav__list .nav__item {
+.nav__list .nav__link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  color: #8a8a8a;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
   position: relative;
   font-size: 0.95em;
 }
-.nav__list .nav__item::before {
+.nav__list .nav__link::before {
   content: "";
   position: absolute;
   top: 0;
@@ -480,28 +487,19 @@ table .img-rounded {
   background-color: #6fa73e;
   transition: height 0.2s ease-in-out;
 }
-.nav__list .nav__item:hover .nav__link {
+.nav__list .nav__link:hover {
   color: #6fa73e;
 }
-.nav__list .nav__item:hover::before {
+.nav__list .nav__link:hover::before {
   height: 100%;
 }
-.nav__list .nav__item.nav__item--active .nav__link {
+.nav__list .nav__link.nav__link--active {
   color: #6fa73e;
 }
-.nav__list .nav__item.nav__item--active::before {
+.nav__list .nav__link.nav__link--active::before {
   height: 100%;
 }
-.nav__list .nav__item .nav__link {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem 0;
-  color: #8a8a8a;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
-}
-.nav__list .nav__item .nav__link i {
+.nav__list .nav__link i {
   font-size: 1.4em;
 }
 

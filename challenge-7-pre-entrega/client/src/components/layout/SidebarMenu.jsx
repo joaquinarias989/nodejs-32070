@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const SidebarMenu = () => {
   const [isOpen, setIsOpen] = useState();
@@ -15,23 +16,38 @@ const SidebarMenu = () => {
         <div className="sidebar__navs">
           <nav className="sidebar__nav">
             <ul className="nav__list">
-              <li className="nav__item nav__item--active">
-                <a href="/" className="nav__link">
+              <li className="nav__item">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-home"></i>
                   <span>Inicio</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="/Productos" className="nav__link">
+                <NavLink
+                  to="/Productos"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-box"></i>
                   <span>Productos</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="" className="nav__link">
+                <NavLink
+                  to="/Pedidos"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-clipboard"></i>
                   <span>Pedidos</span>
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -39,40 +55,70 @@ const SidebarMenu = () => {
           <nav className="sidebar__nav">
             <ul className="nav__list nav__list--secondary">
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/MetodosDePago"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-credit-card"></i>
                   <span>Métodos de Pago</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/Envios"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-file"></i>
                   <span>Envíos</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/Marcas"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-tag"></i>
                   <span>Marcas</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/Correos"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-file-text"></i>
-                  <span>Contactos</span>
-                </a>
+                  <span>Correos</span>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/Cuenta"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-user"></i>
                   <span>Cuenta</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <NavLink
+                  to="/Configuracion"
+                  className={({ isActive }) =>
+                    isActive ? "nav__link nav__link--active" : "nav__link "
+                  }
+                >
                   <i className="feather icon-settings"></i>
                   <span>General</span>
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -88,10 +134,10 @@ const SidebarMenu = () => {
             </p>
           </div>
           <div className="sidebar__card__action">
-            <a href="#" className="btn btn__primary">
+            <NavLink to="" className="btn btn__primary">
               {" "}
               Solicitar ayuda{" "}
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
