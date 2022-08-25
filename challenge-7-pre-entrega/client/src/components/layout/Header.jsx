@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { header, setHeader } from "../../helpers/headerHelper";
 import Chat from "../Chat";
 const Header = () => {
   const [showChat, setShowChat] = useState(false);
+  const { pathname } = useLocation();
+  setHeader(pathname);
 
   return (
     <header className="header">
       <div className="header__left">
-        <h1>Hola Diego!</h1>
-        <p>Bienvenido de nuevo</p>
+        <h1>{header.title}</h1>
+        <p>{header.desc}</p>
       </div>
       <div className="header__right">
         <div className="header__action header__action--search">

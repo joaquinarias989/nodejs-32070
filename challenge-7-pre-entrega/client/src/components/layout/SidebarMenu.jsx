@@ -89,13 +89,13 @@ const SidebarMenu = () => {
               </li>
               <li className="nav__item">
                 <NavLink
-                  to="/Correos"
+                  to="/ConsultasRecibidas"
                   className={({ isActive }) =>
                     isActive ? "nav__link nav__link--active" : "nav__link "
                   }
                 >
                   <i className="feather icon-file-text"></i>
-                  <span>Correos</span>
+                  <span>Consultas</span>
                 </NavLink>
               </li>
               <li className="nav__item">

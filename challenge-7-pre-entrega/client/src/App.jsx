@@ -1,9 +1,8 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/layout/Header";
 import SidebarMenu from "./components/layout/SidebarMenu";
 import Home from "./components/pages/Home";
 import NotFound from "./components/pages/NotFound";
-
-import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
