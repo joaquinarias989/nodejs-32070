@@ -29,6 +29,8 @@ npm run dev
 
 ## 🚩 Use
 
+### Client (WebSockets)
+
 To manage products, open the following URL:
 
 ```
@@ -36,3 +38,19 @@ localhost:8080/Productos
 ```
 
 To use the chat, click on the top right button, which contains the message icon
+
+### API
+
+All the endpoints and estructure are detailed in the .REST file of the request folder. In the same way, I detail:
+
+#### Login
+
+- POST http://localhost:8080/api/auth/login
+
+### Products
+
+- GET http://localhost:8080/api/products
+- POST http://localhost:8080/api/products/3
+- POST http://localhost:8080/api/products
+- PUT http://localhost:8080/api/products/3
+- DELETE http://localhost:8080/api/products/4
