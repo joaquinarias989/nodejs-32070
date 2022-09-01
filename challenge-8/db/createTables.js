@@ -5,8 +5,8 @@ const knexMaria = require("knex").knex(mariaDBOptions);
 const knexSQLite = require("knex").knex(SQLiteOptions);
 
 knexMaria.schema
-  .dropTableIfExists("products")
-  .createTable("products", (table) => {
+  .dropTableIfExists("product")
+  .createTable("product", (table) => {
     table.increments("id");
     table.string("code");
     table.string("title");
@@ -15,6 +15,20 @@ knexMaria.schema
     table.string("urlImg");
     table.integer("stock");
     table.timestamp("timestamp");
+  })
+  .then(() => console.log("Table created succefully!"))
+  .catch((error) => {
+    console.log("Error, verify.");
+    throw error;
+  })
+  .finally(() => knexMaria.destroy());
+
+knexMaria.schema
+  .dropTableIfExists("cart")
+  .createTable("cart", (table) => {
+    table.increments("id");
+    table.timestamp("timestamp");
+    table.json("products");
   })
   .then(() => console.log("Table created succefully!"))
   .catch((error) => {
