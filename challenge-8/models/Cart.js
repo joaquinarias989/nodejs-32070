@@ -1,7 +1,7 @@
 class Cart {
   constructor(id, timestamp, products) {
     this.id = id;
-    this.timestamp = Date.now();
+    this.timestamp = new Date();
     this.products = products;
   }
 }

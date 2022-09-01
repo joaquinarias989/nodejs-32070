@@ -56,17 +56,17 @@ Token: admin-token
 
 
 ### get products of cart
-GET http://localhost:8080/api/cart/1/products
+GET http://localhost:8080/api/cart/2/products
 
 ### create one cart
 POST http://localhost:8080/api/cart/ 
 
 ### add product by id to cart
-POST http://localhost:8080/api/cart/1/products
+POST http://localhost:8080/api/cart/10/products
 Content-Type: application/json
 
 {
-    "idProduct": 3
+    "idProduct": 1
 }
 
 ### delete cart by id

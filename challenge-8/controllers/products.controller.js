@@ -1,5 +1,5 @@
 const Container = require("../containers/ProductsContainer");
-const products = new Container("products");
+const products = new Container("product");
 
 const GetProducts = async (req, res, next) => {
   try {
