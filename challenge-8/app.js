@@ -15,6 +15,16 @@ app.set("port", config.port);
 app.set("view engine", "ejs");
 app.set("views", `${__dirname}/views`);
 
+// serve views
+app.get("/", (req, res) => {
+  res.render("pages/index", { page_name: "index" });
+});
+app.get("/Productos", async (req, res) => {
+  res.render("pages/products", {
+    page_name: "products",
+  });
+});
+
 //middlewares
 app.use(express.static(`${__dirname}/public`));
 app.use(express.json());

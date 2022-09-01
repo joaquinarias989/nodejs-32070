@@ -21,7 +21,7 @@ function renderProds(prods) {
               <td>
                 <div class="img-rounded">
                   <img
-                    src=${prod.img}
+                    src=${prod.urlImg}
                     alt="Imagen del producto ${prod.title}}"
                     width="40"
                     height="40"
@@ -35,7 +35,7 @@ function renderProds(prods) {
                 <button>
                   <i class="feather icon-edit"></i>
                 </button>
-                <button type="submit">
+                <button>
                   <i class="feather icon-trash"></i>
                 </button>
               </th>
@@ -56,7 +56,7 @@ function appendProd(prod) {
               <td>
                 <div class="img-rounded">
                   <img
-                    src=${prod.img}
+                    src=${prod.urlImg}
                     alt="Imagen del producto ${prod.title}}"
                     width="40"
                     height="40"
@@ -81,7 +81,14 @@ function appendProd(prod) {
 // Save a new Prod
 formAddProduct.addEventListener("submit", (e) => {
   e.preventDefault();
-  const { title, price, img } = e.target.elements;
-  saveProd(title.value, price.value, img.value);
+  const { code, title, price, description, urlImg, stock } = e.target.elements;
+  saveProd({
+    code: code.value,
+    title: title.value,
+    price: price.value,
+    description: description.value,
+    urlImg: urlImg.value,
+    stock: stock.value,
+  });
   e.target.reset();
 });

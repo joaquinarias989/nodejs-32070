@@ -10,14 +10,12 @@ class Container {
   async saveMsg(obj) {
     try {
       let msgToSave = new ChatMessage(undefined, obj.author, obj.text);
-      await knex(this.table).insert(msgToSave);
       console.log(msgToSave);
+      await knex(this.table).insert(msgToSave);
       return msgToSave;
     } catch (error) {
       console.log(error);
       return null;
-    } finally {
-      await knex.destroy();
     }
   }
   async getAll() {
@@ -27,13 +25,10 @@ class Container {
         console.log("No hay mensajes por el momento");
         return null;
       }
-      console.log(messages);
       return messages;
     } catch (error) {
       console.log(error);
       return null;
-    } finally {
-      await knex.destroy();
     }
   }
 }

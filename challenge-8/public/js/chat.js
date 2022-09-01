@@ -28,8 +28,8 @@ function renderMessages(messages) {
     messageLi.classList.add("chat__message");
     message.author === "Yo" && messageLi.classList.add("chat__message--own");
     messageLi.innerHTML = `
-                <span>${message.author}</span>
-                <p class="chat__message__text">${message.text}</p>
+                <span>${message.userEmail}</span>
+                <p class="chat__message__text">${message.message}</p>
                 <p class="chat__message__time">${message.date}</p>
           `;
     messagesList.appendChild(messageLi);
@@ -55,6 +55,6 @@ function appendMessage(message) {
 formSendMessage.addEventListener("submit", (e) => {
   e.preventDefault();
   const { email, message } = e.target.elements;
-  saveMessage(email.value, message.value, new Date().toLocaleString());
+  saveMessage(email.value, message.value, new Date());
   e.target.reset();
 });

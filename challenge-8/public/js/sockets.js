@@ -1,11 +1,7 @@
 const socket = io.connect();
 
-export const saveProd = (title, price, img) => {
-  socket.emit("client:newprod", {
-    title,
-    price,
-    img,
-  });
+export const saveProd = (obj) => {
+  socket.emit("client:newprod", obj);
 };
 
 export const getSocketId = (callback) => {

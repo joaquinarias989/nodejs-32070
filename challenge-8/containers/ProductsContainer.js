@@ -23,8 +23,6 @@ class Container {
     } catch (error) {
       console.log(error);
       return null;
-    } finally {
-      await knex.destroy();
     }
   }
   async update(obj) {
@@ -41,8 +39,6 @@ class Container {
     } catch (error) {
       console.log(error);
       return false;
-    } finally {
-      await knex.destroy();
     }
   }
   async getById(id) {
@@ -56,8 +52,6 @@ class Container {
     } catch (error) {
       console.log(error);
       return null;
-    } finally {
-      await knex.destroy();
     }
   }
   async getAll() {
@@ -71,8 +65,6 @@ class Container {
     } catch (error) {
       console.log(error);
       return null;
-    } finally {
-      await knex.destroy();
     }
   }
   async deleteById(id) {
@@ -82,8 +74,6 @@ class Container {
     } catch (error) {
       console.log(error);
       return false;
-    } finally {
-      await knex.destroy();
     }
   }
   async deleteAll() {
@@ -94,8 +84,6 @@ class Container {
       console.log(error);
       console.log("No hay productos a eliminar");
       return false;
-    } finally {
-      await knex.destroy();
     }
   }
 }

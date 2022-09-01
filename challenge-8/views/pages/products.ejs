@@ -108,6 +108,10 @@
         <h2>Agregar Producto</h2>
         <form class="form flex-column gap-2" id="formAddProduct">
           <div class="form__group">
+            <label for="code">Código del producto</label>
+            <input type="text" name="code" id="code" class="form__input" />
+          </div>
+          <div class="form__group">
             <label for="title">Nombre del producto</label>
             <input type="text" name="title" id="title" class="form__input" />
           </div>
@@ -116,8 +120,16 @@
             <input type="number" name="price" id="price" class="form__input" />
           </div>
           <div class="form__group">
-            <label for="img">Imágen del producto</label>
-            <input type="url" name="img" id="img" class="form__input" />
+            <label for="description">Descripción</label>
+            <textarea name="description" id="description" class="form__input"></textarea>
+          </div>
+          <div class="form__group">
+            <label for="urlImg">Url de la Imágen del producto</label>
+            <input type="url" name="urlImg" id="urlImg" class="form__input" />
+          </div>
+          <div class="form__group">
+            <label for="stock">Stock disponible</label>
+            <input type="number" name="stock" id="stock" class="form__input" />
           </div>
           <button class="btn__action">
             <div class="hover">
@@ -130,6 +142,7 @@
 
     <script src="js/ui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/main.js" type="module"></script>
     <script src="js/chat.js" type="module"></script>
+    <script src="js/products.js" type="module"></script>
+
 </html>
