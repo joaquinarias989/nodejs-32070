@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Render Messages
 function renderMessages(messages) {
+  if (!messages) return;
   messagesList.innerHTML = "";
   messages.forEach((message) => {
     const messageLi = document.createElement("li");

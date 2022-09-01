@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Render Prods
 function renderProds(prods) {
+  if (!prods) return;
   productsList.innerHTML = "";
   prods.forEach((prod) => {
     const prodRow = document.createElement("tr");
