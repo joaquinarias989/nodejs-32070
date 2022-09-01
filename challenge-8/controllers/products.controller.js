@@ -1,5 +1,5 @@
-const Container = require("../data/ProductsContainer");
-const products = new Container("./data/products.json");
+const Container = require("../containers/ProductsContainer");
+const products = new Container("products");
 
 const GetProducts = async (req, res, next) => {
   try {
@@ -14,7 +14,7 @@ const GetProducts = async (req, res, next) => {
 const GetProductById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const product = await products.getById(Number(id));
+    const product = await products.getById(parseInt(id));
     product
       ? res.status(200).json(product)
       : res.status(404).json({ error: "Product not found" });

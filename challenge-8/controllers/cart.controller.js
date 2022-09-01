@@ -1,7 +1,7 @@
-const CartContainer = require("../data/CartContainer");
-const ProdsContainer = require("../data/ProductsContainer");
-const cart = new CartContainer("./data/cart.json");
-const products = new ProdsContainer("./data/products.json");
+const CartContainer = require("../containers/CartContainer");
+const ProdsContainer = require("../containers/ProductsContainer");
+const cart = new CartContainer("./containers/cart.json");
+const products = new ProdsContainer("./containers/products.json");
 
 //cart logic
 
