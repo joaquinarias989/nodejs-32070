@@ -56,22 +56,22 @@ Token: admin-token
 
 
 ### get products of cart
-GET http://localhost:8080/api/cart/2/products
+GET http://localhost:8080/api/cart/eZdwIyHauFYuHFD9veSV/products
 
 ### create one cart
 POST http://localhost:8080/api/cart/ 
 
 ### add product by id to cart
-POST http://localhost:8080/api/cart/1/products
+POST http://localhost:8080/api/cart/eZdwIyHauFYuHFD9veSV/products
 Content-Type: application/json
 
 {
-    "idProduct": 2
+    "idProduct": "sE6lZKAuzHIaSq0tFDFa"
 }
 
 ### delete cart by id
-DELETE http://localhost:8080/api/cart/1/
+DELETE http://localhost:8080/api/cart/eZdwIyHauFYuHFD9veSV/
 
 ### delete product by id from cart
-DELETE http://localhost:8080/api/cart/1/products/2
+DELETE http://localhost:8080/api/cart/eZdwIyHauFYuHFD9veSV/products/sE6lZKAuzHIaSq0tFDFa
 

@@ -1,5 +1,7 @@
-const CartContainer = require("../models/DAOs/CartDAOFileSystem");
-const ProdsContainer = require("../models/DAOs/ProductDAOFileSystem");
+// const CartContainer = require("../models/DAOs/CartDAOFileSystem");
+// const ProdsContainer = require("../models/DAOs/ProductDAOFileSystem");
+const CartContainer = require("../models/DAOs/CartDAOFirebase");
+const ProdsContainer = require("../models/DAOs/ProductDAOFirebase");
 const cart = new CartContainer();
 const products = new ProdsContainer();
 
@@ -19,8 +21,8 @@ const AddProductToCart = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { idProduct } = req.body;
-    const prodToAdd = await products.getById(Number(idProduct));
-    const isAdded = await cart.addProductToCart(Number(id), prodToAdd);
+    const prodToAdd = await products.getById(idProduct);
+    const isAdded = await cart.addProductToCart(id, prodToAdd);
     isAdded
       ? res.status(200).json({ message: "Product added successfully!" })
       : res.status(404).json({ error: "Cart or Product not found" });
@@ -31,7 +33,7 @@ const AddProductToCart = async (req, res, next) => {
 const GetCartProducts = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const cartProds = await cart.getById(Number(id));
+    const cartProds = await cart.getById(id);
     cartProds
       ? cartProds.products.length > 0
         ? res.status(200).json(cartProds.products)
@@ -44,7 +46,7 @@ const GetCartProducts = async (req, res, next) => {
 const DeleteCart = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const isDeleted = await cart.deleteById(Number(id));
+    const isDeleted = await cart.deleteById(id);
     isDeleted
       ? res.status(200).json({ message: "Cart deleted successfully!" })
       : res.status(404).json({ error: "Cart not found" });
@@ -55,10 +57,7 @@ const DeleteCart = async (req, res, next) => {
 const DeleteProductFromCart = async (req, res, next) => {
   try {
     const { id, idProduct } = req.params;
-    const isDeleted = await cart.deleteProductFromCart(
-      Number(id),
-      Number(idProduct)
-    );
+    const isDeleted = await cart.deleteProductFromCart(id, idProduct);
     isDeleted
       ? res.status(200).json({ message: "Product deleted successfully!" })
       : res.status(404).json({ error: "Cart or Product not found" });
