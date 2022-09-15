@@ -4,7 +4,7 @@ const Product = require("../../models/Product");
 
 class ProductDAOFileSystem extends FileSystemContainer {
   constructor() {
-    super("data/products.json");
+    super("db/FileSystem/products.json");
   }
 
   async save(obj) {
