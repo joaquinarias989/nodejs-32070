@@ -1,9 +1,13 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./streetwear-ecommerce-firebase-adminsdk-8lv70-92cac8ae1d.json");
+var serviceAccount = require("./firebase-keys.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
+const db = admin.firestore();
+
 console.log("Firebase connected!");
+
+module.exports = { db };

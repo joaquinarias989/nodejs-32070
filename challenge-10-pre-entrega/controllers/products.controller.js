@@ -1,4 +1,5 @@
-const Container = require("../models/DAOs/ProductDAOFileSystem");
+// const Container = require("../models/DAOs/ProductDAOFileSystem");
+const Container = require("../models/DAOs/ProductDAOFirebase");
 const products = new Container();
 
 const GetProducts = async (req, res, next) => {
@@ -14,7 +15,7 @@ const GetProducts = async (req, res, next) => {
 const GetProductById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const product = await products.getById(parseInt(id));
+    const product = await products.getById(id);
     product
       ? res.status(200).json(product)
       : res.status(404).json({ error: "Product not found" });
@@ -59,9 +60,9 @@ const UpdateProduct = async (req, res, next) => {
         .json({ error: "You not have access to this resource" });
 
     let { id } = req.params;
-    id = Number(id);
     const { title, price, description, urlImg, stock } = req.body;
     const prodToEdit = await products.getById(id);
+    console.log(prodToEdit);
     if (!prodToEdit)
       return res.status(404).json({ error: "Product not found" });
     const isUpdated = await products.update({
@@ -91,7 +92,7 @@ const DeleteProduct = async (req, res, next) => {
         .json({ error: "You not have access to this resource" });
 
     let { id } = req.params;
-    const isDeleted = await products.deleteById(Number(id));
+    const isDeleted = await products.deleteById(id);
     isDeleted
       ? res.status(200).json({ message: "Product deleted successfully!" })
       : res.status(404).json({
