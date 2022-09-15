@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "code": "RBMXS",
+    "title": "Remera Bruno Mars",
+    "price": 3500,
+    "description": "Ejemplo",
+    "urlImg": "https://images.unsplash.com/photo-1630590613173-b01fdb40a1eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "stock": 8,
+    "timestamp": 1661125758749
+  },
+  {
+    "id": 2,
+    "code": "JBL",
+    "title": "Jacket Bomber",
+    "price": 5500,
+    "description": "Ejemplo",
+    "urlImg": "https://i.ibb.co/1G0F6rw/campera.webp",
+    "stock": 4,
+    "timestamp": 1661125758749
+  }
+]
