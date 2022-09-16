@@ -12,24 +12,3 @@ const prodSchema = new Schema({
 });
 
 module.exports = prodSchema;
-
-// const prod = new Product({
-//   code: "EJE",
-//   title: "Producto de Ejemplo",
-//   price: 3000.5,
-//   description: "Prueba",
-//   urlImg: "https://",
-//   stock: 3,
-//   timestamp: new Date(),
-// });
-
-// prod
-//   .save()
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err))
-//   .finally(() => mongoose.connection.close());
-
-// Product.find({})
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err))
-//   .finally(() => mongoose.connection.close());

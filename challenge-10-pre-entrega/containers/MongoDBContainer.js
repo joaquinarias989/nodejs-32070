@@ -9,7 +9,6 @@ class MongoDBContainer {
   async getById(id) {
     try {
       const doc = await this.model.findById(id);
-      console.log(doc);
       if (!doc) return null;
       return doc;
     } catch (error) {
