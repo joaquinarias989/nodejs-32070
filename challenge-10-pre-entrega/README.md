@@ -1,24 +1,9 @@
-## 🧐 Prerequisites
-
-Before you start, you need to have the following things installed:
-
-- [XAMPP](https://www.apachefriends.org/es/download.html)
-- [SQLite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) (optional, for manage this database in VsCode)
-
 ## 💻 Run Locally
 
 Go to the project folder whit
 
 ```
-cd challenge-8
-```
-
-You must create the corresponding databases and tables to handle data persistence (Product table in MySQL - Messages table in SQLite3).
-To do this, I have created a script, which is executed with the following command.
-<b>⚠️<i>(Make sure you have Apache and MySql initialized in XAMPP)</i></b>
-
-```
-npm run create-tables
+cd challenge-10-pre-entrega
 ```
 
 Run locally whit
@@ -29,17 +14,12 @@ npm run dev
 
 ## 🚩 Use
 
-### Client (WebSockets)
+🧐 By default, the persistence of data is in FileSystem. To change abd consume the different databases, you must comment and uncomment the first lines as required.
 
-To manage products, open the following URL:
+- If you want to test the <b>PRODUCTS</b> in MongoDB (for example), go to the <b><em>products.controller.js</em></b> and comment on the FileSystem Container line and uncomment the Mongo Container line.
+- If you want to test the <b>CART</b> in MongoDB (for example), go to the <b><em>cart.controller.js</em></b> and comment on the 2 FileSystem Container lines and uncomment the 2 Mongo Container lines (for products & cart).
 
-```
-localhost:8080/Productos
-```
-
-To use the chat, click on the top right button, which contains the message icon
-
-### API
+## 📍 Endpoints
 
 All the endpoints and estructure are detailed in the .REST file of the request folder. In the same way, I detail:
 
@@ -54,3 +34,11 @@ All the endpoints and estructure are detailed in the .REST file of the request f
 - POST http://localhost:8080/api/products
 - PUT http://localhost:8080/api/products/3
 - DELETE http://localhost:8080/api/products/4
+
+### Cart
+
+- GET http://localhost:8080/api/cart/1/products
+- POST http://localhost:8080/api/cart/
+- POST http://localhost:8080/api/cart/1/products
+- DELETE http://localhost:8080/api/cart/1/
+- DELETE http://localhost:8080/api/cart/1/products/1
