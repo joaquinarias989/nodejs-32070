@@ -1,6 +1,6 @@
-// const Container = require("../models/DAOs/ProductDAOFileSystem");
+const Container = require("../models/DAOs/ProductDAOFileSystem");
 // const Container = require("../models/DAOs/ProductDAOFirebase");
-const Container = require("../models/DAOs/ProductDAOMongoDB");
+// const Container = require("../models/DAOs/ProductDAOMongoDB");
 const products = new Container();
 
 const GetProducts = async (req, res, next) => {

@@ -21,10 +21,10 @@ class ProductDAOFileSystem extends FileSystemContainer {
         obj.stock
       );
       if (json.length) {
-        prod.id = json[json.length - 1].id + 1;
+        prod.id = Number(Number(json[json.length - 1].id) + 1).toString();
         await fs.writeFile(this.path, JSON.stringify([...json, prod], null, 2));
       } else {
-        prod.id = 1;
+        prod.id = "1";
         await fs.writeFile(this.path, JSON.stringify([prod], null, 2));
       }
       return prod;

@@ -13,11 +13,11 @@ class CartDAOFileSystem extends FileSystemContainer {
       const json = JSON.parse(data);
       const cart = new Cart();
       if (json.length) {
-        cart.id = json[json.length - 1].id + 1;
+        cart.id = Number(Number(json[json.length - 1].id) + 1).toString();
         cart.products = [];
         await fs.writeFile(this.path, JSON.stringify([...json, cart], null, 2));
       } else {
-        cart.id = 1;
+        cart.id = "1";
         cart.products = [];
         await fs.writeFile(this.path, JSON.stringify([cart], null, 2));
       }

@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "code": "RBMXS",
     "title": "Remera Bruno Mars",
     "price": 3500,
@@ -10,7 +10,7 @@
     "timestamp": 1661125758749
   },
   {
-    "id": 2,
+    "id": "2",
     "code": "JBL",
     "title": "Jacket Bomber",
     "price": 5500,

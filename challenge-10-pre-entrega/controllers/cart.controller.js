@@ -1,9 +1,9 @@
-// const CartContainer = require("../models/DAOs/CartDAOFileSystem");
-// const ProdsContainer = require("../models/DAOs/ProductDAOFileSystem");
+const CartContainer = require("../models/DAOs/CartDAOFileSystem");
+const ProdsContainer = require("../models/DAOs/ProductDAOFileSystem");
 // const CartContainer = require("../models/DAOs/CartDAOFirebase");
 // const ProdsContainer = require("../models/DAOs/ProductDAOFirebase");
-const CartContainer = require("../models/DAOs/CartDAOMongoDB");
-const ProdsContainer = require("../models/DAOs/ProductDAOMongoDB");
+// const CartContainer = require("../models/DAOs/CartDAOMongoDB");
+// const ProdsContainer = require("../models/DAOs/ProductDAOMongoDB");
 const cart = new CartContainer();
 const products = new ProdsContainer();
 
@@ -24,6 +24,8 @@ const AddProductToCart = async (req, res, next) => {
     const { id } = req.params;
     const { idProduct } = req.body;
     const prodToAdd = await products.getById(idProduct);
+    console.log(prodToAdd);
+    if (!prodToAdd) return res.status(404).json({ error: "Product not found" });
     const isAdded = await cart.addProductToCart(id, prodToAdd);
     isAdded
       ? res.status(200).json({ message: "Product added successfully!" })
