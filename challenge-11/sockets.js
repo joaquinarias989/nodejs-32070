@@ -1,7 +1,9 @@
-const prodContainer = require("./containers/ProductsContainer");
+// const prodContainer = require("./containers/ProductsContainer");
+const prodContainer = require("./containers/ProductsFakerContainer");
 const chatContainer = require("./containers/ChatContainer");
 const products = new prodContainer("product");
 const messages = new chatContainer("message");
+const normalizeFunction = require("./normalizr/normalize.js");
 
 const Sockets = (io) => {
   io.on("connection", (socket) => {
@@ -20,14 +22,18 @@ const Sockets = (io) => {
 
     const emitMessages = async () => {
       const msgs = await messages.getAll();
-      socket.emit("server:loadmessages", msgs);
+      const normalizedMsgs = normalizeFunction({
+        id: "messages",
+        messages: msgs,
+      });
+      socket.emit("server:loadmessages", normalizedMsgs);
     };
     emitMessages();
 
-    socket.on("client:newprod", async (data) => {
-      const prod = await products.save(data);
-      io.emit("server:newprod", prod);
-    });
+    // socket.on("client:newprod", async (data) => {
+    //   const prod = await products.save(data);
+    //   io.emit("server:newprod", prod);
+    // });
 
     socket.on("client:newmessage", async (data) => {
       await messages.saveMsg(data);

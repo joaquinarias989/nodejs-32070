@@ -5,7 +5,8 @@ const routerProds = require("./routes/products.routes");
 const routerCart = require("./routes/cart.routes");
 const notFound = require("./middlewares/notFound");
 const handleErrors = require("./middlewares/handleErrors");
-const normalizeFunction = require("./normalizr/normalize.js");
+const prodContainer = require("./containers/ProductsFakerContainer");
+const products = new prodContainer("product");
 
 const app = express();
 
@@ -24,6 +25,11 @@ app.get("/Productos", async (req, res) => {
   res.render("pages/products", {
     page_name: "products",
   });
+});
+
+//get 5 prods of faker
+app.get("/api/products/test", async (req, res) => {
+  res.json(await products.getAll());
 });
 
 //middlewares
