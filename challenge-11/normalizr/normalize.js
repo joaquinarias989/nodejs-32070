@@ -10,7 +10,7 @@ function normalizeFunction(original) {
   });
 
   const messages = new schema.Entity("messages", {
-    message: [message],
+    messages: [message],
   });
 
   const normalizedData = normalize(original, messages);

@@ -8,6 +8,7 @@ import {
 const messagesList = document.getElementById("chatList");
 const formSendMessage = document.getElementById("sendMessage");
 const quantityMsg = document.getElementById("msgQuantity");
+const comprehension = document.getElementById("comprehension");
 
 function denormalize(normalizedData) {
   const user = new normalizr.schema.Entity("users");
@@ -15,7 +16,7 @@ function denormalize(normalizedData) {
     author: user,
   });
   const messages = new normalizr.schema.Entity("messages", {
-    message: [message],
+    messages: [message],
   });
   const denormalizedData = normalizr.denormalize(
     normalizedData.result,
@@ -64,6 +65,9 @@ function renderMessages(messages) {
     messagesList.appendChild(messageLi);
   });
   quantityMsg.innerHTML = chats.length.toString();
+  comprehension.innerHTML = ((100 * normalValue) / denormalizedValue).toFixed(
+    2
+  );
 }
 
 // Append Message on new Message
