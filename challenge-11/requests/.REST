@@ -16,6 +16,9 @@ Content-Type: application/json
 ### get all products
 GET http://localhost:8080/api/products
 
+### get all products
+GET http://localhost:8080/api/products/test
+
 ### get product by id
 GET http://localhost:8080/api/products/2
 
