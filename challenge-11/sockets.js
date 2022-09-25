@@ -2,7 +2,7 @@
 const prodContainer = require("./containers/ProductsFakerContainer");
 const chatContainer = require("./containers/ChatContainer");
 const products = new prodContainer("product");
-const messages = new chatContainer("message");
+const messages = new chatContainer("db/chats.json");
 const normalizeFunction = require("./normalizr/normalize.js");
 
 const Sockets = (io) => {
@@ -35,12 +35,13 @@ const Sockets = (io) => {
     //   io.emit("server:newprod", prod);
     // });
 
-    socket.on("client:newmessage", async (data) => {
-      await messages.saveMsg(data);
-      io.emit("server:newmessage", {
-        id: socket.id,
-        data: { author: "Yo", ...data },
+    socket.on("client:newmessage", async (chatMessage) => {
+      await messages.saveMsg(chatMessage);
+      const normalizedMsg = normalizeFunction({
+        id: "messages",
+        messages: chatMessage,
       });
+      io.emit("server:newmessage", normalizedMsg);
     });
 
     socket.on("disconnect", () => {

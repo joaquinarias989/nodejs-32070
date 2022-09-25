@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "author": {
+      "id": "prueba@gmail.com",
+      "name": "Joaquin",
+      "surname": "Arias",
+      "age": "22",
+      "nickname": "jqn_",
+      "avatar": "https://"
+    },
+    "message": "Hola!",
+    "date": "2022-09-25T15:48:05.160Z"
+  },
+  {
+    "id": 2,
+    "author": {
+      "id": "hola@gmail.com",
+      "name": "Pedro",
+      "surname": "Lopez",
+      "age": "13",
+      "nickname": "pedrolopez123",
+      "avatar": "https://"
+    },
+    "message": "Hola todo bien? Estoy probando a ver si funciona el chat correctamente",
+    "date": "2022-09-25T15:51:04.998Z"
+  },
+  {
+    "id": 3,
+    "author": {
+      "id": "prueba@gmail.com",
+      "name": "Joaquin",
+      "surname": "Arias",
+      "age": "22",
+      "nickname": "jqn_",
+      "avatar": "https://"
+    },
+    "message": "Al parecer funciona...",
+    "date": "2022-09-25T15:53:05.160Z"
+  }
+]

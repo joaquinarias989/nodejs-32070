@@ -9,6 +9,22 @@ const messagesList = document.getElementById("chatList");
 const formSendMessage = document.getElementById("sendMessage");
 const quantityMsg = document.getElementById("msgQuantity");
 
+function denormalize(normalizedData) {
+  const user = new normalizr.schema.Entity("users");
+  const message = new normalizr.schema.Entity("message", {
+    author: user,
+  });
+  const messages = new normalizr.schema.Entity("messages", {
+    message: [message],
+  });
+  const denormalizedData = normalizr.denormalize(
+    normalizedData.result,
+    messages,
+    normalizedData.entities
+  );
+  return denormalizedData;
+}
+
 let socketId = "";
 
 // Load initial Prods & Chat
@@ -22,40 +38,77 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Render Messages
 function renderMessages(messages) {
-  if (!messages) return;
+  let chatDenormalized = denormalize(messages);
+  let chats = chatDenormalized.messages;
+  if (!chats) return;
+
+  console.log(chatDenormalized);
+
+  let normalValue = JSON.stringify(messages).length;
+  let denormalizedValue = JSON.stringify(chatDenormalized).length;
+
+  console.log({ normalValue });
+  console.log({ denormalizedValue });
+
   messagesList.innerHTML = "";
-  messages.forEach((message) => {
+  chats.forEach((message) => {
     const messageLi = document.createElement("li");
     messageLi.classList.add("chat__message");
-    message.author === "Yo" && messageLi.classList.add("chat__message--own");
     messageLi.innerHTML = `
-                <span>${message.userEmail}</span>
+                <span>${message.author.nickname}</span>
                 <p class="chat__message__text">${message.message}</p>
-                <p class="chat__message__time">${message.date}</p>
+                <p class="chat__message__time">${new Date(
+                  message.date
+                ).toLocaleString()}</p>
           `;
     messagesList.appendChild(messageLi);
   });
-  quantityMsg.innerHTML = messages.length.toString();
+  quantityMsg.innerHTML = chats.length.toString();
 }
+
 // Append Message on new Message
-function appendMessage(message) {
-  console.log(socketId, message.id);
-  const msg = message.data;
+function appendMessage(msg) {
+  let chatDenormalized = denormalize(msg);
+  let chat = chatDenormalized.messages;
+
+  let normalValue = JSON.stringify(msg).length;
+  let denormalizedValue = JSON.stringify(chatDenormalized).length;
+
+  console.log({ normalValue });
+  console.log({ denormalizedValue });
+
   const messageLi = document.createElement("li");
   messageLi.classList.add("chat__message");
-  message.id === socketId && messageLi.classList.add("chat__message--own");
   messageLi.innerHTML = `
-                <span>${message.id === socketId ? "Yo" : msg.author}</span>
-                <p class="chat__message__text">${msg.text}</p>
-                <p class="chat__message__time">${msg.date}</p>
+                <span>${chat.author.nickname}</span>
+                <p class="chat__message__text">${chat.message}</p>
+                <p class="chat__message__time">${new Date(
+                  chat.date
+                ).toLocaleString()}</p>
           `;
   messagesList.appendChild(messageLi);
   quantityMsg.innerHTML = Number(quantityMsg.innerHTML) + 1;
 }
+
 // Save Message
 formSendMessage.addEventListener("submit", (e) => {
   e.preventDefault();
-  const { email, message } = e.target.elements;
-  saveMessage(email.value, message.value, new Date());
+  const { email, nameUser, surname, age, nickname, message } =
+    e.target.elements;
+
+  let chatMessage = {
+    author: {
+      id: email.value,
+      name: nameUser.value,
+      surname: surname.value,
+      age: age.value,
+      nickname: nickname.value,
+      avatar: "https://",
+    },
+    date: new Date(),
+    message: message.value,
+  };
+
+  saveMessage(chatMessage);
   e.target.reset();
 });

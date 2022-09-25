@@ -1,18 +1,31 @@
+const fs = require("fs").promises;
 const ChatMessage = require("../models/ChatMessage");
-const { options } = require("../db/SQLite3/connection");
-const knex = require("knex").knex(options);
 
 class Container {
-  constructor(table) {
-    this.table = table;
+  constructor(path) {
+    this.path = path;
   }
 
   async saveMsg(obj) {
     try {
-      let msgToSave = new ChatMessage(undefined, obj.author, obj.text);
-      console.log(msgToSave);
-      await knex(this.table).insert(msgToSave);
-      return msgToSave;
+      let msg = new ChatMessage(obj.author, obj.message);
+
+      const data = await fs.readFile(this.path, "utf8");
+      const json = JSON.parse(data);
+      if (json.length) {
+        obj.id = json[json.length - 1].id + 1;
+        await fs.writeFile(
+          this.path,
+          JSON.stringify([...json, { id: obj.id, ...msg }], null, 2)
+        );
+      } else {
+        obj.id = 1;
+        await fs.writeFile(
+          this.path,
+          JSON.stringify([{ id: obj.id, ...msg }], null, 2)
+        );
+      }
+      return msg;
     } catch (error) {
       console.log(error);
       return null;
@@ -20,12 +33,13 @@ class Container {
   }
   async getAll() {
     try {
-      const messages = await knex.from(this.table).select("*");
-      if (!messages.length) {
+      const data = await fs.readFile(this.path, "utf8");
+      const json = JSON.parse(data);
+      if (!json.length) {
         console.log("No hay mensajes por el momento");
         return null;
       }
-      return messages;
+      return json;
     } catch (error) {
       console.log(error);
       return null;

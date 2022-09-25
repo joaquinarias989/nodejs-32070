@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.2/dist/normalizr.browser.js"></script>
   </head>
   <body>
     <%- include("../partials/navbar.ejs") %>
@@ -56,21 +57,55 @@
         <ul class="chat__main" id="chatList"></ul>
         <div class="chat__reply">
           <form id="sendMessage" class="flex-column gap-1">
-            <input
-              type="email"
-              name="email"
-              class="form__input"
-              placeholder="ejemplo@gmail.com"
-              required
-            />
-            <input
-              type="text"
+            <div class="flex-row gap-1">
+              <input
+                type="text"
+                name="nickname"
+                class="form__input"
+                placeholder="Nombre de Usuario"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                class="form__input"
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div class="flex-row gap-1">
+              <input
+                type="text"
+                name="nameUser"
+                class="form__input"
+                placeholder="Nombre"
+                required
+              />
+              <input
+                type="text"
+                name="surname"
+                class="form__input"
+                placeholder="Apellido"
+                required
+              />
+              <input
+                type="number"
+                name="age"
+                class="form__input"
+                placeholder="Edad"
+                required
+              />
+            </div>
+
+            <textarea
               name="message"
               id="message"
               class="form__input"
               placeholder="Mensaje"
+              rows="3"
               required
-            />
+            ></textarea>
             <button class="btn__action" type="submit">
               <div class="hover">
                 <i class="feather icon-mail"></i> <span>Enviar mensaje</span>

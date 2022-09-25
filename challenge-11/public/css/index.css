@@ -86,7 +86,8 @@ button {
   font-size: inherit;
 }
 input,
-select {
+select,
+textarea {
   max-width: 100%;
   background: transparent;
   font-size: inherit;
@@ -305,7 +306,7 @@ table .img-rounded {
   padding: 2rem 3rem;
   gap: 1rem;
   border-bottom: 0.3rem solid #e8e8e8;
-  max-height: 50vh;
+  max-height: 45vh;
   overflow-y: auto;
 }
 .chat .chat__main .chat__message {

@@ -16,8 +16,8 @@ export const onNewProd = (callback) => {
   socket.on("server:newprod", callback);
 };
 
-export const saveMessage = (author, text, date) => {
-  socket.emit("client:newmessage", { author, text, date });
+export const saveMessage = (chatMessage) => {
+  socket.emit("client:newmessage", chatMessage);
 };
 
 export const loadMessages = (callback) => {
