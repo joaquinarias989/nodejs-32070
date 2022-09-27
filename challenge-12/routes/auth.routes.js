@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const { Login, Logout } = require("../controllers/auth.controller");
+const {
+  Login,
+  Logout,
+  VerifyUserAuthenticated,
+} = require("../controllers/auth.controller");
 
 router.post("/login", Login);
-router.delete("/logout", Logout);
+router.delete("/logout", VerifyUserAuthenticated, Logout);
+router.get("/prueba", VerifyUserAuthenticated, (req, res, next) => {
+  res.send("HOLA");
+});
 
 module.exports = router;

@@ -1,3 +1,5 @@
+const ServiceResponse = require("../models/ServiceResponse.js");
+
 const Login = async (req, res, next) => {
   try {
     const { username } = req.body;
@@ -23,31 +25,27 @@ const Login = async (req, res, next) => {
 };
 
 const Logout = async (req, res, next) => {
+  const resp = new ServiceResponse();
+  resp.data = "";
+
   try {
     const { username } = req.session;
     if (username) {
       req.session.destroy((err) => {
         console.log(err);
         if (err) {
-          res.status(401).json({
-            data: "",
-            success: false,
-            message: `No has iniciado sesión, o la misma ha vencido. Por favor, inicia sesión nuevamente.`,
-          });
+          resp.success = false;
+          resp.message = `Ocurrió un error con la sesión. Por favor, ingresa nuevamente.`;
+          res.status(401).json(resp);
         } else {
-          res.status(200).json({
-            data: "",
-            success: true,
-            message: `Hasta luego ${username}!`,
-          });
+          resp.message = `Hasta luego ${username}!`;
+          res.status(200).json(resp);
         }
       });
     } else {
-      res.status(401).json({
-        data: "",
-        success: false,
-        message: `No has iniciado sesión.`,
-      });
+      resp.success = false;
+      resp.message = "Aún no has iniciado sesión.";
+      res.status(401).json(resp);
     }
   } catch (error) {
     console.log(error);
@@ -55,4 +53,21 @@ const Logout = async (req, res, next) => {
   }
 };
 
-module.exports = { Login, Logout };
+const VerifyUserAuthenticated = async (req, res, next) => {
+  const resp = new ServiceResponse((data = ""));
+
+  try {
+    const { username } = req.session;
+    if (!username) {
+      resp.success = false;
+      resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
+      res.status(401).json(resp);
+    } else {
+      next();
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { Login, Logout, VerifyUserAuthenticated };
