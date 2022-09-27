@@ -19,6 +19,8 @@ All the endpoints and estructure are detailed in the .REST file of the request f
 #### Login
 
 - POST http://localhost:8080/api/auth/login
+- DELETE http://localhost:8080/api/auth/logout
+- GET http://localhost:8080/api/auth/prueba (test request whitout users loged)
 
 ### Products
 
