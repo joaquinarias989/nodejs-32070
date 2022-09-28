@@ -14,22 +14,35 @@
     ></script>
   </head>
   <body onload="getUser()" class="bg-gray-50">
-    <nav class="flex justify-between items-center py-5 px-20 bg-yellow-400">
-      <h1 class="text-xl font-bold">
-        Bienvenido de nuevo <span class="text-yellow-900" id="user"></span>!
-      </h1>
-      <button
-        class="py-2 px-3 bg-gray-500 rounded-md shadow-md text-white tracking-wide transition-all hover:shadow-lg hover:bg-gray-600"
-        onclick="logout()"
-      >
-        Cerrar Sesión
-      </button>
+    <nav
+      class="flex justify-between items-center py-5 px-20 bg-yellow-400 shadow-md"
+    >
+      <div>
+        <span class="text-2xl font-bold">🏷 STREET WEAR</span>
+      </div>
+      <div>
+        <button
+          class="py-2 px-3 bg-gray-500 rounded-md shadow-md text-white tracking-wide transition-all hover:shadow-lg hover:bg-gray-600"
+          onclick="logout()"
+        >
+          Cerrar Sesión
+        </button>
+      </div>
     </nav>
+    <main class="py-10 px-20">
+      <h1 class="text-2xl" id="welcomeText">
+        Hola
+        <span class="font-bold text-yellow-900" id="user"></span>, bienvenido de
+        nuevo!
+      </h1>
+    </main>
   </body>
 
   <script>
-    const user = document.getElementById("user");
-    const body = document.body;
+    const welcomeText = document.getElementById("welcomeText");
+    const userText = document.getElementById("user");
+    let userLogued = "";
+
     const getUser = () => {
       axios
         .get("http://localhost:8080/api/auth/user-logued")
@@ -39,7 +52,8 @@
             window.location.href = "/IniciarSesion";
             return;
           }
-          user.innerHTML = resp.data.success && resp.data.data;
+          userLogued = resp.data.data;
+          userText.innerHTML = userLogued;
         })
         .catch((error) => {
           console.log(error);
@@ -52,7 +66,12 @@
         .delete("http://localhost:8080/api/auth/logout")
         .then((resp) => {
           console.log(resp);
-          window.location.href = resp.data.success && "/IniciarSesion";
+          if (resp.data.success) {
+            welcomeText.innerHTML = `Hasta pronto ${userLogued}!`;
+            setTimeout(() => {
+              window.location.href = "/IniciarSesion";
+            }, 2000);
+          }
         })
         .catch((error) => {
           console.log(error);
