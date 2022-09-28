@@ -14,6 +14,18 @@ const app = express();
 //setings
 app.set("port", config.port);
 
+//views
+app.set("view engine", "ejs");
+app.set("views", `${__dirname}/views`);
+
+// serve views
+app.get("/", (req, res) => {
+  res.render("pages/index");
+});
+app.get("/IniciarSesion", async (req, res) => {
+  res.render("pages/login");
+});
+
 //middlewares
 app.use(express.static(`${__dirname}/public`));
 app.use(express.json());

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body onload="getUser()" class="bg-gray-50">
+    <nav class="flex justify-between items-center py-5 px-20 bg-yellow-400">
+      <h1 class="text-xl font-bold">
+        Bienvenido de nuevo <span class="text-yellow-900" id="user"></span>!
+      </h1>
+      <button
+        class="py-2 px-3 bg-gray-500 rounded-md shadow-md text-white tracking-wide transition-all hover:shadow-lg hover:bg-gray-600"
+        onclick="logout()"
+      >
+        Cerrar Sesión
+      </button>
+    </nav>
+  </body>
+
+  <script>
+    const user = document.getElementById("user");
+    const body = document.body;
+    const getUser = () => {
+      axios
+        .get("http://localhost:8080/api/auth/user-logued")
+        .then((resp) => {
+          console.log(resp);
+          if (!resp.data.success) {
+            window.location.href = "/IniciarSesion";
+            return;
+          }
+          user.innerHTML = resp.data.success && resp.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+          window.location.href = "/IniciarSesion";
+        });
+    };
+
+    const logout = () => {
+      axios
+        .delete("http://localhost:8080/api/auth/logout")
+        .then((resp) => {
+          console.log(resp);
+          window.location.href = resp.data.success && "/IniciarSesion";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+  </script>
+</html>
