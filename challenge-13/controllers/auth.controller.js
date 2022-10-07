@@ -2,23 +2,32 @@ const ServiceResponse = require("../models/ServiceResponse.js");
 
 const Login = async (req, res, next) => {
   try {
-    const { username } = req.body;
+    res.status(200).redirect("/");
+    // const { username } = req.body;
 
-    if (!username || username.trim() === "") {
-      res.status(400).json({
-        data: "",
-        success: false,
-        message: "Debes ingresar un usuario válido",
-      });
-    } else {
-      req.session.username = username;
-      // res.status(200).json({
-      //   data: "admin-token",
-      //   success: true,
-      //   message: `Bienvenido de nuevo ${username}!`,
-      // });
-      res.status(200).redirect("/");
-    }
+    // if (!username || username.trim() === "") {
+    //   res.status(400).json({
+    //     data: "",
+    //     success: false,
+    //     message: "Debes ingresar un usuario válido",
+    //   });
+    // } else {
+    //   req.session.username = username;
+    //   // res.status(200).json({
+    //   //   data: "admin-token",
+    //   //   success: true,
+    //   //   message: `Bienvenido de nuevo ${username}!`,
+    //   // });
+    //   res.status(200).redirect("/");
+    // }
+  } catch (error) {
+    next(error);
+  }
+};
+
+const Register = async (req, res, next) => {
+  try {
+    res.status(200).redirect("/");
   } catch (error) {
     next(error);
   }
@@ -92,6 +101,7 @@ const GetUserAuthenticated = async (req, res, next) => {
 module.exports = {
   Login,
   Logout,
+  Register,
   VerifyUserAuthenticated,
   GetUserAuthenticated,
 };

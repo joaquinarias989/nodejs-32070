@@ -5,6 +5,14 @@ const bCrypt = require("bcrypt");
 const Container = require("../models/DAOs/UserDAOMongoDB");
 const users = new Container();
 
+passport.serializeUser((user, done) => done(null, user));
+
+passport.deserializeUser((user, done) => done(null, user));
+
+const createHash = (password) => {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+};
+
 passport.use(
   "login",
   new LocalStrategy(async (username, password, done) => {
@@ -47,8 +55,4 @@ passport.use(
   )
 );
 
-// helpers
-
-const createHash = (password) => {
-  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-};
+module.exports = passport;
