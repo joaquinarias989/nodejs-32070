@@ -3,6 +3,7 @@ const config = require("./config");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
+const passport = require("./middlewares/passport");
 const routerAuth = require("./routes/auth.routes");
 const routerProds = require("./routes/products.routes");
 const routerCart = require("./routes/cart.routes");
@@ -24,6 +25,9 @@ app.get("/", (req, res) => {
 });
 app.get("/IniciarSesion", async (req, res) => {
   res.render("pages/login");
+});
+app.get("/Registrarse", async (req, res) => {
+  res.render("pages/register");
 });
 
 //middlewares
@@ -47,6 +51,9 @@ app.use(
     },
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/api/auth", routerAuth);
 app.use("/api/products", routerProds);

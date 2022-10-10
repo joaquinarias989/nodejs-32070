@@ -66,6 +66,7 @@
         .delete("http://localhost:8080/api/auth/logout")
         .then((resp) => {
           console.log(resp);
+
           if (resp.data.success) {
             welcomeText.innerHTML = `Hasta pronto ${userLogued}!`;
             setTimeout(() => {

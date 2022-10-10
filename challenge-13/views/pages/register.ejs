@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión</title>
+    <title>Registrarse</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
@@ -22,15 +22,14 @@
           <h1 class="text-center text-2xl font-bold mb-10 text-gray-700">
             🏷 STREET WEAR
           </h1>
-          <h2 class="text-2xl font-medium text-gray-700">
-            Bienvenido de nuevo! 👋🏻
-          </h2>
+          <h2 class="text-2xl font-medium text-gray-700">Bienvenido! 👋🏻</h2>
           <p class="text-gray-500 mt-2">
-            Por favor, inicia sesión para poder ingresar al sistema.
+            Registrate para comprar más rápido y llevar el control de tus
+            pedidos ¡en un solo lugar!
           </p>
         </div>
 
-        <form class="" action="/api/auth/login" method="POST">
+        <form class="" action="/api/auth/signUp" method="POST">
           <input
             type="text"
             id="username"
@@ -48,8 +47,8 @@
             required
           />
           <p class="text-right mb-10 text-md">
-            ¿No tienes cuenta?
-            <a href="Registrarse" class="font-bold">Regístrate</a>
+            ¿Ya tienes cuenta?
+            <a href="IniciarSesion" class="font-bold">Ingresa aquí</a>
           </p>
 
           <button
@@ -63,20 +62,4 @@
       </div>
     </main>
   </body>
-  <script>
-    const login = (event) => {
-      event.preventDefault();
-      const { username } = event.target.elements;
-      axios
-        .post("http://localhost:8080/api/auth/login", {
-          username: username.value,
-        })
-        .then((resp) => {
-          console.log(resp);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-  </script>
 </html>

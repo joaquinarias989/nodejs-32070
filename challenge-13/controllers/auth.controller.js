@@ -3,23 +3,6 @@ const ServiceResponse = require("../models/ServiceResponse.js");
 const Login = async (req, res, next) => {
   try {
     res.status(200).redirect("/");
-    // const { username } = req.body;
-
-    // if (!username || username.trim() === "") {
-    //   res.status(400).json({
-    //     data: "",
-    //     success: false,
-    //     message: "Debes ingresar un usuario válido",
-    //   });
-    // } else {
-    //   req.session.username = username;
-    //   // res.status(200).json({
-    //   //   data: "admin-token",
-    //   //   success: true,
-    //   //   message: `Bienvenido de nuevo ${username}!`,
-    //   // });
-    //   res.status(200).redirect("/");
-    // }
   } catch (error) {
     next(error);
   }
@@ -34,22 +17,14 @@ const Register = async (req, res, next) => {
 };
 
 const Logout = async (req, res, next) => {
-  const resp = new ServiceResponse();
-  resp.data = "";
+  const resp = new ServiceResponse((data = ""));
 
   try {
-    const { username } = req.session;
-    if (username) {
-      req.session.destroy((err) => {
-        console.log(err);
-        if (err) {
-          resp.success = false;
-          resp.message = `Ocurrió un error con la sesión. Por favor, ingresa nuevamente.`;
-          res.status(401).json(resp);
-        } else {
-          resp.message = `Hasta luego ${username}!`;
-          res.status(200).json(resp);
-        }
+    if (req.user) {
+      const { username } = req.user;
+      req.logout(() => {
+        resp.message = `Hasta pronto ${username}!`;
+        res.status(200).json(resp);
       });
     } else {
       resp.success = false;
@@ -66,8 +41,7 @@ const VerifyUserAuthenticated = async (req, res, next) => {
   const resp = new ServiceResponse((data = ""));
 
   try {
-    const { username } = req.session;
-    if (!username) {
+    if (!req.user) {
       resp.success = false;
       resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
       res.status(401).json(resp);
@@ -83,12 +57,12 @@ const GetUserAuthenticated = async (req, res, next) => {
   const resp = new ServiceResponse((data = ""));
 
   try {
-    const { username } = req.session;
-    if (!username) {
+    if (!req.user) {
       resp.success = false;
       resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
       res.status(401).json(resp);
     } else {
+      const { username } = req.user;
       resp.success = true;
       resp.data = username;
       res.status(200).json(resp);

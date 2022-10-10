@@ -10,10 +10,12 @@ class UserDAOMongoDB extends MongoDBContainer {
   async registerUser(obj) {
     try {
       const user = new this.model({
-        username: obj.code,
-        password: obj.title,
+        username: obj.username,
+        password: obj.password,
       });
+      console.log(user);
       const savedUser = await user.save();
+      console.log(savedUser);
 
       return savedUser;
     } catch (error) {

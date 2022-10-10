@@ -27,7 +27,7 @@ passport.use(
 );
 
 passport.use(
-  "signup",
+  "signUp",
   new LocalStrategy(
     {
       passReqToCallback: true,

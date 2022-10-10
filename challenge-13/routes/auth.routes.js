@@ -8,15 +8,15 @@ const {
 } = require("../controllers/auth.controller");
 const passport = require("../middlewares/passport");
 
-// router.post("/login", Login);
 router.post(
   "/login",
-  passport.authenticate("login", { failureRedirect: "/login-error" }, Login)
+  passport.authenticate("login", { failureRedirect: "login-error" }),
+  Login
 );
 router.delete("/logout", VerifyUserAuthenticated, Logout);
 router.post(
   "/signUp",
-  passport.authenticate("signup", { failureRedirect: "/signup-error" }),
+  passport.authenticate("signUp", { failureRedirect: "signup-error" }),
   Register
 );
 router.get("/user-logued", GetUserAuthenticated);
@@ -27,7 +27,7 @@ router.get("/login-error", (req, res) => {
     .status(400)
     .send("<h1>Error al Iniciar Sesión. Por favor, intente nuevamente.</h1>");
 });
-router.get("/login-error", (req, res) => {
+router.get("/signup-error", (req, res) => {
   res
     .status(400)
     .send(

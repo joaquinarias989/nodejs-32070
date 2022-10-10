@@ -5,11 +5,21 @@ POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "Pedro Lopez"
+    "username": "jqn_",
+    "password": "51854"
 }
 
 ### logout
 DELETE http://localhost:8080/api/auth/logout
+
+### register    
+POST http://localhost:8080/api/auth/signUp
+Content-Type: application/json
+
+{
+    "username": "jqn_",
+    "password": "51854"
+}
 
 
 ######################## PRODUCTS ########################
