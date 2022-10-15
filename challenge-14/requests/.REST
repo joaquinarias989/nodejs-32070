@@ -68,7 +68,7 @@ Token: admin-token
 
 
 ### get products of cart
-GET http://localhost:8080/api/cart/3/products
+GET http://localhost:8080/api/cart/634b148e21366b96e9be4b7e/products
 
 ### create one cart
 POST http://localhost:8080/api/cart/ 
@@ -87,3 +87,18 @@ DELETE http://localhost:8080/api/cart/3/
 ### delete product by id from cart
 DELETE http://localhost:8080/api/cart/3/products/1
 
+
+
+######################## ENV ########################
+
+GET http://localhost:8080/api/env/info
+
+
+
+######################## RANDOM ########################
+
+###
+GET http://localhost:8080/api/randoms
+
+###
+GET http://localhost:8080/api/randoms?cant=500000000
