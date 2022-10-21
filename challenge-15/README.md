@@ -10,7 +10,7 @@ Before you start, you need to have the following things installed:
 Go to the project folder whit
 
 ```
-cd challenge-14
+cd challenge-15
 ```
 
 ### 📃 Commands
