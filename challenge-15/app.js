@@ -12,7 +12,7 @@ const sessionConfig = require("./db/MongoDB/config");
 
 const app = express();
 
-//setings
+// setings
 app.set("port", arg.port);
 
 //views
@@ -30,7 +30,7 @@ app.get("/Registrarse", async (req, res) => {
   res.render("pages/register");
 });
 
-//middlewares
+// middlewares
 app.use(express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

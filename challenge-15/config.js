@@ -11,11 +11,10 @@ let config = {
 const args = process.argv.slice(2);
 
 const options = {
-  alias: { p: "port" },
-  default: { port: 8080 },
+  alias: { p: "port", m: "mode" },
+  default: { port: 8080, mode: "FORK" },
 };
 
 arg = parseArgs(args, options);
 
-// module.exports = { port: process.env.PORT || 8080 };
 module.exports = { config, arg };
