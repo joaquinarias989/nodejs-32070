@@ -1,4 +1,5 @@
 const { arg } = require("../config");
+const numOfCPUs = require("os").cpus().length;
 
 const GetProyectInfo = async (req, res, next) => {
   try {
@@ -10,6 +11,7 @@ const GetProyectInfo = async (req, res, next) => {
       path: process.execPath,
       pid: process.pid,
       dir: process.cwd(),
+      cpus: numOfCPUs,
     };
 
     res.status(200).json(info);

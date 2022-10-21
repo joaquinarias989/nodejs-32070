@@ -6,6 +6,7 @@ const routerAuth = require("./routes/auth.routes");
 const routerProds = require("./routes/products.routes");
 const routerCart = require("./routes/cart.routes");
 const routerEnv = require("./routes/env.routes");
+const routerRandom = require("./routes/random.routes");
 const notFound = require("./middlewares/notFound");
 const handleErrors = require("./middlewares/handleErrors");
 const sessionConfig = require("./db/MongoDB/config");
@@ -43,6 +44,7 @@ app.use("/api/auth", routerAuth);
 app.use("/api/products", routerProds);
 app.use("/api/cart", routerCart);
 app.use("/api/env", routerEnv);
+app.use("/api/randoms", routerRandom);
 
 app.use(notFound);
 app.use(handleErrors);

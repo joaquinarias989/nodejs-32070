@@ -1,4 +1,6 @@
 const { app } = require("./app");
+
+const { Server: HttpServer } = require("http");
 const httpServer = new HttpServer(app);
 
 const { arg } = require("./config.js");
@@ -7,8 +9,10 @@ const { arg } = require("./config.js");
 const cluster = require("cluster");
 const numOfCPUs = require("os").cpus().length;
 
+const port = arg.port;
+
 if (cluster.isMaster) {
-  console.log(`ARGUMENTOS: puerto: ${arg.port} - modo: ${arg.mode}`);
+  console.log(`ARGS: port: ${arg.port} - mode: ${arg.mode}`);
   console.log("master " + process.pid + " is running");
 
   if (arg.mode === "CLUSTER") {
@@ -34,7 +38,9 @@ if (cluster.isMaster) {
 } else {
   const server = httpServer.listen(port, () => {
     console.log(
-      `Servidor escuchando en el PUERTO:${port} - PID WORKER:${process.pid}`
+      `Server running on port ${server.address().port} - PID WORKER:${
+        process.pid
+      }`
     );
   });
   server.on("error", (error) => {
