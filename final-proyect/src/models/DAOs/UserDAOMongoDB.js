@@ -11,7 +11,7 @@ class UserDAOMongoDB extends MongoDBContainer {
     try {
       const user = new this.model({
         username: obj.username,
-        password: obj.password,
+        password: encryptPassword(obj.password),
       });
       const savedUser = await user.save();
       return savedUser;
@@ -20,11 +20,11 @@ class UserDAOMongoDB extends MongoDBContainer {
     }
   }
 
-  async verifyValidCredentials(obj) {
+  async verifyCredentials(obj) {
     try {
       const { username, password } = obj;
-      const isUserExists = await this.verifyUserExists(username);
-      if (!isUserExists || !isValidPassword(username, password)) {
+      const user = await this.model.findOne({ username });
+      if (!user || !isValidPassword(user, password)) {
         console.log("Usuario y/o Contraseña incorrecta.");
         return null;
       }
@@ -43,6 +43,10 @@ class UserDAOMongoDB extends MongoDBContainer {
 
 const isValidPassword = (user, password) => {
   return bCrypt.compareSync(password, user.password);
+};
+
+const encryptPassword = (password) => {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 };
 
 module.exports = UserDAOMongoDB;

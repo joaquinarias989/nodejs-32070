@@ -1,29 +1,20 @@
 const ServiceResponse = require("../models/ServiceResponse");
 const passport = require("../middlewares/passport");
 
-const Login = async (req, res, next) => {
-  try {
-    passport.authenticate("login", {
-      failureFlash: true,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+const Login = passport.authenticate("login", {
+  successRedirect: "/api/auth/login-success",
+  failureRedirect: "/api/auth/login-error",
+  failureFlash: true,
+});
 
-const Register = async (req, res, next) => {
-  try {
-    passport.authenticate("signUp", {
-      failureRedirect: "signUp",
-      failureFlash: true,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+const SignUp = passport.authenticate("signUp", {
+  successRedirect: "/api/auth/signUp-success",
+  failureRedirect: "/api/auth/signUp-error",
+  failureFlash: true,
+});
 
 const Logout = async (req, res, next) => {
-  const resp = new ServiceResponse((data = ""));
+  const resp = new ServiceResponse();
 
   try {
     if (req.user) {
@@ -44,10 +35,10 @@ const Logout = async (req, res, next) => {
 };
 
 const VerifyUserAuthenticated = async (req, res, next) => {
-  const resp = new ServiceResponse((data = ""));
+  const resp = new ServiceResponse();
 
   try {
-    if (!req.user) {
+    if (!req.isAuthenticated()) {
       resp.success = false;
       resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
       res.status(401).json(resp);
@@ -60,7 +51,7 @@ const VerifyUserAuthenticated = async (req, res, next) => {
 };
 
 const GetUserAuthenticated = async (req, res, next) => {
-  const resp = new ServiceResponse((data = ""));
+  const resp = new ServiceResponse();
 
   try {
     if (!req.user) {
@@ -78,10 +69,43 @@ const GetUserAuthenticated = async (req, res, next) => {
   }
 };
 
+const HandleLoginSuccess = async (req, res, next) => {
+  const resp = new ServiceResponse();
+  resp.message = "Sesión iniciada exitosamente";
+
+  res.status(200).json(resp);
+};
+const HandleLoginError = async (req, res, next) => {
+  const resp = new ServiceResponse();
+  resp.success = false;
+  resp.message = "Usuario y/o contraseña incorrecta.";
+
+  res.status(400).json(resp);
+};
+
+const HandleSignUpSuccess = async (req, res, next) => {
+  const resp = new ServiceResponse();
+  resp.message = "Usuario registrado exitosamente";
+
+  res.status(200).json(resp);
+};
+const HandleSignUpError = async (req, res, next) => {
+  const resp = new ServiceResponse();
+  resp.success = false;
+  resp.message =
+    "Error al registrar el usuario. Por favor, intente nuevamente.";
+
+  res.status(400).json(resp);
+};
+
 module.exports = {
   Login,
   Logout,
-  Register,
+  SignUp,
   VerifyUserAuthenticated,
   GetUserAuthenticated,
+  HandleLoginSuccess,
+  HandleLoginError,
+  HandleSignUpSuccess,
+  HandleSignUpError,
 };

@@ -1,5 +1,5 @@
 class ServiceResponse {
-  constructor(data, success = true, message = "") {
+  constructor(data = null, success = true, message = "") {
     this.data = data;
     this.success = success;
     this.message = message;
