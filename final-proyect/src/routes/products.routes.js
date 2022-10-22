@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { VerifyUserAuthenticated } = require("../controllers/auth.controller");
 const {
   GetProducts,
   GetProductById,
@@ -9,8 +10,8 @@ const {
 
 router.get("/", GetProducts);
 router.get("/:id", GetProductById);
-router.post("/", AddProduct);
-router.put("/:id", UpdateProduct);
-router.delete("/:id", DeleteProduct);
+router.post("/", VerifyUserAuthenticated, AddProduct);
+router.put("/:id", VerifyUserAuthenticated, UpdateProduct);
+router.delete("/:id", VerifyUserAuthenticated, DeleteProduct);
 
 module.exports = router;

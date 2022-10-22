@@ -17,11 +17,14 @@ class ProductDAOMongoDB extends MongoDBContainer {
         stock: obj.stock,
         timestamp: new Date(),
       });
-      const savedProd = await prod.save();
 
+      const prodExist = await this.getByCode(obj.code);
+      if (prodExist) return null;
+
+      const savedProd = await prod.save();
       return savedProd;
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
   async update(obj) {
@@ -39,9 +42,18 @@ class ProductDAOMongoDB extends MongoDBContainer {
         updatedInfo,
         { new: true }
       );
-      console.log(updatedProd);
 
       return updatedProd ? true : false;
+    } catch (error) {
+      throw new Error(error.name);
+    }
+  }
+
+  async getByCode(code) {
+    try {
+      const doc = await this.model.findOne({ code });
+      if (!doc) return null;
+      return doc;
     } catch (error) {
       throw new Error(error.name);
     }
