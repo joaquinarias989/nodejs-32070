@@ -4,7 +4,7 @@ const { config } = require("../config");
 
 // DB
 mongoose
-  .connect(config.mongoConnectionString, {
+  .connect(config.DB_MONGO_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -14,10 +14,10 @@ mongoose
 // SESSIONS CONFIG
 const sessionConfig = {
   store: MongoStore.create({
-    mongoUrl: config.mongoConnectionString,
+    mongoUrl: config.DB_MONGO_CONNECTION_STRING,
     mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
   }),
-  secret: config.sessionSecretKey,
+  secret: config.SESSION_SECRET_KEY,
   resave: false,
   saveUninitialized: false,
   rolling: true,

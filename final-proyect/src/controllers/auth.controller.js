@@ -4,13 +4,11 @@ const passport = require("../middlewares/passport");
 const Login = passport.authenticate("login", {
   successRedirect: "/api/auth/login-success",
   failureRedirect: "/api/auth/login-error",
-  failureFlash: true,
 });
 
 const SignUp = passport.authenticate("signUp", {
   successRedirect: "/api/auth/signUp-success",
   failureRedirect: "/api/auth/signUp-error",
-  failureFlash: true,
 });
 
 const Logout = async (req, res, next) => {

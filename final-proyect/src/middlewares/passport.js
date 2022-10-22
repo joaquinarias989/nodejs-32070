@@ -16,10 +16,7 @@ passport.use(
       password,
     });
     if (user) return done(null, user);
-    else
-      return done(null, false, {
-        message: "Usuario y/o contraseña incorrecta",
-      });
+    else return done(null, false);
   })
 );
 
@@ -32,9 +29,7 @@ passport.use(
     async (req, username, password, done) => {
       let userExist = await users.verifyUserExists(username);
       if (userExist) {
-        return done(null, false, {
-          message: "El usuario ya se encuentra registrado en el Sistema",
-        });
+        return done(null, false);
       } else {
         let { username, password } = req.body;
         let user = await users.registerUser({

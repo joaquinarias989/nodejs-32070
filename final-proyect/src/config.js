@@ -2,10 +2,10 @@ require("dotenv").config();
 const parseArgs = require("minimist");
 
 let config = {
-  mongoUserCredential: process.env.DB_MONGO_ADMIN_USER,
-  mongoPasswordCredential: process.env.DB_MONGO_ADMIN_PASSWORD,
-  mongoConnectionString: `mongodb+srv://${process.env.DB_MONGO_ADMIN_USER}:${process.env.DB_MONGO_ADMIN_PASSWORD}@cluster0.dyzigwz.mongodb.net/street-wear-ecommerce?retryWrites=true&w=majority`,
-  sessionSecretKey: process.env.SESSION_SECRET,
+  DB_MONGO_ADMIN_USER: process.env.DB_MONGO_ADMIN_USER,
+  DB_MONGO_ADMIN_PASSWORD: process.env.DB_MONGO_ADMIN_PASSWORD,
+  DB_MONGO_CONNECTION_STRING: `mongodb+srv://${process.env.DB_MONGO_ADMIN_USER}:${process.env.DB_MONGO_ADMIN_PASSWORD}@cluster0.dyzigwz.mongodb.net/street-wear-ecommerce?retryWrites=true&w=majority`,
+  SESSION_SECRET_KEY: process.env.SESSION_SECRET_KEY,
 };
 
 const args = process.argv.slice(2);
