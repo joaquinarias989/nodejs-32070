@@ -21,7 +21,11 @@ class CartDAOMongoDB extends MongoDBContainer {
   }
   async addProductToCart(idCart, prod) {
     try {
-      const cart = await this.model.findById(idCart);
+      const cart = await this.getById(idCart);
+      if (!cart) {
+        return null;
+      }
+
       const updatedInfo = {
         products: [
           ...cart.products,
@@ -43,10 +47,9 @@ class CartDAOMongoDB extends MongoDBContainer {
         updatedInfo,
         { new: true }
       );
-      console.log(updatedCart);
       return updatedCart ? true : false;
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
   async deleteProductFromCart(idCart, idProd) {

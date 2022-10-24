@@ -65,13 +65,13 @@ DELETE http://localhost:8080/api/products/634f1e9ba071c936e3f0261b
 
 
 ### get products of cart
-GET http://localhost:8080/api/cart/634f23daac8dce130f0d0c58/products
+GET http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products
 
 ### create one cart
 POST http://localhost:8080/api/cart/ 
 
 ### add product by id to cart
-POST http://localhost:8080/api/cart/634f23daac8dce130f0d0c58/products
+POST http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products
 Content-Type: application/json
 
 {
@@ -79,10 +79,10 @@ Content-Type: application/json
 }
 
 ### delete cart by id
-DELETE http://localhost:8080/api/cart/634f23daac8dce130f0d0c58/
+DELETE http://localhost:8080/api/cart/635673573a3714475b9c899f/
 
 ### delete product by id from cart
-DELETE http://localhost:8080/api/cart/634f1f8b81bc4da564b13bd9/products/634f1ed781bc4da564b13bd7
+DELETE http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products/634f1ed781bc4da564b13bd7
 
 
 
