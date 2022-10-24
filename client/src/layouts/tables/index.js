@@ -29,10 +29,12 @@ import Table from "examples/Tables/Table";
 // Data
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
+import { getAllProducts } from "services/products";
 
 function Tables() {
   const { columns, rows } = authorsTableData;
   const { columns: prCols, rows: prRows } = projectsTableData;
+  getAllProducts();
 
   return (
     <DashboardLayout>

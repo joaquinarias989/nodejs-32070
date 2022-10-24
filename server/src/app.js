@@ -1,5 +1,6 @@
 const express = require("express");
 const { arg } = require("./config");
+const cors = require("cors");
 const session = require("express-session");
 const passport = require("./middlewares/passport");
 const routerAuth = require("./routes/auth.routes");
@@ -14,6 +15,11 @@ const app = express();
 
 //setings
 app.set("port", arg.port);
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 //middlewares
 app.use(express.static(`${__dirname}/public`));
