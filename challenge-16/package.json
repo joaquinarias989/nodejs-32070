@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/performance/benchmark.js",
+    "test": "node tests/performance/autocannon/benchmark.js",
+    "dev-0x": "0x src/index.js",
     "dev": "npx nodemon src/index.js"
   },
   "keywords": [],
