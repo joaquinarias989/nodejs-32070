@@ -1,0 +1,16 @@
+node --prof src/index.js
+
+npm install -g artillery
+artillery quick --count 20 -n 50 "http://localhost:8080/api/env/info" > result_nobloq.txt
+
+node.exe --prof-process nobloq-v8.log > result_nobloq-v8.txt
+
+
+<!----------------------------!>
+
+
+node --prof src/index.js
+
+artillery quick --count 20 -n 50 "http://localhost:8080/api/env/info" > result_bloq.txt
+
+node.exe --prof-process bloq-v8.log > result_bloq-v8.txt

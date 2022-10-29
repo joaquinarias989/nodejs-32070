@@ -18,6 +18,7 @@ const GetProyectInfo = async (req, res, next) => {
       dir: process.cwd(),
     };
 
+    console.log(info);
     res.status(200).json(info);
   } catch (error) {
     next(error);
