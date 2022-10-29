@@ -1,7 +1,8 @@
+const logger = require("../services/logger");
 const ServiceResponse = require("../models/ServiceResponse");
 
 module.exports = (error, req, res, next) => {
-  console.log(error);
+  logger.log("error", error);
 
   let resp = new ServiceResponse();
   resp.success = false;

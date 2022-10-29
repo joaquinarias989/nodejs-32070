@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 const { config } = require("../config");
+const logger = require("../services/logger");
 
 // DB
 mongoose
@@ -9,7 +10,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("MongoDB connected!"))
-  .catch((err) => console.log(err));
+  .catch((err) => logger.error(err));
 
 // SESSIONS CONFIG
 const sessionConfig = {

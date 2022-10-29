@@ -1,3 +1,4 @@
+const logger = require("../services/logger");
 const { arg } = require("../config");
 
 const GetProyectInfo = async (req, res, next) => {
@@ -11,6 +12,8 @@ const GetProyectInfo = async (req, res, next) => {
       pid: process.pid,
       dir: process.cwd(),
     };
+
+    logger.log("info", `RUTA: api/env${req.path}, METODO: ${req.method}`);
 
     res.status(200).json(info);
   } catch (error) {

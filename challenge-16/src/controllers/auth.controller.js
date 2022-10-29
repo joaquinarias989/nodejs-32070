@@ -27,7 +27,6 @@ const Logout = async (req, res, next) => {
       res.status(401).json(resp);
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
