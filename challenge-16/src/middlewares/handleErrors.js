@@ -2,7 +2,10 @@ const logger = require("../services/logger");
 const ServiceResponse = require("../models/ServiceResponse");
 
 module.exports = (error, req, res, next) => {
-  logger.log("error", error);
+  logger.log(
+    "error",
+    `RUTA: ${req.originalUrl}, METODO: ${req.method}, ERROR: ${error}`
+  );
 
   let resp = new ServiceResponse();
   resp.success = false;

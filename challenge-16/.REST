@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "username": "jqn_",
-    "password": "asadsads"
+    "password": "51854"
 }
 
 ### logout
@@ -29,7 +29,7 @@ Content-Type: application/json
 GET http://localhost:8080/api/products
 
 ### get product by id
-GET http://localhost:8080/api/products/634f1ed781bc4da564b13bd7
+GET http://localhost:8080/api/products/634f1ed78s1bc4da564b13bd7
 
 ### add product (ADMIN only)
 POST http://localhost:8080/api/products
@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### delete product by id (ADMIN only)
-DELETE http://localhost:8080/api/products/634f1e9ba071c936e3f0261b
+DELETE http://localhost:8080/api/products/31413431413
 
 
 

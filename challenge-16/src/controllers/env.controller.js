@@ -3,6 +3,11 @@ const { arg } = require("../config");
 
 const GetProyectInfo = async (req, res, next) => {
   try {
+    logger.log(
+      "info",
+      `RUTA: api/env${req.originalUrl}, METODO: ${req.method}`
+    );
+
     info = {
       args: JSON.stringify(arg),
       platform: process.platform,
@@ -12,8 +17,6 @@ const GetProyectInfo = async (req, res, next) => {
       pid: process.pid,
       dir: process.cwd(),
     };
-
-    logger.log("info", `RUTA: api/env${req.path}, METODO: ${req.method}`);
 
     res.status(200).json(info);
   } catch (error) {
