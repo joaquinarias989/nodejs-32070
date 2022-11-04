@@ -12,7 +12,6 @@ const args = process.argv.slice(2);
 
 const options = {
   alias: { p: "port" },
-  default: { port: 8080 },
 };
 
 arg = parseArgs(args, options);
