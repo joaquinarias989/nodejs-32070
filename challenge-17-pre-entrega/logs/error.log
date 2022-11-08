@@ -1,0 +1,29 @@
+2022-10-29T12:49:19.756Z [ERROR]: RUTA: /api/products/634f1ed78s1bc4da564b13bd7, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:13:41.888Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:13:41.898Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:25.384Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:25.391Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:59.729Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:16:05.609Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7s, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:16:05.621Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7s, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:32:11.142Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7, METODO: PUT, ERROR: ReferenceError: size is not defined
+2022-11-06T18:30:35.948Z [ERROR]: RUTA: /api/products, METODO: POST, ERROR: Error: ValidationError: color: Path `color` is required.
+2022-11-06T18:43:39.199Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:43:39.274Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:44:04.689Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:44:04.944Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-07T12:24:48.329Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:26:37.885Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:26:41.049Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:01.530Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:17.370Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:28.550Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:43.032Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:29:49.208Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:34:15.649Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:42:49.534Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:13.991Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:16.178Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:53.045Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:45:15.554Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:47:55.269Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
