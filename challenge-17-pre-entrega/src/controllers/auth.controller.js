@@ -1,5 +1,6 @@
 const ServiceResponse = require('../models/ServiceResponse');
 const passport = require('../middlewares/passport');
+const { SendEmailNewUser } = require('../services/emails');
 
 const Login = passport.authenticate('login', {
   successRedirect: '/api/auth/login-success',
@@ -82,8 +83,11 @@ const HandleLoginError = async (req, res, next) => {
 
 const HandleSignUpSuccess = async (req, res, next) => {
   const resp = new ServiceResponse();
-  resp.data = req.user;
-  resp.message = 'Usuario registrado exitosamente';
+  const user = req.user;
+
+  await SendEmailNewUser(user);
+  resp.data = user;
+  resp.message = 'Te has registrado exitosamente!';
 
   res.status(200).json(resp);
 };
@@ -91,7 +95,7 @@ const HandleSignUpError = async (req, res, next) => {
   const resp = new ServiceResponse();
   resp.success = false;
   resp.message =
-    'Error al registrar el usuario. Por favor, intente nuevamente.';
+    'Algo salió mal al intentar registrarte en nuestro Sistema. Por favor, intenta nuevamente.';
 
   res.status(400).json(resp);
 };
