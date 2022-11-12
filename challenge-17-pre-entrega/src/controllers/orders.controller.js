@@ -1,12 +1,15 @@
 const ServiceResponse = require('../models/ServiceResponse');
 const CartContainer = require('../models/DAOs/CartDAO');
 const OrderContainer = require('../models/DAOs/OrderDAO');
-const { SendSMSToBuyer } = require('../services/phoneNotifys');
+const {
+  SendSMSToBuyer,
+  SendWhatsappToAdmin,
+} = require('../services/phoneNotifys');
 const { SendEmailToAdmin } = require('../services/emails');
 const Carts = new CartContainer();
 const Orders = new OrderContainer();
 
-const CreateOrder = async (req, res, next) => {
+async function CreateOrder(req, res, next) {
   let resp = new ServiceResponse();
 
   try {
@@ -57,13 +60,17 @@ const CreateOrder = async (req, res, next) => {
     <ul>${prodsList}</ul>
     `;
     await SendEmailToAdmin(`Nuevo Pedido #${order.id}`, htmlEmail);
+    await SendWhatsappToAdmin(
+      `Nuevo Pedido #${order.id}`,
+      htmlEmail.replace('<br />', '\b')
+    );
     resp.data = order;
-    resp.message = `Orden #${order.id} creada exitosamente! Revisa tu correo para mas información.`;
+    resp.message = `Orden #${order.id} creada exitosamente! Gracias por comprar en STREET WEAR.`;
     res.status(200).json(resp);
   } catch (error) {
     next(error);
   }
-};
+}
 
 const GetUserOrders = async (req, res, next) => {
   let resp = new ServiceResponse();
