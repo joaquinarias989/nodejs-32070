@@ -60,10 +60,21 @@ async function CreateOrder(req, res, next) {
     <ul>${prodsList}</ul>
     `;
     await SendEmailToAdmin(`Nuevo Pedido #${order.id}`, htmlEmail);
-    await SendWhatsappToAdmin(
-      `Nuevo Pedido #${order.id}`,
-      htmlEmail.replace('<br />', '\b')
-    );
+
+    const prodsListWpp = order.products.map((item) => `${item.title}; `);
+    const wppMsg = `¡Se ha realizado una nueva compra desde la Web!
+
+    Datos del Comprador:
+    Nombre y Apellido: ${buyer.name}
+    Email: ${buyer.email}
+    Provincia: ${buyer.province}
+    Dirección: ${buyer.address}
+    Nº Teléfono: ${buyer.phone}
+
+    Productos:
+    ${prodsListWpp}
+    `;
+    await SendWhatsappToAdmin(`Nuevo Pedido #${order.id}`, wppMsg);
     resp.data = order;
     resp.message = `Orden #${order.id} creada exitosamente! Gracias por comprar en STREET WEAR.`;
     res.status(200).json(resp);

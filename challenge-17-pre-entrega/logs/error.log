@@ -59,3 +59,5 @@
 2022-11-12T13:42:00.786Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
 2022-11-12T13:44:20.881Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
 2022-11-12T13:46:08.006Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: Error: ENOENT: no such file or directory, stat 'C:\JOAQUIN\PROGRAMACION\CODERHOUSE\Curso NODEjs\challenge-17-pre-entrega\src\routes\public\uploads\1668259941130_pulp fic.png'
+2022-11-12T22:03:34.764Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error: The 'To' number +3576412036 is not a valid phone number.
+2022-11-12T22:04:34.898Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError

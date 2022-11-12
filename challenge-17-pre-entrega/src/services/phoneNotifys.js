@@ -1,6 +1,6 @@
 const twilio = require('twilio');
-const ACCOUNT_SID = 'AC293609e1d206d88e8cf06d46015ef6e4';
-const AUTH_TOKEN = '05b816c88bc521551a355bb506768b6d';
+const ACCOUNT_SID = process.env.ACCOUNT_SID;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
 const TWILIO_SMS_PHONE_NUMBER = '+19702927147';
 const TWILIO_WPP_PHONE_NUMBER = '+14155238886';
 const ADMIN_PHONE_NUMBER = process.env.ADMIN_PHONE_NUMBER;
@@ -23,12 +23,13 @@ async function SendWhatsappToAdmin(subject, text) {
   const client = twilio(ACCOUNT_SID, AUTH_TOKEN);
   try {
     await client.messages.create({
-      body: `${subject}\b${text}`,
+      body: `${subject}
+      
+      ${text}`,
       from: `whatsapp:${TWILIO_WPP_PHONE_NUMBER}`,
       to: `whatsapp:${ADMIN_PHONE_NUMBER}`,
     });
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 }
