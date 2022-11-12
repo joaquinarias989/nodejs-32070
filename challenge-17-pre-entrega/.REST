@@ -18,10 +18,12 @@ Content-Type: application/json
 
 {
     "name": "Joaquin Arias",
+    "province": "Córdoba",
+    "postalCode": 5000,
     "address": "Calle 145",
     "age": 22,
     "phone": "+5435561287",
-    "avatar": "sagwerth3wghwg8541twe8h4wetg1sfs",
+    "avatar": "user.jpg",
     "email": "joaquinarias989@gmail.com",
     "password": "123"
 }
@@ -74,17 +76,17 @@ DELETE http://localhost:8080/api/products/6367ec668bc795c764973770
 
 
 ### get products of cart
-GET http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products
+GET http://localhost:8080/api/cart/636ee2f6cc6056cf8b2b7d3c/products
 
 ### create one cart
 POST http://localhost:8080/api/cart/ 
 
 ### add product by id to cart
-POST http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products
+POST http://localhost:8080/api/cart/636ee2f6cc6056cf8b2b7d3c/products
 Content-Type: application/json
 
 {
-    "idProduct": "634f1ed781bc4da564b13bd7"
+    "idProduct": "6367fdbe796f93cd8843e9a1"
 }
 
 ### delete cart by id
@@ -98,3 +100,24 @@ DELETE http://localhost:8080/api/cart/635675d0d28d647ec70754b8/products/634f1ed7
 ######################## ENV ########################
 
 GET http://localhost:8080/api/env/info
+
+
+######################## ORDERS ########################
+
+### create order
+POST http://localhost:8080/api/orders/
+Content-Type: application/json
+
+{
+    "idCart": "636ee2f6cc6056cf8b2b7d3c",
+    "buyer": {
+        "name": "Juan Ortegi",
+        "province": "Córdoba",
+        "postalCode": 5000,
+        "address": "Calle 145",
+        "phone": "+542245",
+        "email": "sdds@gmail.com",
+        "document": "23423388749"
+    }
+
+}

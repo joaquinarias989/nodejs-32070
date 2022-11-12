@@ -2,9 +2,9 @@ const router = require('express').Router();
 const {
   CreateOrder,
   GetUserOrders,
-} = require('../controllers/products.controller');
+} = require('../controllers/orders.controller');
 
-router.post('/:idCart', CreateOrder);
+router.post('/', CreateOrder);
 router.get('/:userId', GetUserOrders);
 
 module.exports = router;

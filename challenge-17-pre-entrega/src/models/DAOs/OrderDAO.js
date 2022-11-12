@@ -3,13 +3,13 @@ const orderSchema = require('../Schemas/Order');
 
 class OrderDAO extends MongoDBContainer {
   constructor() {
-    super('Order', cartSchema);
+    super('Order', orderSchema);
   }
 
-  async CreateOrder(cart) {
+  async CreateOrder(cart, buyer) {
     try {
       const newOrder = new this.model({
-        buyer: cart.userEmail,
+        buyer,
         products: cart.products,
         timestamp: new Date(),
       });

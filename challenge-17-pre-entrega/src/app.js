@@ -7,6 +7,7 @@ const routerAuth = require('./routes/auth.routes');
 const routerProds = require('./routes/products.routes');
 const routerCart = require('./routes/cart.routes');
 const routerEnv = require('./routes/env.routes');
+const routerOrders = require('./routes/orders.routes');
 const notFound = require('./middlewares/notFound');
 const handleErrors = require('./middlewares/handleErrors');
 const sessionConfig = require('./db/config');
@@ -35,6 +36,7 @@ app.use('/api/auth', routerAuth);
 app.use('/api/products', routerProds);
 app.use('/api/cart', routerCart);
 app.use('/api/env', routerEnv);
+app.use('/api/orders', routerOrders);
 
 app.use(notFound);
 app.use(handleErrors);

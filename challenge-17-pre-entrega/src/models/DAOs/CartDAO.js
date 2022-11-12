@@ -1,15 +1,16 @@
-const MongoDBContainer = require("../Containers/MongoDBContainer");
-const cartSchema = require("../Schemas/Cart");
+const MongoDBContainer = require('../Containers/MongoDBContainer');
+const cartSchema = require('../Schemas/Cart');
 
 class CartDAO extends MongoDBContainer {
   constructor() {
-    super("Cart", cartSchema);
+    super('Cart', cartSchema);
   }
 
-  async createCart() {
+  async createCart(userEmail) {
     try {
       const newCart = new this.model({
         products: [],
+        userEmail,
         timestamp: new Date(),
       });
       const savedCart = await newCart.save();

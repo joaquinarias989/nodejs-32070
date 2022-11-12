@@ -50,3 +50,7 @@
 2022-11-07T12:43:53.045Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
 2022-11-07T12:45:15.554Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
 2022-11-07T12:47:55.269Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-11T23:50:49.203Z [ERROR]: RUTA: /api/cart/, METODO: POST, ERROR: Error: ValidationError
+2022-11-11T23:59:49.219Z [ERROR]: RUTA: /api/cart/, METODO: POST, ERROR: TypeError: Assignment to constant variable.
+2022-11-12T00:35:20.497Z [WARN]: RUTA: /api/orders/, METODO: POST
+2022-11-12T00:37:30.880Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: ValidationError
