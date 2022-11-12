@@ -8,7 +8,6 @@ const OrderSchema = new Schema(
       email: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
         max: 254,
       },
@@ -18,6 +17,7 @@ const OrderSchema = new Schema(
       phone: { type: String, required: true, max: 40 },
       document: { type: String, required: true, max: 11 },
     },
+    idCart: { type: String, unique: true, required: true },
     products: { type: Array, required: true, defaultValue: [] },
     timestamp: { type: Date, required: true },
   },

@@ -11,17 +11,18 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function SendEmail(subject, html) {
+async function SendEmailToAdmin(subject, html) {
   const mailOptions = {
     from: 'StreetWear API',
     to: TEST_MAIL,
-    subject: subject,
-    html: '<h1 style="color: blue;">Contenido de prueba desde <span style="color: green;">Node.js con Nodemailer</span></h1>',
+    subject: `${subject} | STREET WEAR`,
+    html: html,
   };
 
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {
+    console.log(error);
     throw new Error(error);
   }
 }
@@ -45,4 +46,4 @@ async function SendEmailNewUser(user) {
   }
 }
 
-module.exports = { SendEmail, SendEmailNewUser };
+module.exports = { SendEmailToAdmin, SendEmailNewUser };

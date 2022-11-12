@@ -10,6 +10,7 @@ class OrderDAO extends MongoDBContainer {
     try {
       const newOrder = new this.model({
         buyer,
+        idCart: cart.id,
         products: cart.products,
         timestamp: new Date(),
       });

@@ -115,7 +115,7 @@ Content-Type: application/json
         "province": "Córdoba",
         "postalCode": 5000,
         "address": "Calle 145",
-        "phone": "+542245",
+        "phone": "+3576412036",
         "email": "sdds@gmail.com",
         "document": "23423388749"
     }

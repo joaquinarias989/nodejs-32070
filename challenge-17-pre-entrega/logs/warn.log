@@ -54,3 +54,20 @@
 2022-11-11T23:59:49.219Z [ERROR]: RUTA: /api/cart/, METODO: POST, ERROR: TypeError: Assignment to constant variable.
 2022-11-12T00:35:20.497Z [WARN]: RUTA: /api/orders/, METODO: POST
 2022-11-12T00:37:30.880Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: ValidationError
+2022-11-12T01:16:19.290Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:17:19.212Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:18:36.832Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:19:06.534Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:22:21.858Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:23:47.549Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:26:21.776Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: ValidationError
+2022-11-12T01:26:50.768Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:27:03.410Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:28:22.721Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:30:48.023Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: CastError
+2022-11-12T01:30:52.930Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: CastError
+2022-11-12T01:31:07.986Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:34:48.445Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:35:42.623Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:36:59.110Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:38:30.009Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
