@@ -1,6 +1,7 @@
 const express = require('express');
 const { arg } = require('./config');
 const cors = require('cors');
+const rootDir = require('path').resolve('./');
 const session = require('express-session');
 const passport = require('./middlewares/passport');
 const routerEnv = require('./routes/env.routes');
@@ -19,13 +20,13 @@ const app = express();
 app.set('port', arg.port);
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.FRONTEND_CLIENT_URI,
     credentials: true,
   })
 );
 
 //middlewares
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${rootDir}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig));

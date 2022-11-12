@@ -1,5 +1,5 @@
-require("dotenv").config();
-const parseArgs = require("minimist");
+require('dotenv').config();
+const parseArgs = require('minimist');
 
 let config = {
   DB_MONGO_ADMIN_USER: process.env.DB_MONGO_ADMIN_USER,
@@ -11,8 +11,8 @@ let config = {
 const args = process.argv.slice(2);
 
 const options = {
-  alias: { p: "port" },
-  default: { port: 8080 },
+  alias: { p: 'port' },
+  default: { port: process.env.PORT || 8080 },
 };
 
 arg = parseArgs(args, options);
