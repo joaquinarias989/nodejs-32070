@@ -58,7 +58,7 @@ passport.use(
           address,
           phone,
           password,
-          avatar,
+          avatar: req.file.filename,
         });
         return done(null, user);
       }
