@@ -71,3 +71,28 @@
 2022-11-12T01:35:42.623Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
 2022-11-12T01:36:59.110Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
 2022-11-12T01:38:30.009Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T13:12:04.922Z [WARN]: RUTA: /api/uploads/, METODO: POST
+2022-11-12T13:13:14.865Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: MulterError: Unexpected field
+2022-11-12T13:13:55.269Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: MulterError: Unexpected field
+2022-11-12T13:14:41.003Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Error: You can Only Upload Images!!
+2022-11-12T13:15:04.366Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: ReferenceError: info is not defined
+2022-11-12T13:16:57.544Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Error: You can Only Upload Images!!
+2022-11-12T13:18:06.070Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg
+2022-11-12T13:21:36.130Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg
+2022-11-12T13:32:40.253Z [WARN]: RUTA: /public/uploads/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:32:40.460Z [WARN]: RUTA: /favicon.ico, METODO: GET
+2022-11-12T13:32:56.767Z [WARN]: RUTA: /publicuploads/1668259941130_pulpfic.png, METODO: GET
+2022-11-12T13:33:03.216Z [WARN]: RUTA: /public/uploads/1668259941130_pulpfic.png, METODO: GET
+2022-11-12T13:33:21.799Z [WARN]: RUTA: /public/uploads/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:04.634Z [WARN]: RUTA: /uploads/images/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:12.662Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:24.935Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:36.013Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:37.512Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:51.681Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:59.863Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:40:31.865Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:41:16.101Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: Error: ENOENT: no such file or directory, stat 'C:\JOAQUIN\PROGRAMACION\CODERHOUSE\Curso NODEjs\challenge-17-pre-entrega\src\routes\public\uploads\1668259941130_pulp fic.png'
+2022-11-12T13:42:00.786Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:44:20.881Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:46:08.006Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: Error: ENOENT: no such file or directory, stat 'C:\JOAQUIN\PROGRAMACION\CODERHOUSE\Curso NODEjs\challenge-17-pre-entrega\src\routes\public\uploads\1668259941130_pulp fic.png'
