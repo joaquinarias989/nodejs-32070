@@ -45,8 +45,9 @@ const AddProduct = async (req, res, next) => {
   let resp = new ServiceResponse();
 
   try {
-    const { code, title, price, description, urlImg, color, stock, size } = req.body;
-    const prod = await products.save({
+    const { code, title, price, description, urlImg, color, stock, sizes } =
+      req.body;
+    const prod = await products.SaveProduct({
       code,
       title,
       price,
@@ -54,13 +55,13 @@ const AddProduct = async (req, res, next) => {
       urlImg,
       color,
       stock,
-      size,
+      sizes,
     });
 
     if (!prod) {
       resp.success = false;
       resp.message =
-        'Ya existe un producto con el código de producto ingresado.';
+        'Ya existe un producto con el Código de producto ingresado.';
       return res.status(400).json(resp);
     }
 
@@ -77,7 +78,7 @@ const UpdateProduct = async (req, res, next) => {
 
   try {
     let { id } = req.params;
-    const { title, price, description, urlImg, stock, size } = req.body;
+    const { title, price, description, urlImg, stock, sizes } = req.body;
     const prodToEdit = await products.getById(id);
 
     if (!prodToEdit) {
@@ -85,14 +86,14 @@ const UpdateProduct = async (req, res, next) => {
       resp.message = 'El producto intentas modificar no existe.';
       return res.status(404).json(resp);
     }
-    const isUpdated = await products.update({
+    const isUpdated = await products.UpdateProduct({
       id,
       title,
       price,
       description,
       urlImg,
       stock,
-      size,
+      sizes,
     });
     if (isUpdated) {
       resp.message = 'Producto modificado exitosamente!';

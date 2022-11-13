@@ -1,5 +1,6 @@
 const ServiceResponse = require('../models/ServiceResponse');
 const CartContainer = require('../models/DAOs/CartDAO');
+const ProductsContainer = require('../models/DAOs/ProductDAO');
 const OrderContainer = require('../models/DAOs/OrderDAO');
 const {
   SendSMSToBuyer,
@@ -7,6 +8,7 @@ const {
 } = require('../services/phoneNotifys');
 const { SendEmailToAdmin } = require('../services/emails');
 const Carts = new CartContainer();
+const Products = new ProductsContainer();
 const Orders = new OrderContainer();
 
 async function CreateOrder(req, res, next) {
@@ -18,9 +20,17 @@ async function CreateOrder(req, res, next) {
 
     if (!cart) {
       resp.success = false;
-      resp.message = 'El Carrito no existe.';
+      resp.message = 'El Carrito seleccionado no existe.';
       return res.status(404).json(resp);
     }
+
+    // const error = await Products.VerifyStockOfPurchase(cart.products);
+    // if (error != '') {
+    //   resp.success = false;
+    //   resp.message = error;
+    //   return res.status(400).json(resp);
+    // }
+
     let buyer;
     if (req.user) {
       const user = req.user;

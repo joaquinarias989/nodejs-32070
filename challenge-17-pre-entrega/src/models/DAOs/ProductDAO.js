@@ -6,8 +6,12 @@ class ProductDAO extends MongoDBContainer {
     super('Product', prodSchema);
   }
 
-  async save(obj) {
+  async SaveProduct(obj) {
     try {
+      let prodQuantities = [];
+      for (let i = 0; i < obj.sizes.length; i++) {
+        prodQuantities[i] = 0;
+      }
       const prod = new this.model({
         code: obj.code,
         title: obj.title,
@@ -16,11 +20,12 @@ class ProductDAO extends MongoDBContainer {
         urlImg: obj.urlImg,
         color: obj.color,
         stock: obj.stock,
-        size: obj.size,
+        sizes: obj.sizes,
+        quantities: prodQuantities, // this property is used only for Cart
         timestamp: new Date(),
       });
 
-      const prodExist = await this.getByCode(obj.code);
+      const prodExist = await this.GetProductByCode(obj.code);
       if (prodExist) return null;
 
       const savedProd = await prod.save();
@@ -29,8 +34,13 @@ class ProductDAO extends MongoDBContainer {
       throw new Error(error);
     }
   }
-  async update(obj) {
+
+  async UpdateProduct(obj) {
     try {
+      let prodQuantities = [];
+      for (let i = 0; i < obj.sizes.length; i++) {
+        prodQuantities[i] = 0;
+      }
       const updatedInfo = {
         title: obj.title,
         price: obj.price,
@@ -38,7 +48,8 @@ class ProductDAO extends MongoDBContainer {
         urlImg: obj.urlImg,
         color: obj.color,
         stock: obj.stock,
-        size: obj.size,
+        sizes: obj.sizes, // this property is used only for Cart
+        quantities: prodQuantities,
         timestamp: new Date(),
       };
       const updatedProd = await this.model.findByIdAndUpdate(
@@ -53,7 +64,7 @@ class ProductDAO extends MongoDBContainer {
     }
   }
 
-  async getByCode(code) {
+  async GetProductByCode(code) {
     try {
       const doc = await this.model.findOne({ code });
       if (!doc) return null;
@@ -61,6 +72,10 @@ class ProductDAO extends MongoDBContainer {
     } catch (error) {
       throw new Error(error.name);
     }
+  }
+
+  async VerifyStockOfPurchase(products) {
+    let error = '';
   }
 }
 

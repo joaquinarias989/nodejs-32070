@@ -15,7 +15,7 @@ async function SendSMSToBuyer(user) {
       to: user.phone,
     });
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 }
 
@@ -30,7 +30,7 @@ async function SendWhatsappToAdmin(subject, text) {
       to: `whatsapp:${ADMIN_PHONE_NUMBER}`,
     });
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 }
 

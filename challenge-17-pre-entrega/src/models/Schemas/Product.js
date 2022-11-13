@@ -9,8 +9,9 @@ const ProductSchema = new Schema(
     description: { type: String, required: false, max: 254 },
     urlImg: { type: String, required: true },
     color: { type: String, required: true },
-    size: { type: Array, required: true, defaultValue: [] },
+    sizes: { type: Array, required: true, defaultValue: [] },
     stock: { type: Array, required: true, defaultValue: [] },
+    quantities: { type: Array, required: true, defaultValue: [] },
     timestamp: { type: Date, required: true },
   },
   {

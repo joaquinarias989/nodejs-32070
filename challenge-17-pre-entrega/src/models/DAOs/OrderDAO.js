@@ -18,7 +18,7 @@ class OrderDAO extends MongoDBContainer {
 
       return savedOrder ? savedOrder : null;
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 }
