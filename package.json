@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node tests/performance/autocannon/benchmark.js",
     "dev-0x": "0x index.js",
-    "dev": "npx nodemon index.js"
+    "dev": "npx nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Joaquin Arias",
