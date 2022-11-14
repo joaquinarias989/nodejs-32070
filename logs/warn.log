@@ -3,3 +3,100 @@
 2022-10-29T13:54:48.594Z [WARN]: RUTA: /, METODO: GET
 2022-10-29T13:54:48.754Z [WARN]: RUTA: /favicon.ico, METODO: GET
 2022-10-29T13:55:12.270Z [WARN]: RUTA: /, METODO: GET
+2022-11-06T13:46:40.331Z [WARN]: RUTA: /favicon.ico, METODO: GET
+2022-11-06T16:40:29.479Z [WARN]: RUTA: /favicon.ico, METODO: GET
+2022-11-06T17:13:40.496Z [WARN]: RUTA: /api/products/categories/REM, METODO: GET
+2022-11-06T17:13:40.503Z [WARN]: RUTA: /api/products/categories/REM, METODO: GET
+2022-11-06T17:13:41.888Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:13:41.898Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:17.758Z [WARN]: RUTA: /api/products/categories/Buzos, METODO: GET
+2022-11-06T17:15:18.626Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:20.388Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:20.745Z [WARN]: RUTA: /api/products/categories/Buzos, METODO: GET
+2022-11-06T17:15:22.263Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:22.754Z [WARN]: RUTA: /api/products/categories/Buzos, METODO: GET
+2022-11-06T17:15:23.616Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:25.384Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:25.391Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:15:27.129Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:27.160Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:30.122Z [WARN]: RUTA: /api/products/categories/Buzos, METODO: GET
+2022-11-06T17:15:36.051Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:36.055Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:15:59.729Z [ERROR]: RUTA: /api/products/Categorias, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:16:05.609Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7s, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:16:05.621Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7s, METODO: GET, ERROR: Error: CastError
+2022-11-06T17:18:50.814Z [WARN]: RUTA: /api/products/categories/Remeras, METODO: GET
+2022-11-06T17:32:11.142Z [ERROR]: RUTA: /api/products/634f1ed781bc4da564b13bd7, METODO: PUT, ERROR: ReferenceError: size is not defined
+2022-11-06T18:28:22.400Z [WARN]: RUTA: /api/auth/login, METODO: GET
+2022-11-06T18:28:23.922Z [WARN]: RUTA: /favicon.ico, METODO: GET
+2022-11-06T18:30:35.948Z [ERROR]: RUTA: /api/products, METODO: POST, ERROR: Error: ValidationError: color: Path `color` is required.
+2022-11-06T18:43:39.199Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:43:39.274Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:44:04.689Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-06T18:44:04.944Z [ERROR]: RUTA: /api/products/6367fdbe796f93cd8843e9a1s, METODO: GET, ERROR: Error: CastError
+2022-11-07T12:24:48.329Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:26:37.885Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:26:41.049Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:01.530Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:17.370Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:28.550Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:28:43.032Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:29:49.208Z [ERROR]: RUTA: /api/auth/signUp, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:34:15.649Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:42:49.534Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:13.991Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:16.178Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:43:53.045Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 225
+2022-11-07T12:45:15.554Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-07T12:47:55.269Z [ERROR]: RUTA: /api/auth/login, METODO: POST, ERROR: SyntaxError: Unexpected token } in JSON at position 63
+2022-11-11T23:50:49.203Z [ERROR]: RUTA: /api/cart/, METODO: POST, ERROR: Error: ValidationError
+2022-11-11T23:59:49.219Z [ERROR]: RUTA: /api/cart/, METODO: POST, ERROR: TypeError: Assignment to constant variable.
+2022-11-12T00:35:20.497Z [WARN]: RUTA: /api/orders/, METODO: POST
+2022-11-12T00:37:30.880Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: ValidationError
+2022-11-12T01:16:19.290Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:17:19.212Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:18:36.832Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:19:06.534Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:22:21.858Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:23:47.549Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:26:21.776Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: ValidationError
+2022-11-12T01:26:50.768Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:27:03.410Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:28:22.721Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:30:48.023Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: CastError
+2022-11-12T01:30:52.930Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: CastError
+2022-11-12T01:31:07.986Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:34:48.445Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-12T01:35:42.623Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:36:59.110Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T01:38:30.009Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error
+2022-11-12T13:12:04.922Z [WARN]: RUTA: /api/uploads/, METODO: POST
+2022-11-12T13:13:14.865Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: MulterError: Unexpected field
+2022-11-12T13:13:55.269Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: MulterError: Unexpected field
+2022-11-12T13:14:41.003Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Error: You can Only Upload Images!!
+2022-11-12T13:15:04.366Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: ReferenceError: info is not defined
+2022-11-12T13:16:57.544Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Error: You can Only Upload Images!!
+2022-11-12T13:18:06.070Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg
+2022-11-12T13:21:36.130Z [ERROR]: RUTA: /api/uploads/image, METODO: POST, ERROR: Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg
+2022-11-12T13:32:40.253Z [WARN]: RUTA: /public/uploads/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:32:40.460Z [WARN]: RUTA: /favicon.ico, METODO: GET
+2022-11-12T13:32:56.767Z [WARN]: RUTA: /publicuploads/1668259941130_pulpfic.png, METODO: GET
+2022-11-12T13:33:03.216Z [WARN]: RUTA: /public/uploads/1668259941130_pulpfic.png, METODO: GET
+2022-11-12T13:33:21.799Z [WARN]: RUTA: /public/uploads/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:04.634Z [WARN]: RUTA: /uploads/images/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:12.662Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:24.935Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:36.013Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:37.512Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:51.681Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:39:59.863Z [WARN]: RUTA: /uploads/image/1668259941130_pulp%20fic.png, METODO: GET
+2022-11-12T13:40:31.865Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:41:16.101Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: Error: ENOENT: no such file or directory, stat 'C:\JOAQUIN\PROGRAMACION\CODERHOUSE\Curso NODEjs\challenge-17-pre-entrega\src\routes\public\uploads\1668259941130_pulp fic.png'
+2022-11-12T13:42:00.786Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:44:20.881Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: TypeError: path must be absolute or specify root to res.sendFile
+2022-11-12T13:46:08.006Z [ERROR]: RUTA: /api/uploads/image/1668259941130_pulp%20fic.png, METODO: GET, ERROR: Error: ENOENT: no such file or directory, stat 'C:\JOAQUIN\PROGRAMACION\CODERHOUSE\Curso NODEjs\challenge-17-pre-entrega\src\routes\public\uploads\1668259941130_pulp fic.png'
+2022-11-12T21:45:52.249Z [WARN]: RUTA: /api/cart/%20, METODO: POST
+2022-11-12T22:03:34.764Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: Error: The 'To' number +3576412036 is not a valid phone number.
+2022-11-12T22:04:34.898Z [ERROR]: RUTA: /api/orders/, METODO: POST, ERROR: Error: MongoServerError
+2022-11-14T00:22:31.197Z [WARN]: RUTA: /favicon.ico, METODO: GET

@@ -1,5 +1,5 @@
-const ServiceResponse = require("../models/ServiceResponse");
-const Container = require("../models/DAOs/ProductDAO");
+const ServiceResponse = require('../models/ServiceResponse');
+const Container = require('../models/DAOs/ProductDAO');
 const products = new Container();
 
 const GetProducts = async (req, res, next) => {
@@ -10,7 +10,7 @@ const GetProducts = async (req, res, next) => {
 
     if (!prods) {
       resp.success = false;
-      resp.message = "No hay productos en stock por el momento.";
+      resp.message = 'No hay productos en stock por el momento.';
       return res.status(404).json(resp);
     }
 
@@ -30,7 +30,7 @@ const GetProductById = async (req, res, next) => {
     const product = await products.getById(id);
     if (!product) {
       resp.success = false;
-      resp.message = "El producto que intentas buscar no existe.";
+      resp.message = 'El producto que intentas buscar no existe.';
       return res.status(404).json(resp);
     }
 
@@ -45,25 +45,28 @@ const AddProduct = async (req, res, next) => {
   let resp = new ServiceResponse();
 
   try {
-    const { code, title, price, description, urlImg, stock } = req.body;
-    const prod = await products.save({
+    const { code, title, price, description, urlImg, color, stock, sizes } =
+      req.body;
+    const prod = await products.SaveProduct({
       code,
       title,
       price,
       description,
       urlImg,
+      color,
       stock,
+      sizes,
     });
 
     if (!prod) {
       resp.success = false;
       resp.message =
-        "Ya existe un producto con el código de producto ingresado.";
+        'Ya existe un producto con el Código de producto ingresado.';
       return res.status(400).json(resp);
     }
 
     resp.data = prod;
-    resp.message = "Producto añadido exitosamente!";
+    resp.message = 'Producto añadido exitosamente!';
     res.status(200).json(resp);
   } catch (error) {
     next(error);
@@ -75,28 +78,29 @@ const UpdateProduct = async (req, res, next) => {
 
   try {
     let { id } = req.params;
-    const { title, price, description, urlImg, stock } = req.body;
+    const { title, price, description, urlImg, stock, sizes } = req.body;
     const prodToEdit = await products.getById(id);
 
     if (!prodToEdit) {
       resp.success = false;
-      resp.message = "El producto intentas modificar no existe.";
+      resp.message = 'El producto intentas modificar no existe.';
       return res.status(404).json(resp);
     }
-    const isUpdated = await products.update({
+    const isUpdated = await products.UpdateProduct({
       id,
       title,
       price,
       description,
       urlImg,
       stock,
+      sizes,
     });
     if (isUpdated) {
-      resp.message = "Producto modificado exitosamente!";
+      resp.message = 'Producto modificado exitosamente!';
       res.status(200).json(resp);
     } else {
       resp.success = false;
-      resp.message = "Error al modificar el Producto, verifique.";
+      resp.message = 'Error al modificar el Producto, verifique.';
       res.status(400).json(resp);
     }
   } catch (error) {
@@ -112,11 +116,11 @@ const DeleteProduct = async (req, res, next) => {
     const isDeleted = await products.deleteById(id);
     if (!isDeleted) {
       resp.success = false;
-      resp.message = "El producto que intentas eliminar, no existe.";
+      resp.message = 'El producto que intentas eliminar, no existe.';
       return res.status(404).json(resp);
     }
 
-    resp.message = "Producto eliminado exitosamente!";
+    resp.message = 'Producto eliminado exitosamente!';
     res.status(200).json(resp);
   } catch (error) {
     next(error);

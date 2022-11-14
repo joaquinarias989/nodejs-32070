@@ -1,31 +1,40 @@
-const MongoDBContainer = require("../Containers/MongoDBContainer");
-const userSchema = require("../Schemas/User");
-const bCrypt = require("bcrypt");
+const MongoDBContainer = require('../Containers/MongoDBContainer');
+const userSchema = require('../Schemas/User');
+const bCrypt = require('bcrypt');
+const logger = require('../../services/logger');
 
 class UserDAO extends MongoDBContainer {
   constructor() {
-    super("User", userSchema);
+    super('User', userSchema);
   }
 
   async registerUser(obj) {
+    console.log(obj);
     try {
       const user = new this.model({
-        username: obj.username,
+        name: obj.name,
+        email: obj.email,
+        province: obj.province,
+        postalCode: obj.postalCode,
+        address: obj.address,
+        phone: obj.phone,
+        avatar: obj.avatar,
         password: encryptPassword(obj.password),
       });
       const savedUser = await user.save();
       return savedUser;
     } catch (error) {
+      console.log(error);
       throw new Error(error.name);
     }
   }
 
   async verifyCredentials(obj) {
     try {
-      const { username, password } = obj;
-      const user = await this.model.findOne({ username });
+      const { email, password } = obj;
+      const user = await this.model.findOne({ email });
       if (!user || !isValidPassword(user, password)) {
-        console.log("Usuario y/o Contraseña incorrecta.");
+        console.log('Usuario y/o Contraseña incorrecta.');
         return null;
       }
 
@@ -35,8 +44,8 @@ class UserDAO extends MongoDBContainer {
     }
   }
 
-  async verifyUserExists(username) {
-    const existingUser = await this.model.findOne({ username });
+  async verifyUserExists(email) {
+    const existingUser = await this.model.findOne({ email: email });
     return existingUser ? true : false;
   }
 }

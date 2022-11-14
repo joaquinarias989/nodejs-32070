@@ -1,7 +1,7 @@
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
-const Container = require("../models/DAOs/UserDAO");
+const Container = require('../models/DAOs/UserDAO');
 const users = new Container();
 
 passport.serializeUser((user, done) => done(null, user));
@@ -9,32 +9,56 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
 passport.use(
-  "login",
-  new LocalStrategy(async (username, password, done) => {
-    let user = await users.verifyCredentials({
-      username,
-      password,
-    });
-    if (user) return done(null, user);
-    else return done(null, false);
-  })
+  'login',
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true,
+    },
+    async (req, email, password, done) => {
+      let user = await users.verifyCredentials({
+        email,
+        password,
+      });
+      if (user) return done(null, user);
+      else return done(null, false);
+    }
+  )
 );
 
 passport.use(
-  "signUp",
+  'signUp',
   new LocalStrategy(
     {
+      usernameField: 'email',
+      passwordField: 'password',
       passReqToCallback: true,
     },
-    async (req, username, password, done) => {
-      let userExist = await users.verifyUserExists(username);
+    async (req, email, password, done) => {
+      let userExist = await users.verifyUserExists(email);
       if (userExist) {
         return done(null, false);
       } else {
-        let { username, password } = req.body;
-        let user = await users.registerUser({
-          username,
+        let {
+          name,
+          email,
+          province,
+          postalCode,
+          address,
+          phone,
           password,
+          avatar,
+        } = req.body;
+        let user = await users.registerUser({
+          name,
+          email,
+          province,
+          postalCode,
+          address,
+          phone,
+          password,
+          avatar: req.file.filename,
         });
         return done(null, user);
       }

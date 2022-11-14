@@ -1,14 +1,15 @@
-const ServiceResponse = require("../models/ServiceResponse");
-const passport = require("../middlewares/passport");
+const ServiceResponse = require('../models/ServiceResponse');
+const passport = require('../middlewares/passport');
+const { SendEmailNewUser } = require('../services/emails');
 
-const Login = passport.authenticate("login", {
-  successRedirect: "/api/auth/login-success",
-  failureRedirect: "/api/auth/login-error",
+const Login = passport.authenticate('login', {
+  successRedirect: '/api/auth/login-success',
+  failureRedirect: '/api/auth/login-error',
 });
 
-const SignUp = passport.authenticate("signUp", {
-  successRedirect: "/api/auth/signUp-success",
-  failureRedirect: "/api/auth/signUp-error",
+const SignUp = passport.authenticate('signUp', {
+  successRedirect: '/api/auth/signUp-success',
+  failureRedirect: '/api/auth/signUp-error',
 });
 
 const Logout = async (req, res, next) => {
@@ -16,14 +17,14 @@ const Logout = async (req, res, next) => {
 
   try {
     if (req.user) {
-      const { username } = req.user;
+      const { name } = req.user;
       req.logout(() => {
-        resp.message = `Hasta pronto ${username}!`;
+        resp.message = `Hasta pronto ${name}!`;
         res.status(200).json(resp);
       });
     } else {
       resp.success = false;
-      resp.message = "Aún no has iniciado sesión.";
+      resp.message = 'Aún no has iniciado sesión.';
       res.status(401).json(resp);
     }
   } catch (error) {
@@ -56,9 +57,8 @@ const GetUserAuthenticated = async (req, res, next) => {
       resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
       res.status(401).json(resp);
     } else {
-      const { username } = req.user;
+      resp.data = req.user;
       resp.success = true;
-      resp.data = username;
       res.status(200).json(resp);
     }
   } catch (error) {
@@ -68,21 +68,26 @@ const GetUserAuthenticated = async (req, res, next) => {
 
 const HandleLoginSuccess = async (req, res, next) => {
   const resp = new ServiceResponse();
-  resp.message = "Sesión iniciada exitosamente";
+  resp.data = req.user;
+  resp.message = 'Sesión iniciada exitosamente';
 
   res.status(200).json(resp);
 };
 const HandleLoginError = async (req, res, next) => {
   const resp = new ServiceResponse();
   resp.success = false;
-  resp.message = "Usuario y/o contraseña incorrecta.";
+  resp.message = 'Usuario y/o contraseña incorrecta.';
 
   res.status(400).json(resp);
 };
 
 const HandleSignUpSuccess = async (req, res, next) => {
   const resp = new ServiceResponse();
-  resp.message = "Usuario registrado exitosamente";
+  const user = req.user;
+
+  await SendEmailNewUser(user);
+  resp.data = user;
+  resp.message = 'Te has registrado exitosamente!';
 
   res.status(200).json(resp);
 };
@@ -90,7 +95,7 @@ const HandleSignUpError = async (req, res, next) => {
   const resp = new ServiceResponse();
   resp.success = false;
   resp.message =
-    "Error al registrar el usuario. Por favor, intente nuevamente.";
+    'Algo salió mal al intentar registrarte en nuestro Sistema. Por favor, intenta nuevamente.';
 
   res.status(400).json(resp);
 };
