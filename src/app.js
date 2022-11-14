@@ -18,12 +18,25 @@ const app = express();
 
 //setings
 app.set('port', arg.port);
-app.use(
-  cors({
-    origin: process.env.FRONTEND_CLIENT_URI,
-    credentials: true,
-  })
-);
+//app.use(
+//  cors({
+//    origin: process.env.FRONTEND_CLIENT_URI,
+//    credentials: true,
+//  })
+//);
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_CLIENT_URI);
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 
 //middlewares
 app.use(express.static(`${rootDir}/public`));
