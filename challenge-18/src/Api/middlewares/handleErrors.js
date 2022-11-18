@@ -1,4 +1,4 @@
-const logger = require('../services/logger');
+const logger = require('../services/logger.service');
 const ServiceResponse = require('../../Models/ServiceResponse');
 
 module.exports = (error, req, res, next) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const { config } = require('../Api/config');
-const logger = require('../Api/services/logger');
+const logger = require('../Api/services/logger.service');
 
 // DB
 mongoose

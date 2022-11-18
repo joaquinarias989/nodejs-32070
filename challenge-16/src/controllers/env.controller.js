@@ -1,10 +1,10 @@
-const logger = require("../services/logger");
-const { arg } = require("../config");
+const logger = require('../services/logger.service');
+const { arg } = require('../config');
 
 const GetProyectInfo = async (req, res, next) => {
   try {
     logger.log(
-      "info",
+      'info',
       `RUTA: api/env${req.originalUrl}, METODO: ${req.method}`
     );
 

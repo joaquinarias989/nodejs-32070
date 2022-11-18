@@ -1,7 +1,7 @@
 const MongoDBContainer = require('../Containers/MongoDBContainer');
 const userSchema = require('../Schemas/User');
 const bCrypt = require('bcrypt');
-const logger = require('../../services/logger');
+const logger = require('../../services/logger.service');
 
 class UserDAO extends MongoDBContainer {
   constructor() {

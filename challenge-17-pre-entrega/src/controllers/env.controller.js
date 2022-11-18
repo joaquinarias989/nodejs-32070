@@ -1,4 +1,4 @@
-const logger = require('../services/logger');
+const logger = require('../services/logger.service');
 const { arg } = require('../config');
 
 const GetProyectInfo = async (req, res, next) => {

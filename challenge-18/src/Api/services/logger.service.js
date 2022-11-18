@@ -1,4 +1,4 @@
-const { createLogger, transports, format } = require("winston");
+const { createLogger, transports, format } = require('winston');
 
 const customFormat = format.combine(
   format.timestamp(),
@@ -9,16 +9,16 @@ const customFormat = format.combine(
 
 const logger = createLogger({
   format: customFormat,
-  level: "info",
+  level: 'info',
   transports: [
-    new transports.Console({ level: "info" }),
+    new transports.Console({ level: 'info' }),
     new transports.File({
-      filename: "logs/warn.log",
-      level: "warn",
+      filename: 'logs/warn.log',
+      level: 'warn',
     }),
     new transports.File({
-      filename: "logs/error.log",
-      level: "error",
+      filename: 'logs/error.log',
+      level: 'error',
     }),
   ],
 });
