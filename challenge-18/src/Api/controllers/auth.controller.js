@@ -1,6 +1,6 @@
 const ServiceResponse = require('../../Models/ServiceResponse');
 const passport = require('../middlewares/passport');
-const { SendEmailNewUser } = require('../services/externals/emails');
+const { SendEmailNewUser } = require('../services/externals/emails.service');
 
 const Login = passport.authenticate('login', {
   successRedirect: '/api/auth/login-success',

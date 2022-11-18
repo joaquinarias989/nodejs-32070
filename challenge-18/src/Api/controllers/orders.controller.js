@@ -5,8 +5,8 @@ const OrderContainer = require('../../DataAccess/DAOs/OrderDAO');
 const {
   SendSMSToBuyer,
   SendWhatsappToAdmin,
-} = require('../services/externals/phoneNotifys');
-const { SendEmailToAdmin } = require('../services/externals/emails');
+} = require('../services/externals/phoneNotifys.service');
+const { SendEmailToAdmin } = require('../services/externals/emails.service');
 const Carts = new CartContainer();
 const Products = new ProductsContainer();
 const Orders = new OrderContainer();
