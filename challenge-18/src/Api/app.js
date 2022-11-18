@@ -12,7 +12,7 @@ const routerOrders = require('./routes/orders.routes');
 const routerUploads = require('./routes/uploads.routes');
 const notFound = require('./middlewares/notFound');
 const handleErrors = require('./middlewares/handleErrors');
-const sessionConfig = require('./db/config');
+const sessionConfig = require('../DataAccess/dbConfig');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-//middlewares
+//routes & middlewares
 app.use(express.static(`${rootDir}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,5 +1,5 @@
-require("../../db/config");
-const mongoose = require("mongoose");
+require('../dbConfig');
+const mongoose = require('mongoose');
 
 class MongoDBContainer {
   constructor(collectionName, schema) {

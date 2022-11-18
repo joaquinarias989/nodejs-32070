@@ -1,12 +1,12 @@
-const ServiceResponse = require('../models/ServiceResponse');
-const CartContainer = require('../models/DAOs/CartDAO');
-const ProductsContainer = require('../models/DAOs/ProductDAO');
-const OrderContainer = require('../models/DAOs/OrderDAO');
+const ServiceResponse = require('../../Models/ServiceResponse');
+const CartContainer = require('../../DataAccess/DAOs/CartDAO');
+const ProductsContainer = require('../../DataAccess/DAOs/ProductDAO');
+const OrderContainer = require('../../DataAccess/DAOs/OrderDAO');
 const {
   SendSMSToBuyer,
   SendWhatsappToAdmin,
-} = require('../services/phoneNotifys');
-const { SendEmailToAdmin } = require('../services/emails');
+} = require('../services/externals/phoneNotifys');
+const { SendEmailToAdmin } = require('../services/externals/emails');
 const Carts = new CartContainer();
 const Products = new ProductsContainer();
 const Orders = new OrderContainer();

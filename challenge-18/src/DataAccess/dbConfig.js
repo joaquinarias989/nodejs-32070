@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo");
-const { config } = require("../config");
-const logger = require("../services/logger");
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
+const { config } = require('../Api/config');
+const logger = require('../Api/services/logger');
 
 // DB
 mongoose
@@ -9,7 +9,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB connected!"))
+  .then(() => console.log('MongoDB connected!'))
   .catch((err) => logger.error(err));
 
 // SESSIONS CONFIG

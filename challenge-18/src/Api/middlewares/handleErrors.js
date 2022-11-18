@@ -1,5 +1,5 @@
 const logger = require('../services/logger');
-const ServiceResponse = require('../models/ServiceResponse');
+const ServiceResponse = require('../../Models/ServiceResponse');
 
 module.exports = (error, req, res, next) => {
   logger.log(

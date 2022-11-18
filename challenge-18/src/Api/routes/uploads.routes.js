@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { upload } = require('../services/uploads');
+const { upload } = require('../services/uploads.service');
 const {
   UploadImage,
   UploadImages,

@@ -1,6 +1,6 @@
-const ServiceResponse = require('../models/ServiceResponse');
-const CartContainer = require('../models/DAOs/CartDAO');
-const ProdsContainer = require('../models/DAOs/ProductDAO');
+const ServiceResponse = require('../../Models/ServiceResponse');
+const CartContainer = require('../../DataAccess/DAOs/CartDAO');
+const ProdsContainer = require('../../DataAccess/DAOs/ProductDAO');
 const Carts = new CartContainer();
 const Products = new ProdsContainer();
 

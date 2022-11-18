@@ -1,5 +1,5 @@
-const ServiceResponse = require('../models/ServiceResponse');
-const Container = require('../models/DAOs/ProductDAO');
+const ServiceResponse = require('../../Models/ServiceResponse');
+const Container = require('../../DataAccess/DAOs/ProductDAO');
 const products = new Container();
 
 const GetProducts = async (req, res, next) => {

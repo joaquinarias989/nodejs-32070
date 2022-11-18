@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const uploads = require('../middlewares/uploads');
-const { upload } = require('../services/uploads');
+const { upload } = require('../services/uploads.service');
 const {
   Login,
   Logout,

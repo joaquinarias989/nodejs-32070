@@ -1,4 +1,4 @@
-const ServiceResponse = require('../models/ServiceResponse');
+const ServiceResponse = require('../../Models/ServiceResponse');
 const rootDir = require('path').resolve('./');
 
 async function UploadImage(req, res, next) {

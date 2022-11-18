@@ -1,4 +1,4 @@
-const ServiceResponse = require('../models/ServiceResponse');
+const ServiceResponse = require('../../Models/ServiceResponse');
 
 module.exports = (req, res, next) => {
   let resp = new ServiceResponse();
