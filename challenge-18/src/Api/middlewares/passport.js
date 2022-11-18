@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const Container = require('../../Models/ServiceResponse');
+const Container = require('../../DataAccess/DAOs/UserDAO');
 const users = new Container();
 
 passport.serializeUser((user, done) => done(null, user));

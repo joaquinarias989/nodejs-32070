@@ -1,7 +1,6 @@
 const MongoDBContainer = require('../Containers/MongoDBContainer');
 const userSchema = require('../Schemas/User');
 const bCrypt = require('bcrypt');
-const logger = require('../../services/logger.service');
 
 class UserDAO extends MongoDBContainer {
   constructor() {
@@ -9,7 +8,6 @@ class UserDAO extends MongoDBContainer {
   }
 
   async registerUser(obj) {
-    console.log(obj);
     try {
       const user = new this.model({
         name: obj.name,
@@ -24,7 +22,6 @@ class UserDAO extends MongoDBContainer {
       const savedUser = await user.save();
       return savedUser;
     } catch (error) {
-      console.log(error);
       throw new Error(error.name);
     }
   }
@@ -40,6 +37,7 @@ class UserDAO extends MongoDBContainer {
 
       return user;
     } catch (error) {
+      console.log(error);
       throw new Error(error.name);
     }
   }

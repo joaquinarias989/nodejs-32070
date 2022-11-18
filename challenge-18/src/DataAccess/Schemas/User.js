@@ -3,10 +3,14 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {
-    name: { type: String, required: true, max: 50 },
+    name: {
+      type: String,
+      required: [true, 'Campo requerido'],
+      max: [50, 'Ingrese 50 caracteres como máximo'],
+    },
     email: {
       type: String,
-      required: true,
+      required: [true, 'Campo requerido'],
       unique: true,
       trim: true,
       max: 254,
