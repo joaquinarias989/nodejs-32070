@@ -11,7 +11,8 @@ class ProductDAO extends MongoDBContainer {
       const prodExist = await this.GetProductByCode(prod.code);
       if (prodExist) return null;
 
-      const savedProd = await prod.save();
+      const prodToSave = this.model({ ...prod, timestamp: new Date() });
+      const savedProd = await prodToSave.save();
       return savedProd;
     } catch (error) {
       throw new Error(error);

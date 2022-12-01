@@ -93,7 +93,7 @@ async function UpdateProduct(req) {
 
   try {
     let { id } = req.params;
-    const { title, price, description, urlImg, stock, sizes } = req.body;
+    const { title, price, description, urlImg, color, stock, sizes } = req.body;
     const prodToEdit = await Products.GetById(id);
 
     if (!prodToEdit) {
@@ -143,7 +143,6 @@ async function DeleteProduct(id) {
   let resp = new ServiceResponse();
 
   try {
-    let { id } = req.params;
     const isDeleted = await Products.DeleteById(id);
     if (!isDeleted) {
       resp.success = false;
