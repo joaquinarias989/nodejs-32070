@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/performance/autocannon/benchmark.js",
+    "dev": "npx nodemon index.js",
     "dev-0x": "0x index.js",
-    "dev": "npx nodemon index.js"
+    "test-performance": "node tests/performance/autocannon/benchmark.js",
+    "test-functionalities-axios": "node tests/functionalities/axios/axios.test.js"
   },
   "keywords": [],
   "author": "Joaquin Arias",
   "license": "ISC",
   "dependencies": {
     "autocannon": "7.10.0",
+    "axios": "^1.2.0",
     "bcrypt": "5.1.0",
     "compression": "1.7.4",
     "connect-mongo": "4.6.0",
