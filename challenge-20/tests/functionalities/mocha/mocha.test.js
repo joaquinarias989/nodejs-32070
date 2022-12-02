@@ -122,7 +122,7 @@ describe('------------ Products Test ------------', () => {
   });
 
   describe('-- DELETE --', () => {
-    it('deberia ELIMINAR el producto cargado anteriormete', async () => {
+    it('should delete product whit the id entered', async () => {
       let response = await request.delete(`/products/${ID_PROD_FOR_TEST}`);
       expect(response.status).to.eql(200);
       expect(response.body).to.eql({
