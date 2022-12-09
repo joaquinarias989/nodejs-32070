@@ -19,13 +19,13 @@ type Delete{
     delete: String
 }
 input InputProduct {
-    nombre: String,
-    precio: Decimal,
-    foto: String,
+    title: String,
+    price: Decimal,
+    urlImg: String,
 }
 type Query {
     GetAllProducts(title: String, price: Decimal, urlImg: String): [Product],
-    GetProductById(id: String): Producto,
+    GetProductById(id: String): Product,
 }
 type Mutation {
     AddProduct(data: InputProduct): Product
