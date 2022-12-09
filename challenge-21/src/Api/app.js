@@ -1,4 +1,5 @@
 const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
 const { arg } = require('./config');
 const cors = require('cors');
 const rootDir = require('path').resolve('./');
@@ -7,6 +8,7 @@ const passport = require('./middlewares/passport');
 const routerEnv = require('./routes/env.routes');
 const routerAuth = require('./routes/auth.routes');
 const routerProds = require('./routes/products.routes');
+const routerProdsGraphQL = require('./routes/products-graphql.routes');
 const routerCart = require('./routes/cart.routes');
 const routerOrders = require('./routes/orders.routes');
 const routerUploads = require('./routes/uploads.routes');
@@ -24,6 +26,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use('/products-graphQL', graphqlHTTP(routerProdsGraphQL));
 
 //routes & middlewares
 app.use(express.static(`${rootDir}/public`));
