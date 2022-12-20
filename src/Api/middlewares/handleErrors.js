@@ -7,14 +7,14 @@ module.exports = (error, req, res, next) => {
   );
 
   error.success = false;
-  const errorData = error.data.toString();
-  if (errorData.includes('CastError')) {
+  const errorData = error.data?.toString();
+  if (errorData?.includes('CastError')) {
     error.message = 'Debes ingresar un ID válido.';
     res.status(400).json(error);
-  } else if (errorData.includes('duplicate key')) {
+  } else if (errorData?.includes('duplicate key')) {
     error.message = 'El elemento que intentas añadir ya existe';
     res.status(400).json(error);
-  } else if (errorData.includes('format')) {
+  } else if (errorData?.includes('format')) {
     error.message = errorData;
     res.status(400).json(error);
   } else {
