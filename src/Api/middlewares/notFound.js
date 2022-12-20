@@ -1,8 +1,13 @@
 const logger = require('../services/logger.service');
+const ServiceResponse = require('../../Models/ServiceResponse');
 
 module.exports = (req, res, next) => {
   logger.log('warn', `RUTA: ${req.path}, METODO: ${req.method}`);
-  res
-    .status(404)
-    .json({ error: 'The endpoint you are trying to access does not exist' });
+
+  let resp = new ServiceResponse();
+  resp.status = 404;
+  resp.success = false;
+  resp.message = 'El endpoint que intentas consumir no existe';
+
+  res.status(resp.status).json(resp);
 };
