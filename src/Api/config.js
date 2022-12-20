@@ -8,13 +8,13 @@ let config = {
   SESSION_SECRET_KEY: process.env.SESSION_SECRET_KEY,
 };
 
-const args = process.argv.slice(2);
+let args = process.argv.slice(2);
 
-const options = {
+let options = {
   alias: { p: 'port' },
   default: { port: process.env.PORT || 8080 },
 };
 
-arg = parseArgs(args, options);
+let arg = parseArgs(args, options);
 
 module.exports = { config, arg };
