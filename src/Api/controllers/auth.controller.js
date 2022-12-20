@@ -1,4 +1,5 @@
 const ServiceResponse = require('../../Models/ServiceResponse');
+const authService = require('../services/auth.service');
 const passport = require('../middlewares/passport');
 const { SendEmailNewUser } = require('../services/externals/emails.service');
 
@@ -12,28 +13,17 @@ const SignUp = passport.authenticate('signUp', {
   failureRedirect: '/api/auth/signUp-error',
 });
 
-const Logout = async (req, res, next) => {
-  const resp = new ServiceResponse();
-
+async function Logout(req, res, next) {
   try {
-    if (req.user) {
-      const { name } = req.user;
-      req.logout(() => {
-        resp.message = `Hasta pronto ${name}!`;
-        res.status(200).json(resp);
-      });
-    } else {
-      resp.success = false;
-      resp.message = 'Aún no has iniciado sesión.';
-      res.status(401).json(resp);
-    }
+    let resp = await authService.Logout(req);
+    res.status(resp.status).json(resp);
   } catch (error) {
     next(error);
   }
-};
+}
 
-const VerifyUserAuthenticated = async (req, res, next) => {
-  const resp = new ServiceResponse();
+async function VerifyUserAuthenticated(req, res, next) {
+  let resp = new ServiceResponse();
 
   try {
     if (!req.isAuthenticated()) {
@@ -44,23 +34,17 @@ const VerifyUserAuthenticated = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message =
+      'Error al verificar el Usuario autenticado. Por favor, intente nuevamente.';
+    next(resp);
   }
-};
+}
 
 const GetUserAuthenticated = async (req, res, next) => {
-  const resp = new ServiceResponse();
-
   try {
-    if (!req.user) {
-      resp.success = false;
-      resp.message = `No has iniciado sesión, o la misma ha vencido. Por favor, ingresa nuevamente.`;
-      res.status(401).json(resp);
-    } else {
-      resp.data = req.user;
-      resp.success = true;
-      res.status(200).json(resp);
-    }
+    let resp = await authService.GetUserAuthenticated(req);
+    res.status(resp.status).json(resp);
   } catch (error) {
     next(error);
   }

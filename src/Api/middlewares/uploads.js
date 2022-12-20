@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
     }
     next();
   } catch (error) {
-    next(error);
+    resp.data = error;
+    throw resp;
   }
 };

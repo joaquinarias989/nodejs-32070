@@ -7,26 +7,20 @@ class UserDAO extends MongoDBContainer {
     super('User', userSchema);
   }
 
-  async registerUser(obj) {
+  async RegisterUser(userDTO) {
     try {
       const user = new this.model({
-        name: obj.name,
-        email: obj.email,
-        province: obj.province,
-        postalCode: obj.postalCode,
-        address: obj.address,
-        phone: obj.phone,
-        avatar: obj.avatar,
-        password: encryptPassword(obj.password),
+        ...userDTO,
+        password: encryptPassword(userDTO.password),
       });
       const savedUser = await user.save();
       return savedUser;
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 
-  async verifyCredentials(obj) {
+  async VerifyCredentials(obj) {
     try {
       const { email, password } = obj;
       const user = await this.model.findOne({ email });

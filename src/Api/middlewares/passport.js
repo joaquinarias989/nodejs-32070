@@ -1,8 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const UserDTO = require('../../DataAccess/DTOs/UserDTO');
 const Container = require('../../DataAccess/DAOs/UserDAO');
-const users = new Container();
+const Users = new Container();
 
 passport.serializeUser((user, done) => done(null, user));
 
@@ -17,7 +17,7 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, email, password, done) => {
-      let user = await users.verifyCredentials({
+      let user = await Users.VerifyCredentials({
         email,
         password,
       });
@@ -36,32 +36,23 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, email, password, done) => {
-      let userExist = await users.verifyUserExists(email);
-      if (userExist) {
-        return done(null, false);
-      } else {
-        let {
-          name,
-          email,
-          province,
-          postalCode,
-          address,
-          phone,
-          password,
-          avatar,
-        } = req.body;
-        let user = await users.registerUser({
-          name,
-          email,
-          province,
-          postalCode,
-          address,
-          phone,
-          password,
-          avatar: req.file.filename,
-        });
-        return done(null, user);
-      }
+      let userExist = await Users.verifyUserExists(email);
+      if (userExist) return done(null, false);
+
+      let { name, province, postalCode, address, phone } = req.body;
+      const userToSave = new UserDTO({
+        name,
+        email,
+        province,
+        postalCode,
+        address,
+        phone,
+        password,
+        avatar: req.file.filename,
+      });
+      let userSaved = await Users.RegisterUser(userToSave);
+
+      return done(null, userSaved);
     }
   )
 );
