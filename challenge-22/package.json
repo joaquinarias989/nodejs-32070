@@ -1,0 +1,43 @@
+{
+  "name": "challenge-22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon index.js",
+    "dev-0x": "0x index.js",
+    "test-performance": "node tests/performance/autocannon/benchmark.js",
+    "test-functionalities-axios": "node tests/functionalities/axios/axios.test.js"
+  },
+  "keywords": [],
+  "author": "Joaquin Arias",
+  "license": "ISC",
+  "dependencies": {
+    "autocannon": "7.10.0",
+    "axios": "1.2.0",
+    "bcrypt": "5.1.0",
+    "chai": "4.3.7",
+    "compression": "1.7.4",
+    "connect-mongo": "4.6.0",
+    "cors": "2.8.5",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "express-session": "1.17.3",
+    "koa": "^2.14.1",
+    "koa-body": "^6.0.1",
+    "koa-cors": "^0.0.16",
+    "koa-passport": "^5.0.0",
+    "koa-router": "^12.0.0",
+    "koa-session": "^6.2.0",
+    "koa-static": "^5.0.0",
+    "minimist": "1.2.7",
+    "mongoose": "6.6.5",
+    "multer": "1.4.5-lts.1",
+    "nodemailer": "6.8.0",
+    "passport": "0.6.0",
+    "passport-local": "1.0.0",
+    "supertest": "6.3.1",
+    "twilio": "3.83.2",
+    "winston": "3.8.2"
+  }
+}
