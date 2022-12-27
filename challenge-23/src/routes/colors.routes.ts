@@ -1,7 +1,7 @@
 import { Router } from '../../deps.ts';
 
-const router = new Router().get('/color-example', (ctx) => {
-  ctx.response.body = 'Hello World!';
+const router = new Router().get('/', (ctx) => {
+  ctx.response.body = 'Prueba API con DENO';
 });
 
 export default router;
