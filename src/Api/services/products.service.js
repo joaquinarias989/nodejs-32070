@@ -47,12 +47,43 @@ async function GetProductById(id) {
   }
 }
 
+async function GetProductsByCategory(category) {
+  let resp = new ServiceResponse();
+
+  try {
+    const prods = await Products.GetProductsByCategory(category);
+    if (!prods) {
+      resp.success = false;
+      resp.status = 404;
+      resp.message = 'No hemos encontrado coincidencias con su búsqueda.';
+      return resp;
+    }
+
+    resp.data = prods;
+    return resp;
+  } catch (error) {
+    resp.data = error;
+    resp.message =
+      'Error al Consultar los Productos. Por favor, intente nuevamente.';
+    throw resp;
+  }
+}
+
 async function AddProduct(req) {
   let resp = new ServiceResponse();
 
   try {
-    const { code, title, price, description, urlImg, color, stock, sizes } =
-      req;
+    const {
+      code,
+      title,
+      price,
+      description,
+      urlImg,
+      color,
+      category,
+      stock,
+      sizes,
+    } = req;
     const prod = new ProductDTO({
       code,
       title,
@@ -60,6 +91,7 @@ async function AddProduct(req) {
       description,
       urlImg,
       color,
+      category,
       stock,
       sizes,
     });
@@ -93,7 +125,8 @@ async function UpdateProduct(req) {
 
   try {
     let { id } = req.params;
-    const { title, price, description, urlImg, color, stock, sizes } = req.body;
+    const { title, price, description, urlImg, color, category, stock, sizes } =
+      req.body;
     const prodToEdit = await Products.GetById(id);
 
     if (!prodToEdit) {
@@ -109,6 +142,7 @@ async function UpdateProduct(req) {
       description,
       urlImg,
       color,
+      category,
       stock,
       sizes,
     });
@@ -164,6 +198,7 @@ async function DeleteProduct(id) {
 module.exports = {
   GetAllProducts,
   GetProductById,
+  GetProductsByCategory,
   AddProduct,
   UpdateProduct,
   DeleteProduct,

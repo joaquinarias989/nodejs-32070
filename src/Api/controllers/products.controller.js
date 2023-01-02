@@ -18,6 +18,15 @@ async function GetProductById(req, res, next) {
   }
 }
 
+async function GetProductsByCategory(req, res, next) {
+  try {
+    let resp = await prodService.GetProductsByCategory(req.params.category);
+    res.status(resp.status).json(resp);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function AddProduct(req, res, next) {
   try {
     let resp = await prodService.AddProduct(req.body);
@@ -48,6 +57,7 @@ async function DeleteProduct(req, res, next) {
 module.exports = {
   GetAllProducts,
   GetProductById,
+  GetProductsByCategory,
   AddProduct,
   UpdateProduct,
   DeleteProduct,

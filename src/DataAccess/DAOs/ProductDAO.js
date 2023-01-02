@@ -44,6 +44,16 @@ class ProductDAO extends MongoDBContainer {
       throw new Error(error);
     }
   }
+
+  async GetProductsByCategory(category) {
+    try {
+      let docs = await this.model.find({ category });
+      if (!docs || !docs.length) return null;
+      return docs;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
 
 module.exports = ProductDAO;

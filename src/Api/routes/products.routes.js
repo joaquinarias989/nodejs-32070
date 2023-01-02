@@ -3,13 +3,15 @@ const { VerifyUserAuthenticated } = require('../controllers/auth.controller');
 const {
   GetAllProducts,
   GetProductById,
+  GetProductsByCategory,
   AddProduct,
   UpdateProduct,
   DeleteProduct,
 } = require('../controllers/products.controller');
 
 router.get('/', GetAllProducts);
-router.get('/:id', GetProductById);
+router.get('/product/:id', GetProductById);
+router.get('/:category', GetProductsByCategory);
 
 if (process.env.ENV === 'TEST') {
   router.post('/', AddProduct);
