@@ -38,7 +38,6 @@ passport.use(
     async (req, email, password, done) => {
       let userExist = await Users.verifyUserExists(email);
       if (userExist) return done(null, false);
-
       let { name, province, postalCode, address, phone } = req.body;
       const userToSave = new UserDTO({
         name,
@@ -50,7 +49,10 @@ passport.use(
         password,
         avatar: req.file.filename,
       });
+
+      console.log(userToSave);
       let userSaved = await Users.RegisterUser(userToSave);
+      console.log(userSaved);
 
       return done(null, userSaved);
     }

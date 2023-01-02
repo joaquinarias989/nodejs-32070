@@ -19,10 +19,10 @@ router.post('/signUp', upload.single('avatar'), uploads, SignUp);
 
 router.get('/user-logued', GetUserAuthenticated);
 
-router.get('/login-success', HandleLoginSuccess);
-router.get('/login-error', HandleLoginError);
+router.post('/login/success', VerifyUserAuthenticated, HandleLoginSuccess);
+router.post('/login/error', HandleLoginError);
 
-router.get('/signUp-success', HandleSignUpSuccess);
-router.get('/signUp-error', HandleSignUpError);
+router.post('/signUp/success', VerifyUserAuthenticated, HandleSignUpSuccess);
+router.post('/signUp/error', HandleSignUpError);
 
 module.exports = router;

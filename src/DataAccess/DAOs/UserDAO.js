@@ -32,12 +32,12 @@ class UserDAO extends MongoDBContainer {
       return user;
     } catch (error) {
       console.log(error);
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 
   async verifyUserExists(email) {
-    const existingUser = await this.model.findOne({ email: email });
+    const existingUser = await this.model.findOne({ email });
     return existingUser ? true : false;
   }
 }
