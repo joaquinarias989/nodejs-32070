@@ -17,13 +17,13 @@ class CartDAO extends MongoDBContainer {
 
       return savedCart ? savedCart : null;
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 
   async AddProductToCart(idCart, prod, size, quantity) {
     try {
-      const cart = await this.getById(idCart);
+      const cart = await this.GetById(idCart);
       if (!cart) {
         return 'No existe el Carrito seleccionado';
       }
@@ -111,7 +111,7 @@ class CartDAO extends MongoDBContainer {
 
   async DeleteProductFromCart(idCart, idProd) {
     try {
-      const cart = await this.getById(idCart);
+      const cart = await this.GetById(idCart);
       if (!cart) {
         return 'No existe el Carrito seleccionado';
       }
@@ -133,13 +133,13 @@ class CartDAO extends MongoDBContainer {
         ? ''
         : 'Ocurrió un error al eliminar el producto del carrito. Por favor, intenta nuevamente';
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 
   async DeleteProductSizeFromCart(idCart, idProd, size) {
     try {
-      const cart = await this.getById(idCart);
+      const cart = await this.GetById(idCart);
       if (!cart) {
         return 'No existe el Carrito seleccionado';
       }
@@ -192,13 +192,13 @@ class CartDAO extends MongoDBContainer {
         ? ''
         : 'Ocurrió un error al eliminar el producto del carrito. Por favor, intenta nuevamente';
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 
   async ClearCart(idCart) {
     try {
-      const cart = await this.getById(idCart);
+      const cart = await this.GetById(idCart);
       if (!cart) {
         return 'No existe el Carrito seleccionado';
       }
@@ -216,7 +216,7 @@ class CartDAO extends MongoDBContainer {
         ? ''
         : 'Ocurrió un error al limpiar el Carrito. Por favor, intenta nuevamente';
     } catch (error) {
-      throw new Error(error.name);
+      throw new Error(error);
     }
   }
 }
