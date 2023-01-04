@@ -13,6 +13,7 @@ const routerUploads = require('./routes/uploads.routes');
 const notFound = require('./middlewares/notFound');
 const handleErrors = require('./middlewares/handleErrors');
 const sessionConfig = require('../DataAccess/dbConfig');
+const path = require('path');
 
 const app = express();
 
@@ -24,6 +25,20 @@ app.use(
     credentials: true,
   })
 );
+
+//views
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+
+// serve views
+app.get('/', (req, res) => {
+  res.render('pages/index', { page_name: 'index' });
+});
+app.get('/Productos', async (req, res) => {
+  res.render('pages/products', {
+    page_name: 'products',
+  });
+});
 
 //routes & middlewares
 app.use(express.static(`${rootDir}/public`));
