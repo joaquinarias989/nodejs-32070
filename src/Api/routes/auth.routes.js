@@ -21,8 +21,12 @@ router.get('/user-logued', GetUserAuthenticated);
 
 router.post('/login/success', VerifyUserAuthenticated, HandleLoginSuccess);
 router.post('/login/error', HandleLoginError);
+router.get('/login/success', VerifyUserAuthenticated, HandleLoginSuccess);
+router.get('/login/error', HandleLoginError);
 
 router.post('/signUp/success', VerifyUserAuthenticated, HandleSignUpSuccess);
 router.post('/signUp/error', HandleSignUpError);
+router.get('/signUp/success', VerifyUserAuthenticated, HandleSignUpSuccess);
+router.get('/signUp/error', HandleSignUpError);
 
 module.exports = router;

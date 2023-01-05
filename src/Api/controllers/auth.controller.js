@@ -4,12 +4,14 @@ const passport = require('../middlewares/passport');
 const { SendEmailNewUser } = require('../services/externals/emails.service');
 
 const Login = passport.authenticate('login', {
-  successRedirect: 'login/success',
+  // successRedirect: 'login/success',
+  successRedirect: '/',
   failureRedirect: 'login/error',
 });
 
 const SignUp = passport.authenticate('signUp', {
-  successRedirect: 'signUp/success',
+  // successRedirect: 'signUp/success',
+  successRedirect: '/',
   failureRedirect: 'signUp/error',
 });
 

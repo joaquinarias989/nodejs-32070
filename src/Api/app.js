@@ -39,6 +39,12 @@ app.get('/Productos', async (req, res) => {
     page_name: 'products',
   });
 });
+app.get('/IniciarSesion', async (req, res) => {
+  res.render('pages/login');
+});
+app.get('/Registrarse', async (req, res) => {
+  res.render('pages/register');
+});
 
 //routes & middlewares
 app.use(express.static(`${rootDir}/public`));

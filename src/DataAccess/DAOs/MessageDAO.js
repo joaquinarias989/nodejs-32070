@@ -18,6 +18,16 @@ class MessageDAO extends MongoDBContainer {
       throw new Error(error);
     }
   }
+
+  async GetAllByEmail(email) {
+    try {
+      const docs = await this.model.find({ email });
+      if (!docs || !docs.length) return null;
+      return doc;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
 
 module.exports = MessageDAO;

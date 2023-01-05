@@ -13,8 +13,14 @@
       href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
-  <body>
+  <body onload="getUser()">
     <%- include("../partials/navbar.ejs") %>
 
     <!-- HEADER NAV -->
@@ -32,17 +38,18 @@
           </button>
         </div>
         <div class="header__profile">
-          <button class="header__action">
-            <i class="feather icon-bell"></i>
-          </button>
           <button class="header__action" id="toggleChat">
             <i class="feather icon-message-square"
-              ><span class="header__action--badge" id="msgQuantity"></span></i
-            >
+              ><span class="header__action--badge" id="msgQuantity"></span
+            ></i>
+          </button>
+          <button class="header__action" onclick="logout()">
+            <i class="feather icon-log-out"></i>
           </button>
           <a href="" class="header__action header__action--profile">
             <img
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+              id="userImg"
+              src=""
               alt="Imagen de perfil"
             />
           </a>
@@ -144,5 +151,46 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/chat.js" type="module"></script>
     <script src="js/products.js" type="module"></script>
+
+    <script>
+      let userLogued;
+
+      const getUser = () => {
+        axios
+          .get('http://localhost:8080/api/auth/user-logued')
+          .then((resp) => {
+            console.log(resp)
+            if (!resp.data.success) {
+              console.log("hola")
+              window.location.href = '/IniciarSesion';
+              return;
+            }
+            userLogued = resp.data.data;
+            userImg.setAttribute(
+              'src',
+              `http://localhost:8080/api/uploads/image/${userLogued.avatar}`
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+            window.location.href = '/IniciarSesion';
+          });
+      };
+
+      const logout = () => {
+        axios
+          .delete('http://localhost:8080/api/auth/logout')
+          .then((resp) => {
+            console.log(resp);
+
+            if (resp.data.success) {
+                window.location.href = '/IniciarSesion';
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+    </script>
 
 </html>
