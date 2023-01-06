@@ -10,6 +10,7 @@ const routerProds = require('./routes/products.routes');
 const routerCart = require('./routes/cart.routes');
 const routerOrders = require('./routes/orders.routes');
 const routerUploads = require('./routes/uploads.routes');
+const routerChat = require('./routes/chat.routes');
 const notFound = require('./middlewares/notFound');
 const handleErrors = require('./middlewares/handleErrors');
 const sessionConfig = require('../DataAccess/dbConfig');
@@ -61,6 +62,7 @@ app.use('/api/auth', routerAuth);
 app.use('/api/products', routerProds);
 app.use('/api/cart', routerCart);
 app.use('/api/orders', routerOrders);
+app.use('/api/chat', routerChat);
 
 app.use(notFound);
 app.use(handleErrors);

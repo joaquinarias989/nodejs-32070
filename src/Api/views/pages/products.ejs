@@ -20,7 +20,7 @@
       referrerpolicy="no-referrer"
     ></script>
   </head>
-  <body onload="getUser()">
+  <body>
     <%- include("../partials/navbar.ejs") %>
 
     <!-- HEADER NAV -->
@@ -43,7 +43,7 @@
               ><span class="header__action--badge" id="msgQuantity"></span
             ></i>
           </button>
-          <button class="header__action" onclick="logout()">
+          <button class="header__action" id="btnLogout">
             <i class="feather icon-log-out"></i>
           </button>
           <a href="" class="header__action header__action--profile">
@@ -149,48 +149,7 @@
 
     <script src="js/ui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="js/auth.js" type="module"></script>
     <script src="js/chat.js" type="module"></script>
     <script src="js/products.js" type="module"></script>
-
-    <script>
-      let userLogued;
-
-      const getUser = () => {
-        axios
-          .get('http://localhost:8080/api/auth/user-logued')
-          .then((resp) => {
-            console.log(resp)
-            if (!resp.data.success) {
-              console.log("hola")
-              window.location.href = '/IniciarSesion';
-              return;
-            }
-            userLogued = resp.data.data;
-            userImg.setAttribute(
-              'src',
-              `http://localhost:8080/api/uploads/image/${userLogued.avatar}`
-            );
-          })
-          .catch((error) => {
-            console.log(error);
-            window.location.href = '/IniciarSesion';
-          });
-      };
-
-      const logout = () => {
-        axios
-          .delete('http://localhost:8080/api/auth/logout')
-          .then((resp) => {
-            console.log(resp);
-
-            if (resp.data.success) {
-                window.location.href = '/IniciarSesion';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
-    </script>
-
 </html>

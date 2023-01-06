@@ -20,6 +20,10 @@ export const saveMessage = (author, text, date) => {
   socket.emit('client:newmessage', { author, text, date });
 };
 
+export const requireMessages = (email) => {
+  socket.emit('client:requiremessages', email);
+};
+
 export const loadMessages = (callback) => {
   socket.on('server:loadmessages', callback);
 };

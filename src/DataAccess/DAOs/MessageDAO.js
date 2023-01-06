@@ -23,7 +23,7 @@ class MessageDAO extends MongoDBContainer {
     try {
       const docs = await this.model.find({ email });
       if (!docs || !docs.length) return null;
-      return doc;
+      return docs;
     } catch (error) {
       throw new Error(error);
     }

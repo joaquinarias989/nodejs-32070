@@ -12,14 +12,16 @@ const Sockets = (io) => {
     };
     emitSocketId();
 
-    const emitMessages = async () => {
-      const msgs = await Messages.GetAll();
+    const emitMessages = async (email) => {
+      const msgs = await Messages.GetAllByEmail(email);
       socket.emit('server:loadmessages', msgs);
     };
-    emitMessages();
+
+    socket.on('client:requiremessages', async (email) => {
+      emitMessages(email);
+    });
 
     socket.on('client:newmessage', async (data) => {
-      console.log(data);
       const msg = new MessageDTO({
         authorType: 'Usuario',
         email: data.author,
