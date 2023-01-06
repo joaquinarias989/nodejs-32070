@@ -18,6 +18,18 @@ class OrderDAO extends MongoDBContainer {
 
       return savedOrder ? savedOrder : null;
     } catch (error) {
+      console.log('holA');
+      console.log(error);
+      throw new Error(error);
+    }
+  }
+
+  async GetAllByEmail(email) {
+    try {
+      const docs = await this.model.find({ email });
+      if (!docs || !docs.length) return null;
+      return docs;
+    } catch (error) {
       throw new Error(error);
     }
   }

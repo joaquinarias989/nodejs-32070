@@ -16,10 +16,11 @@ async function CreateOrder(req, res, next) {
 
   try {
     const { idCart } = req.body;
-    const cart = await Carts.getById(idCart);
+    const cart = await Carts.GetById(idCart);
 
     if (!cart) {
       resp.success = false;
+      resp.status = 400;
       resp.message = 'El Carrito seleccionado no existe.';
       return res.status(404).json(resp);
     }
@@ -52,11 +53,10 @@ async function CreateOrder(req, res, next) {
     const order = await Orders.CreateOrder(cart, buyer);
     if (!order) {
       resp.success = false;
+      resp.status = 400;
       resp.message = 'Error al crear la Orden. Intenta nuevamente.';
       return res.status(400).json(resp);
     }
-
-    await SendSMSToBuyer(buyer);
 
     const prodsList = order.products.map((item) => `<li>${item.title}</li>`);
     const htmlEmail = `¡Se ha realizado una nueva compra desde la Web! <br />
@@ -71,25 +71,32 @@ async function CreateOrder(req, res, next) {
     `;
     await SendEmailToAdmin(`Nuevo Pedido #${order.id}`, htmlEmail);
 
-    const prodsListWpp = order.products.map((item) => `${item.title}; `);
-    const wppMsg = `¡Se ha realizado una nueva compra desde la Web!
+    if (process.env.ACCOUNT_SID || process.env.ACCOUNT_SID !== '') {
+      await SendSMSToBuyer(buyer);
 
-    Datos del Comprador:
-    Nombre y Apellido: ${buyer.name}
-    Email: ${buyer.email}
-    Provincia: ${buyer.province}
-    Dirección: ${buyer.address}
-    Nº Teléfono: ${buyer.phone}
+      const prodsListWpp = order.products.map((item) => `${item.title}; `);
+      const wppMsg = `¡Se ha realizado una nueva compra desde la Web!
+  
+      Datos del Comprador:
+      Nombre y Apellido: ${buyer.name}
+      Email: ${buyer.email}
+      Provincia: ${buyer.province}
+      Dirección: ${buyer.address}
+      Nº Teléfono: ${buyer.phone}
+  
+      Productos:
+      ${prodsListWpp}
+      `;
+      await SendWhatsappToAdmin(`Nuevo Pedido #${order.id}`, wppMsg);
+    }
 
-    Productos:
-    ${prodsListWpp}
-    `;
-    await SendWhatsappToAdmin(`Nuevo Pedido #${order.id}`, wppMsg);
     resp.data = order;
     resp.message = `Orden #${order.id} creada exitosamente! Gracias por comprar en STREET WEAR.`;
     res.status(200).json(resp);
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message = 'Error al Crear la Orden. Por favor, intente nuevamente.';
+    next(resp);
   }
 }
 
@@ -97,9 +104,20 @@ const GetUserOrders = async (req, res, next) => {
   let resp = new ServiceResponse();
 
   try {
-    res.status(200);
+    const orders = await Orders.GetAllByEmail(req.user.email);
+    if (!orders) {
+      resp.success = false;
+      resp.status = 404;
+      resp.message = 'No haz realizado ninguna compra aún';
+      return res.status(resp.status).json(resp);
+    }
+    resp.data = orders;
+    return res.status(resp.status).json(resp);
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message =
+      'Error al Obtener las Compras. Por favor, intente nuevamente.';
+    next(resp);
   }
 };
 
