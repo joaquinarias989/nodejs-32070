@@ -11,7 +11,7 @@ const Login = passport.authenticate('login', {
 
 const SignUp = passport.authenticate('signUp', {
   // successRedirect: 'signUp/success',
-  successRedirect: '/',
+  successRedirect: 'signUp/success',
   failureRedirect: 'signUp/error',
 });
 
@@ -78,7 +78,8 @@ const HandleSignUpSuccess = async (req, res, next) => {
   resp.status = 200;
   resp.message = 'Te has registrado exitosamente!';
 
-  res.status(resp.status).json(resp);
+  res.redirect('/');
+  // res.status(resp.status).json(resp);
 };
 const HandleSignUpError = async (req, res, next) => {
   const resp = new ServiceResponse();

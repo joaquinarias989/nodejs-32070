@@ -1,20 +1,22 @@
 const nodemailer = require('nodemailer');
 
-const TEST_MAIL = 'guadalupe63@ethereal.email';
+const HOST_MAIL = process.env.HOST_MAIL;
+const MAILS_FROM = process.env.MAILS_FROM;
+const PASSWORD = process.env.MAILS_PASSWORD;
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
+  host: HOST_MAIL,
   port: 587,
   auth: {
-    user: TEST_MAIL,
-    pass: 'psSzCr7zepNra5y5Bw',
+    user: MAILS_FROM,
+    pass: PASSWORD,
   },
 });
 
 async function SendEmailToAdmin(subject, html) {
   const mailOptions = {
     from: 'StreetWear API',
-    to: TEST_MAIL,
+    to: MAILS_FROM,
     subject: `${subject} | STREET WEAR`,
     html: html,
   };
@@ -30,7 +32,7 @@ async function SendEmailToAdmin(subject, html) {
 async function SendEmailNewUser(user) {
   const mailOptions = {
     from: 'StreetWear API',
-    to: TEST_MAIL,
+    to: MAILS_FROM,
     subject: 'Nuevo Usuario Registrado | STREET WEAR',
     html: `¡Se ha registrado un nuevo usuario en la Web! <br /> 
     Nombre y Apellido: ${user.name} <br /> 
