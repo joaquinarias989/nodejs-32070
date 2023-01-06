@@ -26,7 +26,8 @@ class OrderDAO extends MongoDBContainer {
 
   async GetAllByEmail(email) {
     try {
-      const docs = await this.model.find({ email });
+      const docs = await this.model.find({ 'buyer.email': email });
+      console.log(docs);
       if (!docs || !docs.length) return null;
       return docs;
     } catch (error) {
