@@ -94,56 +94,16 @@
         <table>
           <thead>
             <tr>
-              <th>
-                <label class="flex-row jc-center align-center gap-1">
-                  Seleccionar
-                  <input type="checkbox" class="checkbox" />
-                </label>
-              </th>
-              <th>Imágen del producto</th>
-              <th>Nombre del producto</th>
+              <th>Cód.</th>
+              <th>Titulo</th>
+              <th>Imágen</th>
               <th>Precio</th>
-              <th>Acción</th>
             </tr>
           </thead>
           <tbody id="productsList"></tbody>
         </table>
         <!-- <h3 class="text-center text-xl">No tienes productos en stock! Agrega desde
               <a class="link font-bold" href="AgregarProducto">aquí</a></h3> -->
-      </div>
-      <div class="products__form flex-column gap-2">
-        <h2>Agregar Producto</h2>
-        <form class="form flex-column gap-2" id="formAddProduct">
-          <div class="form__group">
-            <label for="code">Código del producto</label>
-            <input type="text" name="code" id="code" class="form__input" />
-          </div>
-          <div class="form__group">
-            <label for="title">Nombre del producto</label>
-            <input type="text" name="title" id="title" class="form__input" />
-          </div>
-          <div class="form__group">
-            <label for="price">Precio</label>
-            <input type="number" name="price" id="price" class="form__input" />
-          </div>
-          <div class="form__group">
-            <label for="description">Descripción</label>
-            <textarea name="description" id="description" class="form__input"></textarea>
-          </div>
-          <div class="form__group">
-            <label for="urlImg">Url de la Imágen del producto</label>
-            <input type="url" name="urlImg" id="urlImg" class="form__input" />
-          </div>
-          <div class="form__group">
-            <label for="stock">Stock disponible</label>
-            <input type="number" name="stock" id="stock" class="form__input" />
-          </div>
-          <button class="btn__action">
-            <div class="hover">
-              <i class="feather icon-plus"></i> <span>Agregar</span>
-            </div>
-          </button>
-        </form>
       </div>
     </main>
 

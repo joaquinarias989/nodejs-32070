@@ -1,7 +1,9 @@
-const Container = require('../DataAccess/DAOs/MessageDAO');
+const MessagesContainer = require('../DataAccess/DAOs/MessageDAO');
+const ProdsContainer = require('../DataAccess/DAOs/ProductDAO');
 const MessageDTO = require('../DataAccess/DTOs/MessageDTO');
 const logger = require('./services/logger.service');
-const Messages = new Container();
+const Messages = new MessagesContainer();
+const Prods = new ProdsContainer();
 
 const Sockets = (io) => {
   io.on('connection', (socket) => {
@@ -11,6 +13,12 @@ const Sockets = (io) => {
       socket.emit('server:socketid', socket.id);
     };
     emitSocketId();
+
+    const emitProducts = async () => {
+      const prods = await Prods.GetAll();
+      socket.emit('server:loadprods', prods);
+    };
+    emitProducts();
 
     const emitMessages = async (email) => {
       const msgs = await Messages.GetAllByEmail(email);
