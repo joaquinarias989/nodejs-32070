@@ -4,23 +4,35 @@ const passport = require('../middlewares/passport');
 const { SendEmailNewUser } = require('../services/externals/emails.service');
 
 const Login = passport.authenticate('login', {
-  // successRedirect: 'login/success',
-  successRedirect: '/',
-  failureRedirect: 'login/error',
+  successRedirect: '/api/auth/login/success',
+  failureRedirect: '/api/auth/login/error',
 });
 
 const SignUp = passport.authenticate('signUp', {
-  // successRedirect: 'signUp/success',
   successRedirect: 'signUp/success',
   failureRedirect: 'signUp/error',
 });
 
 async function Logout(req, res, next) {
+  let resp = new ServiceResponse();
+
   try {
-    let resp = await authService.Logout(req);
-    res.status(resp.status).json(resp);
+    if (req.user) {
+      const { name } = req.user;
+      req.logout(() => {
+        resp.message = `Hasta pronto ${name}!`;
+        return res.status(resp.status).json(resp);
+      });
+    } else {
+      resp.success = false;
+      resp.status = 404;
+      resp.message = 'Aún no has iniciado sesión.';
+      res.status(resp.status).json(resp);
+    }
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message = 'Error al Cerrar la Sesión. Por favor, intente nuevamente.';
+    next(resp);
   }
 }
 
@@ -71,24 +83,35 @@ const HandleLoginError = async (req, res, next) => {
 
 const HandleSignUpSuccess = async (req, res, next) => {
   const resp = new ServiceResponse();
-  const user = req.user;
+  try {
+    const user = req.user;
 
-  await SendEmailNewUser(user);
-  resp.data = user;
-  resp.status = 200;
-  resp.message = 'Te has registrado exitosamente!';
+    await SendEmailNewUser(user);
+    resp.data = user;
+    resp.status = 200;
+    resp.message = 'Te has registrado exitosamente!';
 
-  res.redirect('/');
-  // res.status(resp.status).json(resp);
+    res.status(resp.status).json(resp);
+  } catch (error) {
+    resp.data = error;
+    resp.message = 'Error al Registrarse. Por favor, intente nuevamente.';
+    next(resp);
+  }
 };
 const HandleSignUpError = async (req, res, next) => {
   const resp = new ServiceResponse();
-  resp.success = false;
-  resp.status = 400;
-  resp.message =
-    'Algo salió mal al intentar registrarte en nuestro Sistema. Por favor, intenta nuevamente.';
+  try {
+    resp.success = false;
+    resp.status = 400;
+    resp.message =
+      'Algo salió mal al intentar registrarte en nuestro Sistema. Por favor, intenta nuevamente.';
 
-  res.status(resp.status).json(resp);
+    res.status(resp.status).json(resp);
+  } catch (error) {
+    resp.data = error;
+    resp.message = 'Error al Registrarse. Por favor, intente nuevamente.';
+    next(resp);
+  }
 };
 
 module.exports = {

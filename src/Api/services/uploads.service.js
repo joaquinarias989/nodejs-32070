@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const ServiceResponse = require('../../Models/ServiceResponse');
 const rootDir = require('path').resolve('./');
 
 const storageEngine = multer.diskStorage({
@@ -18,7 +19,11 @@ const checkFileType = (file, cb) => {
   if (mimeType && extName) {
     return cb(null, true);
   } else {
-    cb('Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg');
+    let resp = new ServiceResponse();
+    resp.status = 400;
+    resp.message = 'Sólo se permiten imágenes en formato: .jpeg .jpg .png .svg';
+    resp.success = false;
+    cb(resp);
   }
 };
 

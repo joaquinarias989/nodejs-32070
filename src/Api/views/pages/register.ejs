@@ -29,12 +29,13 @@
           </p>
         </div>
 
-        <form
+        <!-- <form
           class=""
           action="/api/auth/signUp"
           method="POST"
           enctype="multipart/form-data"
-        >
+        > -->
+        <form onsubmit="SignUp(event)">
           <input
             type="text"
             id="name"
@@ -105,6 +106,17 @@
             <a href="IniciarSesion" class="font-bold">Ingresa aquí</a>
           </p>
 
+          <div role="alert" class="hidden mb-5" id="errorMessageBox">
+            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+              Error
+            </div>
+            <div
+              class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700"
+            >
+              <p id="errorMessage"></p>
+            </div>
+          </div>
+
           <button
             type="submit"
             class="py-2 px-3 w-full bg-green-700 rounded-md shadow-md text-white tracking-wide font-bold transition-all hover:shadow-lg hover:bg-green-500"
@@ -114,5 +126,66 @@
         </form>
       </div>
     </main>
+
+    <script>
+      const errorMessage = document.getElementById('errorMessage');
+      const errorMessageBox = document.getElementById('errorMessageBox');
+
+      function SignUp(event) {
+        event.preventDefault();
+
+        const {
+          name,
+          province,
+          address,
+          postalCode,
+          phone,
+          email,
+          password,
+          avatar,
+        } = event.target.elements;
+
+        let formData = new FormData();
+        formData.append('name', name.value);
+        formData.append('province', province.value);
+        formData.append('postalCode', parseInt(postalCode.value));
+        formData.append('address', address.value);
+        formData.append('phone', phone.value);
+        formData.append('email', email.value);
+        formData.append('password', password.value);
+        formData.append('avatar', avatar.files[0]);
+
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'multipart/form-data' },
+          data: formData,
+          withCredentials: true,
+          url: `http://localhost:8080/api/auth/signUp`,
+        })
+          .then((resp) => {
+            if (resp.request?.responseURL.includes('success')) {
+              window.location.href = '/';
+            } else if (resp.request?.responseURL.includes('error')) {
+              errorMessage.innerHTML = 'Verifique los datos ingresados.';
+            }
+          })
+          .catch((error) => {
+            if (error.request?.responseURL.includes('success')) {
+              window.location.href = '/';
+            } else if (error.request?.responseURL.includes('error')) {
+              errorMessageBox.classList.toggle('hidden');
+              errorMessage.innerHTML = 'Verifique los datos ingresados.';
+            } else {
+              errorMessageBox.classList.toggle('hidden');
+              errorMessage.innerHTML =
+                'Algo salió mal al intentar Registrarlo en nuestro sistema. Por favor, intenta nuevamente';
+            }
+
+            if (!error.response.data.success) {
+              errorMessage.innerHTML = error.response.data.message;
+            }
+          });
+      }
+    </script>
   </body>
 </html>
