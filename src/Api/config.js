@@ -2,6 +2,7 @@ require('dotenv').config();
 const parseArgs = require('minimist');
 
 let config = {
+  SERVER_PORT: process.env.SERVER_PORT,
   DB_MONGO_ADMIN_USER: process.env.DB_MONGO_ADMIN_USER,
   DB_MONGO_ADMIN_PASSWORD: process.env.DB_MONGO_ADMIN_PASSWORD,
   DB_MONGO_CONNECTION_STRING: `mongodb+srv://${process.env.DB_MONGO_ADMIN_USER}:${process.env.DB_MONGO_ADMIN_PASSWORD}@cluster0.dyzigwz.mongodb.net/street-wear-ecommerce?retryWrites=true&w=majority`,
@@ -20,7 +21,7 @@ let args = process.argv.slice(2);
 
 let options = {
   alias: { p: 'port' },
-  default: { port: process.env.PORT || 8080 },
+  default: { port: process.env.SERVER_PORT || 8080 },
 };
 
 let arg = parseArgs(args, options);

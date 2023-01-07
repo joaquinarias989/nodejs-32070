@@ -16,6 +16,13 @@
     <h2 class='mt-2 mb-2 text-2xl font-bold'>Configuraciones de la Api:</h2>
     <ul class='space-y-1 list-decimal list-inside'>
       <li>
+        <span class='underline'>SERVIDOR</span>
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>PUERTO:
+            <span class='italic'>{{config.SERVER_PORT}}</span></li>
+        </ul>
+      </li>
+      <li>
         <span class='underline'>Mongo DB</span>
         <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
           <li>USER:
@@ -36,7 +43,7 @@
         </ul>
       </li>
       <li>
-        <span class='underline'>NOTIFICACIONES MÓVILES - Twilio</span>
+        <span class='underline'>Notificaciones Móviles - Twilio</span>
         <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
           <li>SID: {{config.ACCOUNT_SID}}</li>
           <li>TOKEN: {{config.AUTH_TOKEN}}</li>
@@ -51,7 +58,7 @@
         </ul>
       </li>
       <li>
-        <span class='underline'>NOTIFICACIONES POR EMAIL - Nodemailer</span>
+        <span class='underline'>Notificaciones por EMAIL - Nodemailer</span>
         <span class='text-gray-500 block italic'>Si deseas usar una cuenta de
           GMAIL, debes habilitar y generar una contraseña de aplicación
           específica. Para ello, ingresa
