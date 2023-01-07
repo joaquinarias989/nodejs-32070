@@ -7,15 +7,17 @@ async function UploadImage(req, res, next) {
   try {
     if (!req.file) {
       resp.success = false;
+      resp.status = 400;
       resp.message = 'Debes subir una imagen válida.';
-      return res.status(404).json(resp);
+      return res.status(resp.status).json(resp);
     }
-
     resp.data = req.file;
     resp.message = 'Imágen subida exitosamente!';
-    res.status(200).json(resp);
+    res.status(resp.status).json(resp);
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message = 'Error al Subir la Imágen. Por favor, intente nuevamente.';
+    next(resp);
   }
 }
 
@@ -25,15 +27,19 @@ async function UploadImages(req, res, next) {
   try {
     if (!req.files) {
       resp.success = false;
+      resp.status = 400;
       resp.message = 'Debes subir imágenes válidas.';
-      return res.status(404).json(resp);
+      return res.status(resp.status).json(resp);
     }
 
     resp.data = req.files;
     resp.message = 'Imágenes subidas exitosamente!';
-    res.status(200).json(resp);
+    res.status(resp.status).json(resp);
   } catch (error) {
-    next(error);
+    resp.data = error;
+    resp.message =
+      'Error al Subir las Imágenes. Por favor, intente nuevamente.';
+    next(resp);
   }
 }
 
