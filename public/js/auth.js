@@ -9,9 +9,16 @@ const userImg = document.getElementById('userImg');
 const btnLogout = document.getElementById('btnLogout');
 let userLogued;
 
+let URI_API = window.location.host;
+if (URI_API.includes('localhost')) {
+  URI_API = `http://${URI_API}`;
+} else {
+  URI_API = `https://${URI_API}`;
+}
+
 function getUser() {
   axios
-    .get('http://localhost:8080/api/auth/user-logued')
+    .get(`${URI_API}/api/auth/user-logued`)
     .then((resp) => {
       if (!resp.data.success) {
         window.location.href = '/IniciarSesion';
@@ -21,7 +28,7 @@ function getUser() {
       if (userText) userText.innerHTML = userLogued.name;
       userImg.setAttribute(
         'src',
-        `http://localhost:8080/api/uploads/image/${userLogued.avatar}`
+        `${URI_API}/api/uploads/image/${userLogued.avatar}`
       );
 
       requireMessages(userLogued.email);
@@ -33,13 +40,6 @@ function getUser() {
 }
 
 btnLogout.addEventListener('click', logout);
-
-let URI_API = window.location.host;
-if (URI_API.includes('localhost')) {
-  URI_API = `http://${URI_API}`;
-} else {
-  URI_API = `https://${URI_API}`;
-}
 
 function logout() {
   axios
