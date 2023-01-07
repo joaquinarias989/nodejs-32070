@@ -3,6 +3,7 @@ const { arg } = require('./config');
 const cors = require('cors');
 const rootDir = require('path').resolve('./');
 const session = require('express-session');
+const { engine } = require('express-handlebars');
 const passport = require('./middlewares/passport');
 const routerViews = require('./routes/views.routes');
 const routerEnv = require('./routes/env.routes');
@@ -30,6 +31,8 @@ app.use(
 
 //views
 app.set('view engine', 'ejs');
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '/views'));
 
 //routes & middlewares

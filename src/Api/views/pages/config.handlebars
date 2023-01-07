@@ -1,0 +1,74 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Configuraciones</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js'
+      integrity='sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=='
+      crossorigin='anonymous'
+      referrerpolicy='no-referrer'
+    ></script>
+  </head>
+  <body class='px-7 pt-5'>
+    <h2 class='mt-2 mb-2 text-2xl font-bold'>Configuraciones de la Api:</h2>
+    <ul class='space-y-1 list-decimal list-inside'>
+      <li>
+        <span class='underline'>Mongo DB</span>
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>USER:
+            <span class='italic'>{{config.DB_MONGO_ADMIN_USER}}</span></li>
+          <li>PASSWORD:
+            <span class='italic'>{{config.DB_MONGO_ADMIN_USER}}</span></li>
+          <li>Cadena de conexión:
+            <span
+              class='italic'
+            >{{config.DB_MONGO_CONNECTION_STRING}}</span></li>
+        </ul>
+      </li>
+      <li>
+        <span class='underline'>Llave secreta de las sesiones de Usuario</span>
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>KEY:
+            <span class='italic'>{{config.SESSION_SECRET_KEY}}</span></li>
+        </ul>
+      </li>
+      <li>
+        <span class='underline'>NOTIFICACIONES MÓVILES - Twilio</span>
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>SID: {{config.ACCOUNT_SID}}</li>
+          <li>TOKEN: {{config.AUTH_TOKEN}}</li>
+          <li>Nº de Telefono al que se envían:
+            {{config.ADMIN_PHONE_NUMBER}}</li>
+        </ul>
+      </li>
+      <li>
+        <span class='underline'>Frontend (Habilita CORS)</span>
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>URI Frontend: {{config.FRONTEND_CLIENT_URI}}</li>
+        </ul>
+      </li>
+      <li>
+        <span class='underline'>NOTIFICACIONES POR EMAIL - Nodemailer</span>
+        <span class='text-gray-500 block italic'>Si deseas usar una cuenta de
+          GMAIL, debes habilitar y generar una contraseña de aplicación
+          específica. Para ello, ingresa
+          <a
+            class='font-bold text-black underline'
+            href='https://security.google.com/settings/security/apppasswords'
+          >aquí</a>.</span>
+
+        <ul class='pl-5 mt-2 space-y-1 list-disc list-inside'>
+          <li>HOST : <span class='italic'>{{config.HOST_MAIL}}</span></li>
+          <li>PUERTO: <span class='italic'>{{config.PORT_MAIL}}</span></li>
+          <li>Dirección del Correo:
+            <span class='italic'>{{config.MAIL_ADRESS}}</span></li>
+          <li>Contraseña del Correo:
+            <span class='italic'>{{config.MAIL_PASSWORD}}</span></li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
