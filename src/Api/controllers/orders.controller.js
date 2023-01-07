@@ -25,13 +25,6 @@ async function CreateOrder(req, res, next) {
       return res.status(404).json(resp);
     }
 
-    // const error = await Products.VerifyStockOfPurchase(cart.products);
-    // if (error != '') {
-    //   resp.success = false;
-    //   resp.message = error;
-    //   return res.status(400).json(resp);
-    // }
-
     let buyer;
     if (req.user) {
       const user = req.user;
