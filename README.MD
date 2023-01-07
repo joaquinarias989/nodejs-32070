@@ -3,12 +3,12 @@
         <img width=100 height=100 src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Logo de NodeJS">
     </picture>
 </p>
-<h2 align="center">NodeJS CH #32070</h2>
+<h2 align="center">NodeJS CH #32070 - Backend API</h2>
 
 ---
 
 <div align="center"> 
-Repository with all the challenges of the Backend course with Node JS from the Coderhouse Academy, commission 32070.
+Final Proyect of the Backend course with Node JS from the Coderhouse Academy, commission 32070.
 </div>
 
 
@@ -16,7 +16,11 @@ Repository with all the challenges of the Backend course with Node JS from the C
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Installing Locally
+### 🚀 Deployment
+
+Check the [Live Deploy](https://street-wear-backend.up.railway.app/) (hosted by [Railway](https://railway.app/)).
+
+### 💻 Installing Locally
 
 Locating yourself in the path you want, open your preferred terminal and clone the repository with the following command:
 
@@ -24,25 +28,32 @@ Locating yourself in the path you want, open your preferred terminal and clone t
 git clone https://github.com/joaquinarias989/nodejs-32070.git
 ```
 
-#### 🧐 Stop
-
-If you've already cloned your project once, don't do it again, run the following command and get the latest updates:
-
+Move to the folder
 
 ```
-git pull origin master
+cd nodejs-32070
 ```
 
-Go to the challenge folder what you want whit:
+Change the branch
 
 ```
-cd challenge-NUMBER
+git checkout final-proyect
 ```
 
-Install dependencies of this challenge with:
-
+Install dependencies
 ```
 npm install
 ```
 
-And then follow the instructions of each readme in each folder.
+Run locally whit:
+
+```
+npm start
+```
+
+### 📍 Documentation
+
+All endpoints, estructure and response examples are detailed in a documentation generated whit [Postman](https://www.postman.com/).
+Check it here: **[API DOCS](https://documenter.getpostman.com/view/14467577/2s8YeuMBcU)** 📃
+
+You can also find screenshots of some activities like twilio & nodemailer notifications here: **[Screenshots Docs](https://github.com/joaquinarias989/nodejs-32070/tree/final-proyect/docs)** 📷
