@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon index.js",
-    "dev:0x": "0x index.js",
-    "test:performance": "node tests/performance/autocannon/benchmark.js",
-    "test:functionalities-axios": "node tests/functionalities/axios/axios.test.js"
+    "dev": "npx nodemon index.js"
   },
   "keywords": [],
   "author": "Joaquin Arias",
