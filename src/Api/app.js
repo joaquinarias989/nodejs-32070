@@ -4,6 +4,7 @@ const cors = require('cors');
 const rootDir = require('path').resolve('./');
 const session = require('express-session');
 const passport = require('./middlewares/passport');
+const routerViews = require('./routes/views.routes');
 const routerEnv = require('./routes/env.routes');
 const routerAuth = require('./routes/auth.routes');
 const routerProds = require('./routes/products.routes');
@@ -31,22 +32,6 @@ app.use(
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
-// serve views
-app.get('/', (req, res) => {
-  res.render('pages/index', { page_name: 'index' });
-});
-app.get('/Productos', async (req, res) => {
-  res.render('pages/products', {
-    page_name: 'products',
-  });
-});
-app.get('/IniciarSesion', async (req, res) => {
-  res.render('pages/login');
-});
-app.get('/Registrarse', async (req, res) => {
-  res.render('pages/register');
-});
-
 //routes & middlewares
 app.use(express.static(`${rootDir}/public`));
 app.use(express.json());
@@ -56,6 +41,7 @@ app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(routerViews);
 app.use('/api/env', routerEnv);
 app.use('/api/uploads', routerUploads);
 app.use('/api/auth', routerAuth);
