@@ -1,22 +1,23 @@
 const nodemailer = require('nodemailer');
 
 const HOST_MAIL = process.env.HOST_MAIL;
-const MAILS_FROM = process.env.MAILS_FROM;
-const PASSWORD = process.env.MAILS_PASSWORD;
+const PORT_MAIL = process.env.PORT_MAIL;
+const MAIL_ADRESS = process.env.MAIL_ADRESS;
+const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 
 const transporter = nodemailer.createTransport({
   host: HOST_MAIL,
-  port: 587,
+  port: PORT_MAIL,
   auth: {
-    user: MAILS_FROM,
-    pass: PASSWORD,
+    user: MAIL_ADRESS,
+    pass: MAIL_PASSWORD,
   },
 });
 
 async function SendEmailToAdmin(subject, html) {
   const mailOptions = {
     from: 'StreetWear API',
-    to: MAILS_FROM,
+    to: MAIL_ADRESS,
     subject: `${subject} | STREET WEAR`,
     html: html,
   };
@@ -32,7 +33,7 @@ async function SendEmailToAdmin(subject, html) {
 async function SendEmailNewUser(user) {
   const mailOptions = {
     from: 'StreetWear API',
-    to: MAILS_FROM,
+    to: MAIL_ADRESS,
     subject: 'Nuevo Usuario Registrado | STREET WEAR',
     html: `¡Se ha registrado un nuevo usuario en la Web! <br /> 
     Nombre y Apellido: ${user.name} <br /> 
