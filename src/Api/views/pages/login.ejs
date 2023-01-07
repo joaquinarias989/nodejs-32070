@@ -79,11 +79,18 @@
       const errorMessage = document.getElementById('errorMessage');
       const errorMessageBox = document.getElementById('errorMessageBox');
 
+      let URI_API = window.location.host;
+      if (URI_API.includes('localhost')) {
+        URI_API = `http://${URI_API}`;
+      } else {
+        URI_API = `https://${URI_API}`;
+      }
+
       function Login(event) {
         event.preventDefault();
         const { email, password } = event.target.elements;
         axios
-          .post('http://localhost:8080/api/auth/login', {
+          .post(`${URI_API}/api/auth/login`, {
             email: email.value,
             password: password.value,
           })
@@ -95,6 +102,7 @@
             }
           })
           .catch((error) => {
+            console.log(error);
             if (error.request?.responseURL.includes('success')) {
               window.location.href = '/';
             } else if (error.request?.responseURL.includes('error')) {

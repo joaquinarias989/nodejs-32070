@@ -34,9 +34,16 @@ function getUser() {
 
 btnLogout.addEventListener('click', logout);
 
+let URI_API = window.location.host;
+if (URI_API.includes('localhost')) {
+  URI_API = `http://${URI_API}`;
+} else {
+  URI_API = `https://${URI_API}`;
+}
+
 function logout() {
   axios
-    .delete('http://localhost:8080/api/auth/logout')
+    .delete(`${URI_API}/api/auth/logout`)
     .then((resp) => {
       console.log(resp);
 

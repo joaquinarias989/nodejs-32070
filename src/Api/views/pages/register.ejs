@@ -131,6 +131,13 @@
       const errorMessage = document.getElementById('errorMessage');
       const errorMessageBox = document.getElementById('errorMessageBox');
 
+      let URI_API = window.location.host;
+      if (URI_API.includes('localhost')) {
+        URI_API = `http://${URI_API}`;
+      } else {
+        URI_API = `https://${URI_API}`;
+      }
+
       function SignUp(event) {
         event.preventDefault();
 
@@ -160,7 +167,7 @@
           headers: { 'Content-Type': 'multipart/form-data' },
           data: formData,
           withCredentials: true,
-          url: `http://localhost:8080/api/auth/signUp`,
+          url: `${URI_API}/api/auth/signUp`,
         })
           .then((resp) => {
             if (resp.request?.responseURL.includes('success')) {
