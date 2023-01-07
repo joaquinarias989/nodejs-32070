@@ -1,6 +1,7 @@
 const MongoDBContainer = require('../Containers/MongoDBContainer');
 const userSchema = require('../Schemas/User');
 const bCrypt = require('bcrypt');
+const logger = require('../../Api/services/logger.service');
 
 class UserDAO extends MongoDBContainer {
   constructor() {
@@ -25,13 +26,12 @@ class UserDAO extends MongoDBContainer {
       const { email, password } = obj;
       const user = await this.model.findOne({ email });
       if (!user || !isValidPassword(user, password)) {
-        console.log('Usuario y/o Contraseña incorrecta.');
+        logger.info('Usuario y/o Contraseña incorrecta.');
         return null;
       }
 
       return user;
     } catch (error) {
-      console.log(error);
       throw new Error(error);
     }
   }

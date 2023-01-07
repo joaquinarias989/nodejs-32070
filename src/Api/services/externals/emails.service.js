@@ -25,7 +25,6 @@ async function SendEmailToAdmin(subject, html) {
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 }

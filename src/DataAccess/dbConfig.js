@@ -9,7 +9,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('MongoDB connected!'))
+  .then(() => logger.info('MongoDB connected!'))
   .catch((err) => logger.error(err));
 
 // SESSIONS CONFIG

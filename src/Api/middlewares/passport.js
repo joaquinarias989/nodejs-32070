@@ -50,9 +50,7 @@ passport.use(
         avatar: req.file.filename,
       });
 
-      console.log(userToSave);
       let userSaved = await Users.RegisterUser(userToSave);
-      console.log(userSaved);
 
       return done(null, userSaved);
     }

@@ -18,8 +18,6 @@ class OrderDAO extends MongoDBContainer {
 
       return savedOrder ? savedOrder : null;
     } catch (error) {
-      console.log('holA');
-      console.log(error);
       throw new Error(error);
     }
   }
@@ -27,7 +25,6 @@ class OrderDAO extends MongoDBContainer {
   async GetAllByEmail(email) {
     try {
       const docs = await this.model.find({ 'buyer.email': email });
-      console.log(docs);
       if (!docs || !docs.length) return null;
       return docs;
     } catch (error) {
